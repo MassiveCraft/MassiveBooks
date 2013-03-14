@@ -6,7 +6,15 @@ permissions:
 # -------------------------------------------- #
 # THE REAL NODES
 # -------------------------------------------- #
-  massivebooks.book: {description: access book command, default: false}
+  massivebooks.book: {description: access the book base-command, default: false}
+  massivebooks.unsign: {description: unsign a book, default: false}
+  massivebooks.unsign.other: {description: unsign a book by another author, default: false}
+  massivebooks.clear: {description: clear a book, default: false}
+  massivebooks.clear.other: {description: clear a book by another author, default: false}
+  massivebooks.title: {description: change title for a book, default: false}
+  massivebooks.title.other: {description: change title for a book by another author, default: false}
+  massivebooks.author: {description: change author for a book, default: false}
+  massivebooks.author.other: {description: change author for a book by another author, default: false}
 # -------------------------------------------- #
 # START NOTATION
 # -------------------------------------------- #
@@ -14,6 +22,14 @@ permissions:
     default: false
     children:
       massivebooks.book: true
+      massivebooks.unsign: true
+      massivebooks.unsign.other: true
+      massivebooks.clear: true
+      massivebooks.clear.other: true
+      massivebooks.title: true
+      massivebooks.title.other: true
+      massivebooks.author: true
+      massivebooks.author.other: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -21,7 +37,31 @@ permissions:
     default: op
     children:
       massivebooks.*: true
+  massivebooks.kit.rank3:
+    default: false
+      children:
+        massivebooks.kit.rank2: true
+  massivebooks.kit.rank2:
+    default: false
+      children:
+        massivebooks.kit.rank1: true
+  massivebooks.kit.rank1:
+    default: false
+      children:
+        massivebooks.kit.rank0: true
+        massivebooks.unsign.other: true
+        massivebooks.title.other: true
+        massivebooks.author.other: true
+  massivebooks.kit.rank0:
+    default: false
+    children:
+      massivebooks.book: true
+      massivebooks.unsign: true
+      massivebooks.clear: true
+      massivebooks.clear.other: true
+      massivebooks.title: true
+      massivebooks.author: true
   massivebooks.kit.default:
     default: true
     children:
-      massivebooks.book: true
+      massivebooks.kit.rank0: true

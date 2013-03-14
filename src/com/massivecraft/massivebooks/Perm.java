@@ -11,6 +11,18 @@ public enum Perm
 	// -------------------------------------------- //
 	
 	BOOK("book"),
+
+	UNSIGN("unsign"),
+	UNSIGN_OTHER("unsign.other"),
+	
+	CLEAR("clear"),
+	CLEAR_OTHER("clear.other"),
+	
+	TITLE("title"),
+	TITLE_OTHER("title.other"),
+	
+	AUTHOR("author"),
+	AUTHOR_OTHER("author.other"),
 	
 	// END OF LIST
 	;
