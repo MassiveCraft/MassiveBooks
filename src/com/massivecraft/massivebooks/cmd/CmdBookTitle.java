@@ -29,25 +29,17 @@ public class CmdBookTitle extends MassiveBooksCommand
 		
 		String title = this.argConcatFrom(0);
 		
-		try
+		if (BookUtil.isTitleEquals(item, title))
 		{
-			if (BookUtil.isTitleEquals(item, title))
-			{
-				sendMessage(Lang.ALREADY_TITLE);
-				return;
-			}
-			
-			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.TITLE_OTHER.has(sender, true)) return;
-			
-			BookUtil.setTitle(item, title);
-			me.setItemInHand(item);
-			
-			sendMessage(Lang.SUCCESS_TITLE);
-		}
-		catch (Exception e)
-		{
-			sendMessage(String.format(Lang.FAIL_TITLE, e.getMessage()));
+			sendMessage(Lang.ALREADY_TITLE);
+			return;
 		}
 		
+		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.TITLE_OTHER.has(sender, true)) return;
+		
+		BookUtil.setTitle(item, title);
+		me.setItemInHand(item);
+		
+		sendMessage(Lang.SUCCESS_TITLE);
 	}
 }

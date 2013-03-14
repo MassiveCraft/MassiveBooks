@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Material;
@@ -8,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.SenderUtil;
 
 public class BookUtil
@@ -172,9 +174,33 @@ public class BookUtil
 	}
 	
 	// -------------------------------------------- //
-	// COPY
+	// POWERTOOL
 	// -------------------------------------------- //
 
-
+	public static boolean isPowertool(Object object) throws IllegalArgumentException
+	{
+		BookMeta bookMeta = getBookMeta(object);
+		if (!bookMeta.hasLore()) return false;
+		return bookMeta.getLore().contains(Const.POWERTOOL);
+	}
+	
+	public static void setPowertool(Object object, boolean powertool) throws IllegalArgumentException
+	{
+		BookMeta bookMeta = getBookMeta(object);
+		if (powertool)
+		{
+			bookMeta.setLore(MUtil.list(Const.POWERTOOL));
+		}
+		else
+		{
+			bookMeta.setLore(new ArrayList<String>());
+		}
+		setBookMeta(object, bookMeta);
+	}
+	
+	public static boolean isPowertoolEquals(Object object, boolean powertool) throws IllegalArgumentException
+	{
+		return isPowertool(object) == powertool;
+	}
 	
 }

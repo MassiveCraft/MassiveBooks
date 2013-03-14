@@ -13,22 +13,17 @@ public class Lang
 	
 	public static final String ALREADY_UNSIGN = Txt.parse("<g>The book is already unsigned.");
 	public static final String SUCCESS_UNSIGN = Txt.parse("<g>Unsigned the book in your hand.");
-	public static final String FAIL_UNSIGN = Txt.parse("<b>Could not unsign: %s");
 	
 	public static final String ALREADY_CLEAR = Txt.parse("<g>The book is already cleared.");
 	public static final String SUCCESS_CLEAR = Txt.parse("<g>Cleared item in your hand.");
-	public static final String FAIL_CLEAR = Txt.parse("<b>Could not clear: %s");
 	
 	public static final String ALREADY_TITLE = Txt.parse("<g>The book already has that title.");
 	public static final String SUCCESS_TITLE = Txt.parse("<g>Set title for item in you hand.");
-	public static final String FAIL_TITLE = Txt.parse("<b>Could not set title: %s");
 	
 	public static final String ALREADY_AUTHOR = Txt.parse("<g>The book already has that author.");
 	public static final String SUCCESS_AUTHOR = Txt.parse("<g>Set author for item in you hand.");
-	public static final String FAIL_AUTHOR = Txt.parse("<b>Could not set author: %s");
 	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
-	
 	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");
 	public static final String FAILED_TO_REMOVE_X = Txt.parse("<b>Failed to remomve %s.");
 	public static final String RESOURCE_MONEY = Txt.parse("money");
@@ -41,5 +36,10 @@ public class Lang
 	public static final String SUCCESS_COPY3 = Txt.parse("<k>Money: <v>%f <k>Books: <v>%d <k>Ink Sacs: <v>%d <k>Feathers: <v>%d");
 	
 	public static final String REQUIRED_X_POSSESSED_Y_MISSING_Z = Txt.parse("<k>Required: <v>%s <k>Possessed: <v>%s <k>Missing: <v>%s");
+	
+	public static final String POWERTOOL_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> The book is now a powertool.");
+	public static final String POWERTOOL_CHANGED_TO_FALSE = Txt.parse("<rose>FALSE<i> The book is no longer a powertool.");
+	public static final String POWERTOOL_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> The book is already a powertool.");
+	public static final String POWERTOOL_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> The book is already not a powertool.");
 	
 }

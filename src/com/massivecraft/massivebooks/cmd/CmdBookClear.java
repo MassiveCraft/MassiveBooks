@@ -25,25 +25,17 @@ public class CmdBookClear extends MassiveBooksCommand
 		ItemStack item = this.arg(ARBookInHand.getEither());
 		if (item == null) return;
 		
-		try
+		if (BookUtil.isCleared(item))
 		{
-			if (BookUtil.isCleared(item))
-			{
-				sendMessage(Lang.ALREADY_CLEAR);
-				return;
-			}
-			
-			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.CLEAR_OTHER.has(sender, true)) return;
-			
-			BookUtil.setCleared(item);
-			me.setItemInHand(item);
-			
-			sendMessage(Lang.SUCCESS_CLEAR);
-		}
-		catch (Exception e)
-		{
-			sendMessage(String.format(Lang.FAIL_CLEAR, e.getMessage()));
+			sendMessage(Lang.ALREADY_CLEAR);
+			return;
 		}
 		
+		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.CLEAR_OTHER.has(sender, true)) return;
+		
+		BookUtil.setCleared(item);
+		me.setItemInHand(item);
+		
+		sendMessage(Lang.SUCCESS_CLEAR);
 	}
 }

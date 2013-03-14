@@ -18,6 +18,7 @@ public class ConfServer extends SimpleConfig
 	public static List<String> aliasesBookTitle = MUtil.list("title");
 	public static List<String> aliasesBookAuthor = MUtil.list("author");
 	public static List<String> aliasesBookCopy = MUtil.list("copy");
+	public static List<String> aliasesBookPowertool = MUtil.list("pt", "powertool");
 	
 	// -------------------------------------------- //
 	// PERSISTENCE
@@ -27,3 +28,4 @@ public class ConfServer extends SimpleConfig
 	public ConfServer() { super(MassiveBooks.get()); }
 	
 }
+

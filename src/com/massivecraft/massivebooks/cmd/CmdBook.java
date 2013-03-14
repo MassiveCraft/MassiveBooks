@@ -13,6 +13,7 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookTitle cmdBookTitle = new CmdBookTitle();
 	public CmdBookAuthor cmdBookAuthor = new CmdBookAuthor();
 	public CmdBookCopy cmdBookCopy = new CmdBookCopy();
+	public CmdBookPowertool cmdBookPowertool = new CmdBookPowertool();
 	// TODO
 	
 	public CmdBook()
@@ -31,6 +32,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addSubCommand(this.cmdBookTitle);
 		this.addSubCommand(this.cmdBookAuthor);
 		this.addSubCommand(this.cmdBookCopy);
+		this.addSubCommand(this.cmdBookPowertool);
 		// TODO
 		
 		// Requirements
