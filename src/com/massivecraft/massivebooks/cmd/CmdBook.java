@@ -8,6 +8,7 @@ import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 public class CmdBook extends MassiveBooksCommand
 {
 	// SubCommands
+	public CmdBookUnsign cmdBookUnsign = new CmdBookUnsign();
 	// TODO
 	
 	public CmdBook()
@@ -21,6 +22,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addSubCommand(HelpCommand.get());
 		
 		// Add SubCommands
+		this.addSubCommand(this.cmdBookUnsign);
 		// TODO
 		
 		// Requirements

@@ -13,6 +13,7 @@ public class ConfServer extends SimpleConfig
 	
 	public static String dburi = "default";
 	public static List<String> aliasesBook = MUtil.list("book", "books");
+	public static List<String> aliasesBookUnsign = MUtil.list("unsign");
 	
 	// -------------------------------------------- //
 	// PERSISTENCE
