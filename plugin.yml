@@ -17,6 +17,8 @@ permissions:
   massivebooks.author.other: {description: change author for a book by another author, default: false}
   massivebooks.copy: {description: copy a book, default: false}
   massivebooks.copy.other: {description: copy a book by another author, default: false}
+  massivebooks.powertool: {description: set powertool state for a book, default: false}
+  massivebooks.powertool.other: {description: set powertool state for a book by another author, default: false}
 # -------------------------------------------- #
 # START NOTATION
 # -------------------------------------------- #
@@ -34,6 +36,8 @@ permissions:
       massivebooks.author.other: true
       massivebooks.copy: true
       massivebooks.copy.other: true
+      massivebooks.powertool: true
+      massivebooks.powertool.other: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -57,6 +61,8 @@ permissions:
       massivebooks.title.other: true
       massivebooks.author: true
       massivebooks.author.other: true
+      massivebooks.powertool: true
+      massivebooks.powertool.other: true
   massivebooks.kit.rank0:
     default: false
     children:

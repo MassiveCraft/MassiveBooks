@@ -27,6 +27,9 @@ public enum Perm
 	COPY("copy"),
 	COPY_OTHER("copy.other"),
 	
+	POWERTOOL("powertool"),
+	POWERTOOL_OTHER("powertool.other"),
+	
 	// END OF LIST
 	;
 	
