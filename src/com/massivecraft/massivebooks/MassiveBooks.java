@@ -41,7 +41,7 @@ public class MassiveBooks extends MPlugin
 		
 		// Commands
 		this.cmdBook = new CmdBook();
-		this.getCmdBook().register(this, true);
+		this.cmdBook.register(this, true);
 		
 		// Listeners
 		MainListener.get().setup();
