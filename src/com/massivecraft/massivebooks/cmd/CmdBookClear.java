@@ -27,9 +27,15 @@ public class CmdBookClear extends MassiveBooksCommand
 		
 		try
 		{
+			if (BookUtil.isCleared(item))
+			{
+				sendMessage(Lang.ALREADY_CLEAR);
+				return;
+			}
+			
 			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.CLEAR_OTHER.has(sender, true)) return;
 			
-			BookUtil.clear(item);
+			BookUtil.setCleared(item);
 			me.setItemInHand(item);
 			
 			sendMessage(Lang.SUCCESS_CLEAR);

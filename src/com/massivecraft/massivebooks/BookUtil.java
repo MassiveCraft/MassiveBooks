@@ -82,7 +82,7 @@ public class BookUtil
 	{
 		String actualTitle = getAuthor(object);
 		if (actualTitle == null) return title == null;
-		return actualTitle.equalsIgnoreCase(title);
+		return actualTitle.equals(title);
 	}
 	
 	// -------------------------------------------- //
@@ -103,7 +103,7 @@ public class BookUtil
 		setBookMeta(object, bookMeta);
 	}
 	
-	public static boolean isAuthorEquals(Object object, String author) throws IllegalArgumentException
+	public static boolean isAuthorEqualsId(Object object, String author) throws IllegalArgumentException
 	{
 		String actualAuthor = getAuthor(object);
 		if (actualAuthor == null) return author == null;
@@ -112,7 +112,7 @@ public class BookUtil
 	
 	public static boolean isAuthorEquals(Object object, CommandSender author) throws IllegalArgumentException
 	{
-		return isAuthorEquals(object, SenderUtil.getSenderId(author));
+		return isAuthorEqualsId(object, SenderUtil.getSenderId(author));
 	}
 	
 	// -------------------------------------------- //
@@ -144,21 +144,31 @@ public class BookUtil
 	// UNSIGN
 	// -------------------------------------------- //
 	
-	public static void unsign(Object object) throws IllegalArgumentException
+	public static void setUnsigned(Object object) throws IllegalArgumentException
 	{
 		setAuthor(object, null);
 		setTitle(object, null);
 		setItemType(object, Material.BOOK_AND_QUILL);
 	}
 	
+	public static boolean isUnsigned(Object object) throws IllegalArgumentException
+	{
+		return isAuthorEqualsId(object, null) && isTitleEquals(object, null) && isItemTypeEquals(object, Material.BOOK_AND_QUILL);
+	}
+	
 	// -------------------------------------------- //
 	// CLEAR
 	// -------------------------------------------- //
 	
-	public static void clear(Object object) throws IllegalArgumentException
+	public static void setCleared(Object object) throws IllegalArgumentException
 	{
-		unsign(object);
+		setUnsigned(object);
 		setPages(object, null);
+	}
+	
+	public static boolean isCleared(Object object) throws IllegalArgumentException
+	{
+		return isUnsigned(object) && isPagesEquals(object, null);
 	}
 	
 }

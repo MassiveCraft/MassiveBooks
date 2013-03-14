@@ -31,6 +31,12 @@ public class CmdBookTitle extends MassiveBooksCommand
 		
 		try
 		{
+			if (BookUtil.isTitleEquals(item, title))
+			{
+				sendMessage(Lang.ALREADY_TITLE);
+				return;
+			}
+			
 			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.TITLE_OTHER.has(sender, true)) return;
 			
 			BookUtil.setTitle(item, title);

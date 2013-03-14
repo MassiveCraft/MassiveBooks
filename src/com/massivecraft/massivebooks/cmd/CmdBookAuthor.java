@@ -8,6 +8,7 @@ import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
+import com.massivecraft.mcore.mixin.Mixin;
 
 public class CmdBookAuthor extends MassiveBooksCommand
 {
@@ -28,9 +29,16 @@ public class CmdBookAuthor extends MassiveBooksCommand
 		if (item == null) return;
 		
 		String author = this.argConcatFrom(0);
+		author = Mixin.tryFix(author);
 		
 		try
 		{
+			if (BookUtil.isAuthorEqualsId(item, author))
+			{
+				sendMessage(Lang.ALREADY_AUTHOR);
+				return;
+			}
+			
 			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.AUTHOR_OTHER.has(sender, true)) return;
 			
 			BookUtil.setTitle(item, author);
