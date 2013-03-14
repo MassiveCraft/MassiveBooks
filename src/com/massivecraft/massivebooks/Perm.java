@@ -11,7 +11,7 @@ public enum Perm
 	// -------------------------------------------- //
 	
 	// CMD
-	CMD_MCESS("cmd.book"),
+	CMD_BOOK("cmd.book"),
 	
 	// END OF LIST
 	;
