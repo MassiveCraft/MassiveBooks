@@ -24,7 +24,7 @@ public class CmdBook extends MassiveBooksCommand
 		// TODO
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.CMD_BOOK.node));
+		this.addRequirements(ReqHasPerm.get(Perm.BOOK.node));
 	}
 	
 	@Override

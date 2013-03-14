@@ -10,8 +10,7 @@ public enum Perm
 	// ENUM
 	// -------------------------------------------- //
 	
-	// CMD
-	CMD_BOOK("cmd.book"),
+	BOOK("book"),
 	
 	// END OF LIST
 	;

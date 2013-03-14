@@ -6,18 +6,14 @@ permissions:
 # -------------------------------------------- #
 # THE REAL NODES
 # -------------------------------------------- #
-  massivebooks.cmd.book: {description: access book command, default: false}
+  massivebooks.book: {description: access book command, default: false}
 # -------------------------------------------- #
 # START NOTATION
 # -------------------------------------------- #
   massivebooks.*:
     default: false
     children:
-      massivebooks.cmd.*: true
-  massivebooks.cmd.*:
-    default: false
-    children:
-      massivebooks.cmd.book: true
+      massivebooks.book: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -28,4 +24,4 @@ permissions:
   massivebooks.kit.default:
     default: true
     children:
-      massivebooks.cmd.book: true
+      massivebooks.book: true
