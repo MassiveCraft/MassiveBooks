@@ -132,9 +132,9 @@ public class CmdBookCopy extends MassiveBooksCommand
 	// CHECK UTILITIES
 	// -------------------------------------------- //
 	
-	public boolean checkResource(String resourceName, Number required, Number possessed)
+	public boolean checkResource(String resourceName, Integer required, Integer possessed)
 	{
-		double missing = required.doubleValue() - possessed.doubleValue();
+		int missing = required - possessed;
 		if (missing <= 0) return true;
 		this.sendCheckFailMessage(resourceName, required, possessed, missing);
 		return false;

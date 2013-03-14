@@ -29,7 +29,7 @@ public class Lang
 	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
 	
-	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough %s.");
+	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");
 	public static final String FAILED_TO_REMOVE_X = Txt.parse("<b>Failed to remomve %s.");
 	public static final String RESOURCE_MONEY = Txt.parse("money");
 	public static final String RESOURCE_BOOKS = Txt.parse("books");
