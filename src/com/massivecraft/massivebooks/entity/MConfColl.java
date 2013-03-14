@@ -20,9 +20,34 @@ public class MConfColl extends Coll<MConf, String>
 	}
 	
 	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public void init()
+	{
+		super.init();
+		this.createUpdatePermissionNodes();
+	}
+	
+	@Override
+	public synchronized void loadFromRemote(Object oid)
+	{
+		super.loadFromRemote(oid);
+		if ( ! this.inited()) return;
+		this.createUpdatePermissionNodes();
+	}
+	
+	// -------------------------------------------- //
 	// EXTRAS
 	// -------------------------------------------- //
 	
-	// TODO: Automatic Permission Creation
+	public void createUpdatePermissionNodes()
+	{
+		for (MConf mconf : this.getAll())
+		{
+			mconf.createUpdatePermissionNodes();
+		}
+	}
 	
 }

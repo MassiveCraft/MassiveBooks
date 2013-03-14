@@ -19,8 +19,4 @@ public class MBookColl extends Coll<MBook, String>
 		super(MStore.getDb(ConfServer.dburi), MassiveBooks.get(), "ai", Const.COLLECTION_BASENAME_BOOK, MBook.class, String.class, false);
 	}
 	
-	// -------------------------------------------- //
-	// EXTRAS
-	// -------------------------------------------- //
-	
 }

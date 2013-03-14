@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import org.bukkit.permissions.PermissionDefault;
+
+import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.mcore.MCore;
 import com.massivecraft.mcore.store.Entity;
 import com.massivecraft.mcore.util.MUtil;
+import com.massivecraft.mcore.util.PermUtil;
 
 public class MConf extends Entity<MConf, String>
 {
@@ -58,5 +63,20 @@ public class MConf extends Entity<MConf, String>
 	);
 	public Map<String, Double> getPermToCopyCost() { return new LinkedHashMap<String, Double>(this.permToCopyCost); }
 	public void setPermToCopyCost(Map<String, Double> permToCopyCost) { this.permToCopyCost = new LinkedHashMap<String, Double>(permToCopyCost); this.changed(); }
+	
+	// -------------------------------------------- //
+	// UTILS
+	// -------------------------------------------- //
+	
+	public void createUpdatePermissionNodes()
+	{
+		for (Entry<String, Double> entry : this.getPermToCopyCost().entrySet())
+		{
+			final String name = entry.getKey();
+			final Double copyCost = entry.getValue();
+			String description = String.format(Lang.PERMISSION_DESCRIPTION_COPYCOST_TEMPLATE, copyCost);
+			PermUtil.get(true, true, name, description, PermissionDefault.FALSE);
+		}
+	}
 
 }
