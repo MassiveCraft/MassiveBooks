@@ -80,7 +80,7 @@ public class BookUtil
 	
 	public static boolean isTitleEquals(Object object, String title) throws IllegalArgumentException
 	{
-		String actualTitle = getAuthor(object);
+		String actualTitle = getTitle(object);
 		if (actualTitle == null) return title == null;
 		return actualTitle.equals(title);
 	}
