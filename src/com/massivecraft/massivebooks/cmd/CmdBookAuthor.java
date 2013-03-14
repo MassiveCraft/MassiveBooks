@@ -41,7 +41,7 @@ public class CmdBookAuthor extends MassiveBooksCommand
 			
 			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.AUTHOR_OTHER.has(sender, true)) return;
 			
-			BookUtil.setTitle(item, author);
+			BookUtil.setAuthor(item, author);
 			me.setItemInHand(item);
 			
 			sendMessage(Lang.SUCCESS_AUTHOR);
