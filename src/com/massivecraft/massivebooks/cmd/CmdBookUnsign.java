@@ -25,19 +25,19 @@ public class CmdBookUnsign extends MassiveBooksCommand
 		ItemStack item = this.arg(ARBookInHand.getWritten());
 		if (item == null) return;
 		
-		if (!BookUtil.isAuthorOf(sender, item) && !Perm.UNSIGN_OTHER.has(sender, true)) return;
-		
-		ItemStack unsignedItem = null;
 		try
 		{
-			unsignedItem = BookUtil.createUnsigned(item);
+			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.UNSIGN_OTHER.has(sender, true)) return;
+			
+			BookUtil.unsign(item);
+			me.setItemInHand(item);
+			
+			sendMessage(Lang.SUCCESS_UNSIGN);
 		}
 		catch (Exception e)
 		{
-			sendMessage(Lang.COULD_NOT_UNSIGN_TEMPLATE, e.getMessage());
+			sendMessage(Lang.FAIL_UNSIGN, e.getMessage());
 		}
-		me.setItemInHand(unsignedItem);
 		
-		sendMessage(Lang.SUCCESS_UNSIGN);
 	}
 }
