@@ -20,7 +20,7 @@ public class MassiveBooks extends MPlugin
 	// -------------------------------------------- //
 	
 	// Commands
-	private CmdBook cmdBook = new CmdBook();
+	private CmdBook cmdBook;
 	public CmdBook getCmdBook() { return this.cmdBook; }
 	
 	// -------------------------------------------- //
@@ -40,6 +40,7 @@ public class MassiveBooks extends MPlugin
 		MBookColl.get().init();
 		
 		// Commands
+		this.cmdBook = new CmdBook();
 		this.getCmdBook().register(this, true);
 		
 		// Listeners
