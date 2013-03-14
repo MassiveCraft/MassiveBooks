@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -174,7 +176,7 @@ public class BookUtil
 	}
 	
 	// -------------------------------------------- //
-	// POWERTOOL
+	// POWERTOOL STATE
 	// -------------------------------------------- //
 
 	public static boolean isPowertool(Object object) throws IllegalArgumentException
@@ -202,5 +204,133 @@ public class BookUtil
 	{
 		return isPowertool(object) == powertool;
 	}
+	
+	// -------------------------------------------- //
+	// POWERTOOL
+	// -------------------------------------------- //
+	
+	public static List<String> powertoolGetRawlines(Object object) throws IllegalArgumentException
+	{
+		List<String> ret = new ArrayList<String>();
+		for (String page : getPages(object))
+		{
+			if (page == null) break;
+			if (page.trim().length() <= 2) break;
+			for (String line : page.split("\\r?\\n"))
+			{
+				if (line == null) continue;
+				line = line.trim();
+				if (line.length() == 0) continue;
+				ret.add(line);
+			}
+		}
+		return ret;
+	}
+	
+	public static boolean powertoolLinesContains(List<String> lines, String target)
+	{
+		for (String line : lines)
+		{
+			if (line.contains(target)) return true;
+		}
+		return false;
+	}
+	
+	public static String powertoolProccessRawline(String rawline, String meId, String youId, String colorBase, String colorMe, String colorYou)
+	{
+		String ret = rawline;
+		
+		if (meId != null)
+		{
+			ret = ret.replace(Const.POWERTOOL_ME, colorMe+meId+colorBase);
+		}
+		
+		if (youId != null)
+		{
+			ret = ret.replace(Const.POWERTOOL_ME, colorYou+youId+colorBase);
+		}
+		
+		return colorBase+ret;
+	}
+	
+	public static String powertoolProccessRawline(String rawline, String meId, String youId, boolean color)
+	{
+		String colorMe = "";
+		String colorYou = "";
+		String colorBase = "";
+		
+		if (color)
+		{
+			colorMe = Lang.POWERTOOL_COLOR_ME;
+			colorYou = Lang.POWERTOOL_COLOR_YOU;
+			boolean command = rawline.startsWith("/");
+			if (command)
+			{
+				colorBase = Lang.POWERTOOL_COLOR_COMMAND;
+			}
+			else
+			{
+				colorBase = Lang.POWERTOOL_COLOR_CHAT;
+			}
+		}
+		
+		return powertoolProccessRawline(rawline, meId, youId, colorBase, colorMe, colorYou);
+	}
+	
+	public static String powertoolProccessRawline(String rawline, Player me, Player you, boolean color)
+	{
+		return powertoolProccessRawline(rawline, SenderUtil.getSenderId(me), SenderUtil.getSenderId(you), color);
+	}
+	
+	public static void powertoolUse(Cancellable cancellable, Player me, Player you)
+	{
+		// If the player is holding a powertool ...
+		ItemStack item = me.getItemInHand();
+		try
+		{
+			if (!isPowertoolEquals(item, true)) return;
+		}
+		catch (Exception e)
+		{
+			return;
+		}
+		
+		// ... cancel the event ...
+		cancellable.setCancelled(true);
+		
+		// ... extract the rawlines from the powertool ...
+		List<String> rawlines = powertoolGetRawlines(item);
+		
+		// ... ensure the powertool is/isnt used on other player ...
+		boolean isYouPowertool = powertoolLinesContains(rawlines, Const.POWERTOOL_YOU);
+		if (isYouPowertool && you == null)
+		{
+			me.sendMessage(Lang.POWERTOOL_YOU_SHOULD);
+			return;
+		}
+		else if (!isYouPowertool && you != null)
+		{
+			me.sendMessage(Lang.POWERTOOL_YOU_SHOULDNT);
+			return;
+		}
+		
+		// ... try to run each of them.
+		for (String rawline : rawlines)
+		{
+			String prolineFlat = powertoolProccessRawline(rawline, me, you, false);
+			String prolineColored = powertoolProccessRawline(rawline, me, you, true);
+			
+			try
+			{
+				me.chat(prolineFlat);
+				me.sendMessage(String.format(Lang.POWERTOOL_RAN, prolineColored));
+			}
+			catch (Exception e)
+			{
+				me.sendMessage(String.format(Lang.POWERTOOL_FAILED, prolineColored, e.getMessage()));
+			}
+		}
+	}
+	
 	
 }

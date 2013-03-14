@@ -42,4 +42,14 @@ public class Lang
 	public static final String POWERTOOL_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> The book is already a powertool.");
 	public static final String POWERTOOL_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> The book is already not a powertool.");
 	
+	public static final String POWERTOOL_YOU_SHOULD = Txt.parse("<b>This powertool should be used on another player.");
+	public static final String POWERTOOL_YOU_SHOULDNT = Txt.parse("<b>This powertool shouldn't be used on another player.");
+	public static final String POWERTOOL_RAN = Txt.parse("<g>RAN: <h>%s");
+	public static final String POWERTOOL_FAILED = Txt.parse("<b>FAILED: <h>%s <b>%s");
+	
+	public static final String POWERTOOL_COLOR_ME = Txt.parse("<pink>");
+	public static final String POWERTOOL_COLOR_YOU = Txt.parse("<gold>");
+	public static final String POWERTOOL_COLOR_COMMAND = Txt.parse("<c>");
+	public static final String POWERTOOL_COLOR_CHAT = Txt.parse("<white>");
+	
 }
