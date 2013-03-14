@@ -13,6 +13,9 @@ public class Lang
 	public static final String SUCCESS_UNSIGN = Txt.parse("<g>Unsigned item in your hand.");
 	public static final String FAIL_UNSIGN = Txt.parse("<b>Could not unsign: %s");
 	
+	public static final String SUCCESS_CLEAR = Txt.parse("<g>Cleared item in your hand.");
+	public static final String FAIL_CLEAR = Txt.parse("<b>Could not clear: %s");
+	
 	public static final String SUCCESS_TITLE = Txt.parse("<g>Set title for item in you hand.");
 	public static final String FAIL_TITLE = Txt.parse("<b>Could not set title: %s");
 	

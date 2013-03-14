@@ -9,13 +9,13 @@ import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
 
-public class CmdBookUnsign extends MassiveBooksCommand
+public class CmdBookClear extends MassiveBooksCommand
 {
-	public CmdBookUnsign()
+	public CmdBookClear()
 	{
 		super();
 		this.addAliases(ConfServer.aliasesBookUnsign);
-		this.addRequirements(ReqHasPerm.get(Perm.UNSIGN.node));
+		this.addRequirements(ReqHasPerm.get(Perm.CLEAR.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
 	
@@ -27,16 +27,16 @@ public class CmdBookUnsign extends MassiveBooksCommand
 		
 		try
 		{
-			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.UNSIGN_OTHER.has(sender, true)) return;
+			if (!BookUtil.isAuthorEquals(item, sender) && !Perm.CLEAR_OTHER.has(sender, true)) return;
 			
-			BookUtil.unsign(item);
+			BookUtil.clear(item);
 			me.setItemInHand(item);
 			
-			sendMessage(Lang.SUCCESS_UNSIGN);
+			sendMessage(Lang.SUCCESS_CLEAR);
 		}
 		catch (Exception e)
 		{
-			sendMessage(Lang.FAIL_UNSIGN, e.getMessage());
+			sendMessage(Lang.FAIL_CLEAR, e.getMessage());
 		}
 		
 	}
