@@ -39,19 +39,19 @@ permissions:
       massivebooks.*: true
   massivebooks.kit.rank3:
     default: false
-      children:
-        massivebooks.kit.rank2: true
+    children:
+      massivebooks.kit.rank2: true
   massivebooks.kit.rank2:
     default: false
-      children:
-        massivebooks.kit.rank1: true
+    children:
+      massivebooks.kit.rank1: true
   massivebooks.kit.rank1:
     default: false
-      children:
-        massivebooks.kit.rank0: true
-        massivebooks.unsign.other: true
-        massivebooks.title.other: true
-        massivebooks.author.other: true
+    children:
+      massivebooks.kit.rank0: true
+      massivebooks.unsign.other: true
+      massivebooks.title.other: true
+      massivebooks.author.other: true
   massivebooks.kit.rank0:
     default: false
     children:
