@@ -1,5 +1,10 @@
 package com.massivecraft.massivebooks;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.RegisteredServiceProvider;
+
+import net.milkbowl.vault.economy.Economy;
+
 import com.massivecraft.massivebooks.cmd.CmdBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivebooks.entity.MConfColl;
@@ -23,6 +28,9 @@ public class MassiveBooks extends MPlugin
 	private CmdBook cmdBook;
 	public CmdBook getCmdBook() { return this.cmdBook; }
 	
+	// Vault Economy
+	public Economy economy = null;
+	
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
@@ -39,6 +47,9 @@ public class MassiveBooks extends MPlugin
 		MConfColl.get().init();
 		MBookColl.get().init();
 		
+		// Setup Vault Economy
+		this.setupEconomy();
+		
 		// Commands
 		this.cmdBook = new CmdBook();
 		this.cmdBook.register(this, true);
@@ -47,6 +58,17 @@ public class MassiveBooks extends MPlugin
 		MainListener.get().setup();
 		
 		postEnable();
+	}
+	
+	private boolean setupEconomy()
+	{
+		RegisteredServiceProvider<Economy> economyProvider = Bukkit.getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+		if (economyProvider != null)
+		{
+			this.economy = economyProvider.getProvider();
+			return true;
+		}
+		return false;
 	}
 	
 }

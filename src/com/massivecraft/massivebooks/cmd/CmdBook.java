@@ -12,6 +12,7 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookClear cmdBookClear = new CmdBookClear();
 	public CmdBookTitle cmdBookTitle = new CmdBookTitle();
 	public CmdBookAuthor cmdBookAuthor = new CmdBookAuthor();
+	public CmdBookCopy cmdBookCopy = new CmdBookCopy();
 	// TODO
 	
 	public CmdBook()
@@ -29,6 +30,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addSubCommand(this.cmdBookClear);
 		this.addSubCommand(this.cmdBookTitle);
 		this.addSubCommand(this.cmdBookAuthor);
+		this.addSubCommand(this.cmdBookCopy);
 		// TODO
 		
 		// Requirements

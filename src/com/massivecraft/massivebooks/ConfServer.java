@@ -17,6 +17,7 @@ public class ConfServer extends SimpleConfig
 	public static List<String> aliasesBookClear = MUtil.list("clear");
 	public static List<String> aliasesBookTitle = MUtil.list("title");
 	public static List<String> aliasesBookAuthor = MUtil.list("author");
+	public static List<String> aliasesBookCopy = MUtil.list("copy");
 	
 	// -------------------------------------------- //
 	// PERSISTENCE

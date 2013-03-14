@@ -171,4 +171,10 @@ public class BookUtil
 		return isUnsigned(object) && isPagesEquals(object, null);
 	}
 	
+	// -------------------------------------------- //
+	// COPY
+	// -------------------------------------------- //
+
+
+	
 }
