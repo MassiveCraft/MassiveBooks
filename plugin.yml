@@ -51,6 +51,7 @@ permissions:
       massivebooks.kit.rank0: true
       massivebooks.unsign.other: true
       massivebooks.title.other: true
+      massivebooks.author: true
       massivebooks.author.other: true
   massivebooks.kit.rank0:
     default: false
@@ -60,7 +61,6 @@ permissions:
       massivebooks.clear: true
       massivebooks.clear.other: true
       massivebooks.title: true
-      massivebooks.author: true
   massivebooks.kit.default:
     default: true
     children:
