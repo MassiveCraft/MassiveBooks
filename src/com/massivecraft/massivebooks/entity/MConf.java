@@ -48,6 +48,7 @@ public class MConf extends Entity<MConf, String>
 	
 	private Map<String, Double> permToCopyCost = MUtil.map(
 		"massivebooks.copycost.free", 0D,
+		"massivebooks.copycost.0", 0D,
 		"massivebooks.copycost.0.01", 0.01D,
 		"massivebooks.copycost.0.02", 0.02D,
 		"massivebooks.copycost.0.03", 0.03D,
@@ -59,7 +60,8 @@ public class MConf extends Entity<MConf, String>
 		"massivebooks.copycost.3", 3D,
 		"massivebooks.copycost.10", 10D,
 		"massivebooks.copycost.20", 20D,
-		"massivebooks.copycost.30", 30D
+		"massivebooks.copycost.30", 30D,
+		"massivebooks.copycost.default", 0D
 	);
 	public Map<String, Double> getPermToCopyCost() { return new LinkedHashMap<String, Double>(this.permToCopyCost); }
 	public void setPermToCopyCost(Map<String, Double> permToCopyCost) { this.permToCopyCost = new LinkedHashMap<String, Double>(permToCopyCost); this.changed(); }

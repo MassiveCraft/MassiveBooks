@@ -15,6 +15,8 @@ permissions:
   massivebooks.title.other: {description: change title for a book by another author, default: false}
   massivebooks.author: {description: change author for a book, default: false}
   massivebooks.author.other: {description: change author for a book by another author, default: false}
+  massivebooks.copy: {description: copy a book, default: false}
+  massivebooks.copy.other: {description: copy a book by another author, default: false}
 # -------------------------------------------- #
 # START NOTATION
 # -------------------------------------------- #
@@ -30,6 +32,8 @@ permissions:
       massivebooks.title.other: true
       massivebooks.author: true
       massivebooks.author.other: true
+      massivebooks.copy: true
+      massivebooks.copy.other: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -61,6 +65,8 @@ permissions:
       massivebooks.clear: true
       massivebooks.clear.other: true
       massivebooks.title: true
+      massivebooks.copy: true
+      massivebooks.copy.other: true
   massivebooks.kit.default:
     default: true
     children:

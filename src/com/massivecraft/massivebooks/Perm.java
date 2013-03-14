@@ -24,6 +24,9 @@ public enum Perm
 	AUTHOR("author"),
 	AUTHOR_OTHER("author.other"),
 	
+	COPY("copy"),
+	COPY_OTHER("copy.other"),
+	
 	// END OF LIST
 	;
 	
