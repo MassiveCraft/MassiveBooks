@@ -2,6 +2,7 @@ package com.massivecraft.massivebooks;
 
 import java.util.List;
 
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
@@ -12,26 +13,50 @@ import com.massivecraft.mcore.util.SenderUtil;
 public class BookUtil
 {
 	// -------------------------------------------- //
+	// ITEM STACK
+	// -------------------------------------------- //
+	
+	public static ItemStack getItemStack(Object object) throws IllegalArgumentException
+	{
+		if (!(object instanceof ItemStack)) throw new IllegalArgumentException("Object wasn't ItemStack");
+		return (ItemStack)object;
+	}
+	
+	// -------------------------------------------- //
+	// ITEM TYPE
+	// -------------------------------------------- //
+	
+	public static Material getItemType(Object object) throws IllegalArgumentException
+	{
+		return getItemStack(object).getType();
+	}
+	
+	public static void setItemType(Object object, Material itemType) throws IllegalArgumentException
+	{
+		getItemStack(object).setType(itemType);
+	}
+	
+	public static boolean isItemTypeEquals(Object object, Material itemType) throws IllegalArgumentException
+	{
+		return getItemType(object) == itemType;
+	}
+	
+	// -------------------------------------------- //
 	// BOOK META
 	// -------------------------------------------- //
 	
 	public static BookMeta getBookMeta(Object object) throws IllegalArgumentException
 	{
-		if (!(object instanceof ItemStack)) throw new IllegalArgumentException("Object wasn't ItemStack");
-		ItemStack item = (ItemStack)object;
+		ItemStack item = getItemStack(object);
 		
 		ItemMeta meta = item.getItemMeta();
 		if (!(meta instanceof BookMeta)) throw new IllegalArgumentException("ItemStack didn't have BookMeta");
-		BookMeta bookMeta = (BookMeta)meta;
-		
-		return bookMeta;
+		return (BookMeta)meta;
 	}
 	
 	public static void setBookMeta(Object object, BookMeta bookMeta) throws IllegalArgumentException
 	{
-		if (!(object instanceof ItemStack)) throw new IllegalArgumentException("Object wasn't ItemStack");
-		ItemStack item = (ItemStack)object;
-		
+		ItemStack item = getItemStack(object);
 		item.setItemMeta(bookMeta);
 	}
 	
@@ -91,16 +116,6 @@ public class BookUtil
 	}
 	
 	// -------------------------------------------- //
-	// UNSIGN
-	// -------------------------------------------- //
-	
-	public static void unsign(Object object) throws IllegalArgumentException
-	{
-		setAuthor(object, null);
-		setTitle(object, null);
-	}
-	
-	// -------------------------------------------- //
 	// PAGES
 	// -------------------------------------------- //
 	
@@ -129,10 +144,20 @@ public class BookUtil
 	// UNSIGN
 	// -------------------------------------------- //
 	
-	public static void clear(Object object) throws IllegalArgumentException
+	public static void unsign(Object object) throws IllegalArgumentException
 	{
 		setAuthor(object, null);
 		setTitle(object, null);
+		setItemType(object, Material.BOOK_AND_QUILL);
+	}
+	
+	// -------------------------------------------- //
+	// CLEAR
+	// -------------------------------------------- //
+	
+	public static void clear(Object object) throws IllegalArgumentException
+	{
+		unsign(object);
 		setPages(object, null);
 	}
 	

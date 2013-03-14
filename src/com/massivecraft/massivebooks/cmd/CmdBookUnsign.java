@@ -36,7 +36,7 @@ public class CmdBookUnsign extends MassiveBooksCommand
 		}
 		catch (Exception e)
 		{
-			sendMessage(Lang.FAIL_UNSIGN, e.getMessage());
+			sendMessage(String.format(Lang.FAIL_UNSIGN, e.getMessage()));
 		}
 		
 	}

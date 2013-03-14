@@ -36,7 +36,7 @@ public class CmdBookClear extends MassiveBooksCommand
 		}
 		catch (Exception e)
 		{
-			sendMessage(Lang.FAIL_CLEAR, e.getMessage());
+			sendMessage(String.format(Lang.FAIL_CLEAR, e.getMessage()));
 		}
 		
 	}

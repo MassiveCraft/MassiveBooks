@@ -40,7 +40,7 @@ public class CmdBookAuthor extends MassiveBooksCommand
 		}
 		catch (Exception e)
 		{
-			sendMessage(Lang.FAIL_AUTHOR, e.getMessage());
+			sendMessage(String.format(Lang.FAIL_AUTHOR, e.getMessage()));
 		}
 		
 	}
