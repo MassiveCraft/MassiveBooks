@@ -9,6 +9,8 @@ public class CmdBook extends MassiveBooksCommand
 {
 	// SubCommands
 	public CmdBookUnsign cmdBookUnsign = new CmdBookUnsign();
+	public CmdBookTitle cmdBookTitle = new CmdBookTitle();
+	public CmdBookAuthor cmdBookAuthor = new CmdBookAuthor();
 	// TODO
 	
 	public CmdBook()
@@ -23,6 +25,8 @@ public class CmdBook extends MassiveBooksCommand
 		
 		// Add SubCommands
 		this.addSubCommand(this.cmdBookUnsign);
+		this.addSubCommand(this.cmdBookTitle);
+		this.addSubCommand(this.cmdBookAuthor);
 		// TODO
 		
 		// Requirements
