@@ -40,7 +40,7 @@ public enum Perm
 	Perm(final String permissionNode)
 	{
 		this.node = "massivebooks."+permissionNode;
-    }
+	}
 	
 	// -------------------------------------------- //
 	// HAS
