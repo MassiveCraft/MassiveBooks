@@ -430,7 +430,7 @@ public class BookUtil
 		
 		if (youId != null)
 		{
-			ret = ret.replace(Const.POWERTOOL_ME, colorYou+youId+colorBase);
+			ret = ret.replace(Const.POWERTOOL_YOU, colorYou+youId+colorBase);
 		}
 		
 		return colorBase+ret;
