@@ -35,6 +35,8 @@ public enum Perm
 	SAVE("list"),
 	DELETE("delete"),
 	
+	AUTOUPDATE("autoupdate"),
+	
 	POWERTOOL("powertool"),
 	POWERTOOL_OTHER("powertool.other"),
 	

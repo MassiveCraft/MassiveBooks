@@ -23,6 +23,7 @@ permissions:
   massivebooks.load: {description: load a saved book, default: false}
   massivebooks.save: {description: save a book, default: false}
   massivebooks.delete: {description: delete a saved book, default: false}
+  massivebooks.autoupdate: {description: alter your autoupdate state, default: false}
   massivebooks.powertool: {description: set powertool state for a book, default: false}
   massivebooks.powertool.other: {description: set powertool state for a book by another author, default: false}
 # -------------------------------------------- #
@@ -48,6 +49,7 @@ permissions:
       massivebooks.load: true
       massivebooks.save: true
       massivebooks.delete: true
+      massivebooks.autoupdate: true
       massivebooks.powertool: true
       massivebooks.powertool.other: true
 # -------------------------------------------- #
@@ -76,6 +78,7 @@ permissions:
       massivebooks.author.other: true
       massivebooks.save: true
       massivebooks.delete: true
+      massivebooks.autoupdate: true
       massivebooks.powertool: true
       massivebooks.powertool.other: true
   massivebooks.kit.rank0:
