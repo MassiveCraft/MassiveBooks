@@ -4,6 +4,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.ConfServer;
+import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.arg.ARBoolean;
@@ -28,7 +29,7 @@ public class CmdBookPowertool extends MassiveBooksCommand
 		ItemStack item = this.arg(ARBookInHand.getWritten());
 		if (item == null) return;
 		
-		boolean currentState = BookUtil.isPowertool(item);
+		boolean currentState = BookUtil.containsFlag(item, Const.POWERTOOL);
 		Boolean targetState = this.arg(0, ARBoolean.get(), !currentState);
 		if (targetState == null) return;
 		
@@ -49,16 +50,15 @@ public class CmdBookPowertool extends MassiveBooksCommand
 		// Check other-perm if another author
 		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.POWERTOOL_OTHER.has(sender, true)) return;
 		
-		// Apply
-		BookUtil.setPowertool(item, targetState);
-		
-		// Inform
+		// Apply & Inform
 		if (targetState)
 		{
+			BookUtil.addFlag(item, Const.POWERTOOL);
 			sendMessage(Lang.POWERTOOL_CHANGED_TO_TRUE);
 		}
 		else
 		{
+			BookUtil.removeFlag(item, Const.POWERTOOL);
 			sendMessage(Lang.POWERTOOL_CHANGED_TO_FALSE);
 		}
 	}

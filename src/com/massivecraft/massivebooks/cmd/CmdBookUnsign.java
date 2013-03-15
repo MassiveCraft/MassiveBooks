@@ -33,7 +33,7 @@ public class CmdBookUnsign extends MassiveBooksCommand
 		
 		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.UNSIGN_OTHER.has(sender, true)) return;
 		
-		BookUtil.setUnsigned(item);
+		BookUtil.unsign(item);
 		me.setItemInHand(item);
 		
 		sendMessage(Lang.SUCCESS_UNSIGN);

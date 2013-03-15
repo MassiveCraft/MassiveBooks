@@ -3,6 +3,7 @@ package com.massivecraft.massivebooks;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -11,80 +12,44 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.SenderUtil;
 
 public class BookUtil
 {
 	// -------------------------------------------- //
-	// ITEM STACK
-	// -------------------------------------------- //
-	
-	public static ItemStack getItemStack(Object object) throws IllegalArgumentException
-	{
-		if (!(object instanceof ItemStack)) throw new IllegalArgumentException("Object wasn't ItemStack");
-		return (ItemStack)object;
-	}
-	
-	// -------------------------------------------- //
-	// ITEM TYPE
-	// -------------------------------------------- //
-	
-	public static Material getItemType(Object object) throws IllegalArgumentException
-	{
-		return getItemStack(object).getType();
-	}
-	
-	public static void setItemType(Object object, Material itemType) throws IllegalArgumentException
-	{
-		getItemStack(object).setType(itemType);
-	}
-	
-	public static boolean isItemTypeEquals(Object object, Material itemType) throws IllegalArgumentException
-	{
-		return getItemType(object) == itemType;
-	}
-	
-	// -------------------------------------------- //
 	// BOOK META
 	// -------------------------------------------- //
 	
-	public static BookMeta getBookMeta(Object object) throws IllegalArgumentException
+	public static BookMeta getBookMeta(ItemStack item)
 	{
-		ItemStack item = getItemStack(object);
-		
 		ItemMeta meta = item.getItemMeta();
-		if (!(meta instanceof BookMeta)) throw new IllegalArgumentException("ItemStack didn't have BookMeta");
+		if (!(meta instanceof BookMeta)) return null;
 		return (BookMeta)meta;
-	}
-	
-	public static void setBookMeta(Object object, BookMeta bookMeta) throws IllegalArgumentException
-	{
-		ItemStack item = getItemStack(object);
-		item.setItemMeta(bookMeta);
 	}
 	
 	// -------------------------------------------- //
 	// TITLE
 	// -------------------------------------------- //
 	
-	public static String getTitle(Object object) throws IllegalArgumentException
+	public static String getTitle(ItemStack item)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		if (!bookMeta.hasTitle()) return null;
-		return bookMeta.getTitle();
+		BookMeta meta = getBookMeta(item);
+		if (meta == null) return null;
+		if (!meta.hasTitle()) return null;
+		return meta.getTitle();
 	}
 	
-	public static void setTitle(Object object, String title) throws IllegalArgumentException
+	public static boolean setTitle(ItemStack item, String title)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		bookMeta.setTitle(title);
-		setBookMeta(object, bookMeta);
+		BookMeta meta = getBookMeta(item);
+		if (meta == null) return false;
+		meta.setTitle(title);
+		return item.setItemMeta(meta);
 	}
 	
-	public static boolean isTitleEquals(Object object, String title) throws IllegalArgumentException
+	public static boolean isTitleEquals(ItemStack item, String title)
 	{
-		String actualTitle = getTitle(object);
+		String actualTitle = getTitle(item);
 		if (actualTitle == null) return title == null;
 		return actualTitle.equals(title);
 	}
@@ -93,53 +58,57 @@ public class BookUtil
 	// AUTHOR
 	// -------------------------------------------- //
 	
-	public static String getAuthor(Object object) throws IllegalArgumentException
+	public static String getAuthor(ItemStack item)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		if (!bookMeta.hasAuthor()) return null;
-		return bookMeta.getAuthor();
+		BookMeta meta = getBookMeta(item);
+		if (meta == null) return null;
+		if (!meta.hasAuthor()) return null;
+		return meta.getAuthor();
 	}
 	
-	public static void setAuthor(Object object, String author) throws IllegalArgumentException
+	public static boolean setAuthor(ItemStack item, String author)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		bookMeta.setAuthor(author);
-		setBookMeta(object, bookMeta);
+		BookMeta meta = getBookMeta(item);
+		if (meta == null) return false;
+		meta.setAuthor(author);
+		return item.setItemMeta(meta);
 	}
 	
-	public static boolean isAuthorEqualsId(Object object, String author) throws IllegalArgumentException
+	public static boolean isAuthorEqualsId(ItemStack item, String author)
 	{
-		String actualAuthor = getAuthor(object);
+		String actualAuthor = getAuthor(item);
 		if (actualAuthor == null) return author == null;
 		return actualAuthor.equalsIgnoreCase(author);
 	}
 	
-	public static boolean isAuthorEquals(Object object, CommandSender author) throws IllegalArgumentException
+	public static boolean isAuthorEquals(ItemStack item, CommandSender author)
 	{
-		return isAuthorEqualsId(object, SenderUtil.getSenderId(author));
+		return isAuthorEqualsId(item, SenderUtil.getSenderId(author));
 	}
 	
 	// -------------------------------------------- //
 	// PAGES
 	// -------------------------------------------- //
 	
-	public static List<String> getPages(Object object) throws IllegalArgumentException
+	public static List<String> getPages(ItemStack item)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		if (!bookMeta.hasPages()) return null;
-		return bookMeta.getPages();
+		BookMeta meta = getBookMeta(item);
+		if (meta == null) return null;
+		if (!meta.hasPages()) return null;
+		return meta.getPages();
 	}
 	
-	public static void setPages(Object object, List<String> pages) throws IllegalArgumentException
+	public static boolean setPages(ItemStack item, List<String> pages)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		bookMeta.setPages(pages);
-		setBookMeta(object, bookMeta);
+		BookMeta meta = getBookMeta(item);
+		if (meta == null) return false;
+		meta.setPages(pages);
+		return item.setItemMeta(meta);
 	}
 	
-	public static boolean isPagesEquals(Object object, List<String> pages) throws IllegalArgumentException
+	public static boolean isPagesEquals(ItemStack item, List<String> pages)
 	{
-		String actualPages = getAuthor(object);
+		List<String> actualPages = getPages(item);
 		if (actualPages == null) return pages == null;
 		return actualPages.equals(pages);
 	}
@@ -148,71 +117,68 @@ public class BookUtil
 	// UNSIGN
 	// -------------------------------------------- //
 	
-	public static void setUnsigned(Object object) throws IllegalArgumentException
+	public static boolean unsign(ItemStack item)
 	{
-		setAuthor(object, null);
-		setTitle(object, null);
-		setItemType(object, Material.BOOK_AND_QUILL);
+		setAuthor(item, null);
+		setTitle(item, null);
+		item.setType(Material.BOOK_AND_QUILL);
+		return true;
 	}
 	
-	public static boolean isUnsigned(Object object) throws IllegalArgumentException
+	public static boolean isUnsigned(ItemStack item)
 	{
-		return isAuthorEqualsId(object, null) && isTitleEquals(object, null) && isItemTypeEquals(object, Material.BOOK_AND_QUILL);
+		return isAuthorEqualsId(item, null) && isTitleEquals(item, null) && item.getType() == Material.BOOK_AND_QUILL;
 	}
 	
 	// -------------------------------------------- //
 	// CLEAR
 	// -------------------------------------------- //
 	
-	public static void setCleared(Object object) throws IllegalArgumentException
+	public static boolean clear(ItemStack item)
 	{
-		setUnsigned(object);
-		setPages(object, null);
+		item.setDurability((short) 0);
+		item.setType(Material.BOOK_AND_QUILL);
+		item.setItemMeta(Bukkit.getItemFactory().getItemMeta(Material.BOOK_AND_QUILL));
+		return true;
 	}
 	
-	public static boolean isCleared(Object object) throws IllegalArgumentException
+	public static boolean isCleared(ItemStack item)
 	{
-		return isUnsigned(object) && isPagesEquals(object, null);
+		return item.getDurability() == 0 && item.getType() == Material.BOOK_AND_QUILL && !item.hasItemMeta();
 	}
 	
 	// -------------------------------------------- //
-	// POWERTOOL STATE
+	// LORE-FLAGS
 	// -------------------------------------------- //
-
-	public static boolean isPowertool(Object object) throws IllegalArgumentException
+	
+	public static boolean containsFlag(ItemStack item, String flag)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		if (!bookMeta.hasLore()) return false;
-		return bookMeta.getLore().contains(Const.POWERTOOL);
+		if (flag == null) return false;
+		return item.getItemMeta().getLore().contains(flag);
 	}
 	
-	public static void setPowertool(Object object, boolean powertool) throws IllegalArgumentException
+	public static boolean addFlag(ItemStack item, String flag)
 	{
-		BookMeta bookMeta = getBookMeta(object);
-		if (powertool)
-		{
-			bookMeta.setLore(MUtil.list(Const.POWERTOOL));
-		}
-		else
-		{
-			bookMeta.setLore(new ArrayList<String>());
-		}
-		setBookMeta(object, bookMeta);
+		if (flag == null) return false;
+		if (containsFlag(item, flag)) return false;
+		return item.getItemMeta().getLore().add(flag);
 	}
 	
-	public static boolean isPowertoolEquals(Object object, boolean powertool) throws IllegalArgumentException
+	public static boolean removeFlag(ItemStack item, String flag)
 	{
-		return isPowertool(object) == powertool;
+		if (flag == null) return false;
+		if (!containsFlag(item, flag)) return false;
+		return item.getItemMeta().getLore().remove(flag);
 	}
 	
 	// -------------------------------------------- //
 	// POWERTOOL
 	// -------------------------------------------- //
 	
-	public static List<String> powertoolGetRawlines(Object object) throws IllegalArgumentException
+	public static List<String> powertoolGetRawlines(ItemStack item) throws IllegalArgumentException
 	{
 		List<String> ret = new ArrayList<String>();
-		for (String page : getPages(object))
+		for (String page : getPages(item))
 		{
 			if (page == null) break;
 			if (page.trim().length() <= 2) break;
@@ -288,7 +254,7 @@ public class BookUtil
 		ItemStack item = me.getItemInHand();
 		try
 		{
-			if (!isPowertoolEquals(item, true)) return;
+			if (!containsFlag(item, Const.POWERTOOL)) return;
 		}
 		catch (Exception e)
 		{
