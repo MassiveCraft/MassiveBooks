@@ -24,11 +24,11 @@ public class CmdBookLoad extends MassiveBooksCommand
 	@Override
 	public void perform()
 	{
+		MBook mbook = this.argConcatFrom(0, ARMBook.get());
+		if (mbook == null) return;
+		
 		ItemStack old = this.arg(ARBookInHand.getQuill());
 		if (old == null) return;
-		
-		MBook mbook = this.arg(0, ARMBook.get());
-		if (mbook == null) return;
 		
 		ItemStack target = mbook.getItem();
 		target.setAmount(old.getAmount());

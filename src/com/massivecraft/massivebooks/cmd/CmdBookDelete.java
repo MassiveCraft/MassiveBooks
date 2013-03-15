@@ -22,7 +22,7 @@ public class CmdBookDelete extends MassiveBooksCommand
 	@Override
 	public void perform()
 	{
-		MBook mbook = this.arg(0, ARMBook.get());
+		MBook mbook = this.argConcatFrom(0, ARMBook.get());
 		if (mbook == null) return;
 		
 		ItemStack target = mbook.getItem();
