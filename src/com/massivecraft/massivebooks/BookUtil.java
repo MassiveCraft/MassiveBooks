@@ -252,14 +252,7 @@ public class BookUtil
 	{
 		// If the player is holding a powertool ...
 		ItemStack item = me.getItemInHand();
-		try
-		{
-			if (!containsFlag(item, Const.POWERTOOL)) return;
-		}
-		catch (Exception e)
-		{
-			return;
-		}
+		if (!containsFlag(item, Const.POWERTOOL)) return;
 		
 		// ... cancel the event ...
 		cancellable.setCancelled(true);
