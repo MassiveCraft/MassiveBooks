@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.massivecraft.mcore.util.SenderUtil;
+import com.massivecraft.mcore.util.Txt;
 
 public class BookUtil
 {
@@ -54,6 +55,12 @@ public class BookUtil
 		return actualTitle.equals(title);
 	}
 	
+	public static String describeTitle(String title)
+	{
+		if (title == null) return Lang.NO_TITLE;
+		return Txt.parse("<h>")+title;
+	}
+	
 	// -------------------------------------------- //
 	// AUTHOR
 	// -------------------------------------------- //
@@ -86,6 +93,12 @@ public class BookUtil
 		return isAuthorEqualsId(item, SenderUtil.getSenderId(author));
 	}
 	
+	public static String describeAuthor(String author)
+	{
+		if (author == null) return Lang.NO_AUTHOR;
+		return Txt.parse("<h>")+author;
+	}
+	
 	// -------------------------------------------- //
 	// PAGES
 	// -------------------------------------------- //
@@ -114,20 +127,44 @@ public class BookUtil
 	}
 	
 	// -------------------------------------------- //
-	// UNSIGN
+	// SIGNATURE
 	// -------------------------------------------- //
 	
-	public static boolean unsign(ItemStack item)
+	public static String describeSign(ItemStack item)
 	{
-		setAuthor(item, null);
-		setTitle(item, null);
-		item.setType(Material.BOOK_AND_QUILL);
-		return true;
+		if (item == null) return Lang.NO_SIGNATURE;
+		String title = getTitle(item);
+		String author = getAuthor(item);
+		if (title == null && author == null) return Lang.NO_SIGNATURE;
+		
+		List<String> parts = new ArrayList<String>();
+		if (title != null)
+		{
+			parts.add(title);
+		}
+		if (author != null)
+		{
+			parts.add(Txt.parse("<em>")+author);
+		}
+		
+		return Txt.parse("<h>")+Txt.implode(parts, " ");
 	}
 	
-	public static boolean isUnsigned(ItemStack item)
+	public static void setSigned(ItemStack item, boolean signed)
 	{
-		return isAuthorEqualsId(item, null) && isTitleEquals(item, null) && item.getType() == Material.BOOK_AND_QUILL;
+		if (signed)
+		{
+			item.setType(Material.WRITTEN_BOOK);
+		}
+		else
+		{
+			item.setType(Material.BOOK_AND_QUILL);
+		}
+	}
+	
+	public static boolean isSigned(ItemStack item)
+	{
+		return item.getType() == Material.WRITTEN_BOOK;
 	}
 	
 	// -------------------------------------------- //

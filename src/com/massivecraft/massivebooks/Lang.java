@@ -4,24 +4,30 @@ import com.massivecraft.mcore.util.Txt;
 
 public class Lang
 {
-	public static final String PERMISSION_DESCRIPTION_COPYCOST_TEMPLATE = "copy a book for the cost %f"; 
+	public static final String NO_SIGNATURE = Txt.parse("<silver><em>not signed");
+	public static final String NO_TITLE = Txt.parse("<silver><em>no title");
+	public static final String NO_AUTHOR = Txt.parse("<silver><em>no author");
 	
-	public static final String ACCEPTED_ITEMS_WRITTEN = "a written book";
-	public static final String ACCEPTED_ITEMS_QUILL = "a book and quill";
-	public static final String ACCEPTED_ITEMS_EITHER = "a written book or a book and quill";
+	public static final String PERMISSION_DESCRIPTION_COPYCOST_TEMPLATE = Txt.parse("copy a book for the cost %f");
+	
+	public static final String ACCEPTED_ITEMS_WRITTEN = Txt.parse("a written book");
+	public static final String ACCEPTED_ITEMS_QUILL = Txt.parse("a book and quill");
+	public static final String ACCEPTED_ITEMS_EITHER = Txt.parse("a written book or a book and quill");
 	public static final String BOOK_IN_HAND_ERROR_TEMPLATE = Txt.parse("<b>You must be holding %s.");
 	
+	// TODO: Call it "lock" instead of "sign"?
+	
 	public static final String ALREADY_UNSIGN = Txt.parse("<g>The book is already unsigned.");
-	public static final String SUCCESS_UNSIGN = Txt.parse("<g>Unsigned the book in your hand.");
+	public static final String SUCCESS_UNSIGN_X = Txt.parse("<g>Unsigned %s<g>.");
 	
 	public static final String ALREADY_CLEAR = Txt.parse("<g>The book is already cleared.");
 	public static final String SUCCESS_CLEAR = Txt.parse("<g>Cleared item in your hand.");
 	
-	public static final String ALREADY_TITLE = Txt.parse("<g>The book already has that title.");
-	public static final String SUCCESS_TITLE = Txt.parse("<g>Set title for item in you hand.");
+	public static final String TITLE_ALREADY_X = Txt.parse("<g>The title is already %s<g>.");
+	public static final String TITLE_CHANGED_FROM_X_TO_Y = Txt.parse("<g>Changed title from %s <g>to %s<g>.");
 	
-	public static final String ALREADY_AUTHOR = Txt.parse("<g>The book already has that author.");
-	public static final String SUCCESS_AUTHOR = Txt.parse("<g>Set author for item in you hand.");
+	public static final String AUTHOR_ALREADY_X = Txt.parse("<g>The author is already %s<g>.");
+	public static final String AUTHOR_CHANGED_FROM_X_TO_Y = Txt.parse("<g>Changed author from %s <g>to %s<g>.");
 	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
 	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");

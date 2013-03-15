@@ -27,19 +27,20 @@ public class CmdBookTitle extends MassiveBooksCommand
 		ItemStack item = this.arg(ARBookInHand.getWritten());
 		if (item == null) return;
 		
-		String title = this.argConcatFrom(0);
+		String target = this.argConcatFrom(0);
+		String old = BookUtil.getTitle(item);
 		
-		if (BookUtil.isTitleEquals(item, title))
+		if (BookUtil.isTitleEquals(item, target))
 		{
-			sendMessage(Lang.ALREADY_TITLE);
+			sendMessage(String.format(Lang.TITLE_ALREADY_X, BookUtil.describeTitle(old)));
 			return;
 		}
 		
 		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.TITLE_OTHER.has(sender, true)) return;
 		
-		BookUtil.setTitle(item, title);
+		BookUtil.setTitle(item, target);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.SUCCESS_TITLE);
+		sendMessage(String.format(Lang.TITLE_CHANGED_FROM_X_TO_Y, BookUtil.describeTitle(old), BookUtil.describeTitle(target)));
 	}
 }

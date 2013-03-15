@@ -28,20 +28,21 @@ public class CmdBookAuthor extends MassiveBooksCommand
 		ItemStack item = this.arg(ARBookInHand.getWritten());
 		if (item == null) return;
 		
-		String author = this.argConcatFrom(0);
-		author = Mixin.tryFix(author);
+		String target = this.argConcatFrom(0);
+		target = Mixin.tryFix(target);
+		String old = BookUtil.getAuthor(item);
 
-		if (BookUtil.isAuthorEqualsId(item, author))
+		if (BookUtil.isAuthorEqualsId(item, target))
 		{
-			sendMessage(Lang.ALREADY_AUTHOR);
+			sendMessage(String.format(Lang.AUTHOR_ALREADY_X, BookUtil.describeAuthor(old)));
 			return;
 		}
 		
 		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.AUTHOR_OTHER.has(sender, true)) return;
 		
-		BookUtil.setAuthor(item, author);
+		BookUtil.setAuthor(item, target);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.SUCCESS_AUTHOR);
+		sendMessage(String.format(Lang.AUTHOR_CHANGED_FROM_X_TO_Y, BookUtil.describeAuthor(old), BookUtil.describeAuthor(target)));
 	}
 }
