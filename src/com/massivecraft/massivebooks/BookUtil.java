@@ -6,8 +6,10 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -57,6 +59,21 @@ public class BookUtil
 	// -------------------------------------------- //
 	// UPDATE DISPLAYNAME
 	// -------------------------------------------- //
+	
+	public static int updateDisplayNames(HumanEntity player)
+	{
+		return updateDisplayNames(player.getInventory());
+	}
+	
+	public static int updateDisplayNames(Inventory inventory)
+	{
+		int ret = 0;
+		for (ItemStack item : inventory.getContents())
+		{
+			if (updateDisplayName(item)) ret++;
+		}
+		return ret;
+	}
 	
 	public static boolean updateDisplayName(ItemStack item)
 	{

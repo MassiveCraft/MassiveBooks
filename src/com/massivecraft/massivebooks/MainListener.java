@@ -7,8 +7,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
 
 public class MainListener implements Listener
 {
@@ -54,6 +57,31 @@ public class MainListener implements Listener
 		
 		// ... attempt a powertool use.
 		BookUtil.powertoolUse(event, event.getPlayer(), you);
+	}
+	
+	// -------------------------------------------- //
+	// UPDATE BOOK DISPLAY NAMES
+	// -------------------------------------------- //
+	// The custom book naming system makes use of display names and other volatile information.
+	// Thus we attempt to update the display names kinda often!
+	
+	// Can't be cancelled
+	@EventHandler(priority = EventPriority.LOW)
+	public void updateBookDisplayNames(PlayerItemHeldEvent event)
+	{
+		BookUtil.updateDisplayNames(event.getPlayer());
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+	public void updateBookDisplayNames(InventoryOpenEvent event)
+	{
+		BookUtil.updateDisplayNames(event.getInventory());
+	}
+	
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+	public void updateBookDisplayNames(InventoryClickEvent event)
+	{
+		BookUtil.updateDisplayNames(event.getInventory());
 	}
 	
 }
