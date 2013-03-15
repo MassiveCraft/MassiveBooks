@@ -1,12 +1,15 @@
 package com.massivecraft.massivebooks;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.inventory.Inventory;
@@ -62,16 +65,24 @@ public class BookUtil
 	
 	public static int updateDisplayNames(HumanEntity player)
 	{
+		if (player == null) return 0;
 		return updateDisplayNames(player.getInventory());
 	}
 	
 	public static int updateDisplayNames(Inventory inventory)
 	{
+		if (inventory == null) return 0;
 		int ret = 0;
 		for (ItemStack item : inventory.getContents())
 		{
 			if (updateDisplayName(item)) ret++;
 		}
+		
+		if (ret > 0)
+		{
+			sendInventoryContentToViewersSoon(inventory);
+		}
+		System.out.println("updated "+ret);
 		return ret;
 	}
 	
@@ -82,6 +93,11 @@ public class BookUtil
 		return setDisplayName(item, Lang.descDisplayName(item));
 	}
 	
+	public static boolean updateDisplayName(Item item)
+	{
+		return updateDisplayName(item.getItemStack());
+	}
+	
 	public static boolean setDisplayName(ItemStack item, String displayName)
 	{
 		if (item == null) return false;
@@ -90,6 +106,31 @@ public class BookUtil
 		if (MUtil.equals(currentDisplayName, displayName)) return false;
 		meta.setDisplayName(displayName);
 		return item.setItemMeta(meta);
+	}
+	
+	public static void sendInventoryContentToViewersSoon(Inventory inventory)
+	{
+		final Set<Player> players = new HashSet<Player>();
+		for (HumanEntity viewer : inventory.getViewers())
+		{
+			if (viewer instanceof Player)
+			{
+				players.add((Player)viewer);
+			}
+		}
+		Bukkit.getScheduler().scheduleSyncDelayedTask(MassiveBooks.get(), new Runnable()
+		{
+			@SuppressWarnings("deprecation")
+			@Override
+			public void run()
+			{
+				System.out.println("Sending updates");
+				for (Player player : players)
+				{
+					player.updateInventory();
+				}
+			}
+		});
 	}
 	
 	// -------------------------------------------- //
@@ -109,7 +150,9 @@ public class BookUtil
 		BookMeta meta = getBookMeta(item);
 		if (meta == null) return false;
 		meta.setTitle(title);
-		return item.setItemMeta(meta);
+		if (!item.setItemMeta(meta)) return false;
+		updateDisplayName(item);
+		return true;
 	}
 	
 	public static boolean isTitleEquals(ItemStack item, String title)
@@ -136,7 +179,9 @@ public class BookUtil
 		BookMeta meta = getBookMeta(item);
 		if (meta == null) return false;
 		meta.setAuthor(author);
-		return item.setItemMeta(meta);
+		if (!item.setItemMeta(meta)) return false;
+		updateDisplayName(item);
+		return true;
 	}
 	
 	public static boolean isAuthorEqualsId(ItemStack item, String author)
@@ -168,7 +213,9 @@ public class BookUtil
 		BookMeta meta = getBookMeta(item);
 		if (meta == null) return false;
 		meta.setPages(pages);
-		return item.setItemMeta(meta);
+		if (!item.setItemMeta(meta)) return false;
+		updateDisplayName(item);
+		return true;
 	}
 	
 	public static boolean isPagesEquals(ItemStack item, List<String> pages)
@@ -221,6 +268,7 @@ public class BookUtil
 		item.setDurability((short) 0);
 		item.setType(Material.BOOK_AND_QUILL);
 		item.setItemMeta(Bukkit.getItemFactory().getItemMeta(Material.BOOK_AND_QUILL));
+		updateDisplayName(item);
 		return true;
 	}
 	
@@ -258,7 +306,9 @@ public class BookUtil
 		{
 			meta.setLore(MUtil.list(flag));
 		}
-		return item.setItemMeta(meta);
+		if (!item.setItemMeta(meta)) return false;
+		updateDisplayName(item);
+		return true;
 	}
 	
 	public static boolean removeFlag(ItemStack item, String flag)
@@ -277,7 +327,9 @@ public class BookUtil
 		{
 			meta.setLore(lore);
 		}
-		return item.setItemMeta(meta);
+		if (!item.setItemMeta(meta)) return false;
+		updateDisplayName(item);
+		return true;
 	}
 	
 	// -------------------------------------------- //

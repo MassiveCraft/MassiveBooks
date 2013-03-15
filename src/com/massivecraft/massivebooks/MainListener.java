@@ -8,10 +8,10 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 
 public class MainListener implements Listener
 {
@@ -66,22 +66,26 @@ public class MainListener implements Listener
 	// Thus we attempt to update the display names kinda often!
 	
 	// Can't be cancelled
-	@EventHandler(priority = EventPriority.LOW)
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(PlayerItemHeldEvent event)
 	{
 		BookUtil.updateDisplayNames(event.getPlayer());
 	}
 	
-	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-	public void updateBookDisplayNames(InventoryOpenEvent event)
+	// Can be cancelled but we don't care :P
+	@EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+	public void updateBookDisplayNames(PlayerPickupItemEvent event)
 	{
-		BookUtil.updateDisplayNames(event.getInventory());
+		BookUtil.updateDisplayName(event.getItem());
 	}
 	
-	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+	// Can be cancelled but we don't care :P
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(InventoryClickEvent event)
 	{
 		BookUtil.updateDisplayNames(event.getInventory());
+		BookUtil.updateDisplayNames(event.getWhoClicked());
 	}
+	
 	
 }
