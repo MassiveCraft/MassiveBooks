@@ -9,13 +9,13 @@ import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
 
-public class CmdBookClear extends MassiveBooksCommand
+public class CmdBookUnlock extends MassiveBooksCommand
 {
-	public CmdBookClear()
+	public CmdBookUnlock()
 	{
 		super();
-		this.addAliases(ConfServer.aliasesBookClear);
-		this.addRequirements(ReqHasPerm.get(Perm.CLEAR.node));
+		this.addAliases(ConfServer.aliasesBookUnlock);
+		this.addRequirements(ReqHasPerm.get(Perm.UNLOCK.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
 	
@@ -25,18 +25,18 @@ public class CmdBookClear extends MassiveBooksCommand
 		ItemStack item = this.arg(ARBookInHand.getEither());
 		if (item == null) return;
 		
-		if (BookUtil.isCleared(item))
+		if (BookUtil.isUnlocked(item))
 		{
-			sendMessage(Lang.getSameClear(item));
+			sendMessage(Lang.getSameUnlock(item));
 			return;
 		}
 		
-		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.CLEAR_OTHER.has(sender, true)) return;
+		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.UNLOCK_OTHER.has(sender, true)) return;
 		
 		ItemStack before = item.clone();
-		BookUtil.clear(item);
+		BookUtil.unlock(item);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.getAlterClear(before));
+		sendMessage(Lang.getAlterUnlock(before));
 	}
 }

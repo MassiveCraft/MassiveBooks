@@ -12,8 +12,11 @@ public enum Perm
 	
 	BOOK("book"),
 
-	UNSIGN("unsign"),
-	UNSIGN_OTHER("unsign.other"),
+	UNLOCK("unlock"),
+	UNLOCK_OTHER("unlock.other"),
+	
+	LOCK("lock"),
+	LOCK_OTHER("lock.other"),
 	
 	CLEAR("clear"),
 	CLEAR_OTHER("clear.other"),

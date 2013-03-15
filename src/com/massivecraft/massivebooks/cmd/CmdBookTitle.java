@@ -32,7 +32,7 @@ public class CmdBookTitle extends MassiveBooksCommand
 		
 		if (BookUtil.isTitleEquals(item, target))
 		{
-			sendMessage(String.format(Lang.TITLE_ALREADY_X, BookUtil.describeTitle(old)));
+			sendMessage(Lang.getSameTitle(old));
 			return;
 		}
 		
@@ -41,6 +41,6 @@ public class CmdBookTitle extends MassiveBooksCommand
 		BookUtil.setTitle(item, target);
 		me.setItemInHand(item);
 		
-		sendMessage(String.format(Lang.TITLE_CHANGED_FROM_X_TO_Y, BookUtil.describeTitle(old), BookUtil.describeTitle(target)));
+		sendMessage(Lang.getAlterTitle(old, target));
 	}
 }

@@ -13,7 +13,8 @@ public class ConfServer extends SimpleConfig
 	
 	public static String dburi = "default";
 	public static List<String> aliasesBook = MUtil.list("book", "books");
-	public static List<String> aliasesBookUnsign = MUtil.list("unsign");
+	public static List<String> aliasesBookUnlock = MUtil.list("unlock");
+	public static List<String> aliasesBookLock = MUtil.list("lock");
 	public static List<String> aliasesBookClear = MUtil.list("clear");
 	public static List<String> aliasesBookTitle = MUtil.list("title");
 	public static List<String> aliasesBookAuthor = MUtil.list("author");

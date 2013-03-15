@@ -12,20 +12,67 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.SenderUtil;
-import com.massivecraft.mcore.util.Txt;
 
 public class BookUtil
-{
+{	
 	// -------------------------------------------- //
 	// BOOK META
 	// -------------------------------------------- //
 	
+	public static boolean hasBookMeta(ItemStack item)
+	{
+		if (item == null) return false;
+		Material type = item.getType();
+		if (type == Material.WRITTEN_BOOK) return true;
+		if (type == Material.BOOK_AND_QUILL) return true;
+		return false;
+	}
+	
 	public static BookMeta getBookMeta(ItemStack item)
 	{
+		if (item == null) return null;
 		ItemMeta meta = item.getItemMeta();
 		if (!(meta instanceof BookMeta)) return null;
 		return (BookMeta)meta;
+	}
+	
+	public static boolean isBookMetaEmpty(ItemStack item)
+	{
+		if (item == null) return true;
+		BookMeta meta = getBookMeta(item);
+		return isBookMetaEmpty(meta);
+	}
+	
+	public static boolean isBookMetaEmpty(BookMeta meta)
+	{
+		if (meta == null) return true;
+		if (meta.hasTitle()) return false;
+		if (meta.hasAuthor()) return false;
+		if (meta.hasPages()) return false;
+		return true;
+	}
+	
+	// -------------------------------------------- //
+	// UPDATE DISPLAYNAME
+	// -------------------------------------------- //
+	
+	public static boolean updateDisplayName(ItemStack item)
+	{
+		if (item == null) return false;
+		if (!hasBookMeta(item)) return false;
+		return setDisplayName(item, Lang.descDisplayName(item));
+	}
+	
+	public static boolean setDisplayName(ItemStack item, String displayName)
+	{
+		if (item == null) return false;
+		ItemMeta meta = item.getItemMeta();
+		String currentDisplayName = meta.getDisplayName();
+		if (MUtil.equals(currentDisplayName, displayName)) return false;
+		meta.setDisplayName(displayName);
+		return item.setItemMeta(meta);
 	}
 	
 	// -------------------------------------------- //
@@ -53,12 +100,6 @@ public class BookUtil
 		String actualTitle = getTitle(item);
 		if (actualTitle == null) return title == null;
 		return actualTitle.equals(title);
-	}
-	
-	public static String describeTitle(String title)
-	{
-		if (title == null) return Lang.NO_TITLE;
-		return Txt.parse("<h>")+title;
 	}
 	
 	// -------------------------------------------- //
@@ -93,12 +134,6 @@ public class BookUtil
 		return isAuthorEqualsId(item, SenderUtil.getSenderId(author));
 	}
 	
-	public static String describeAuthor(String author)
-	{
-		if (author == null) return Lang.NO_AUTHOR;
-		return Txt.parse("<h>")+author;
-	}
-	
 	// -------------------------------------------- //
 	// PAGES
 	// -------------------------------------------- //
@@ -127,44 +162,37 @@ public class BookUtil
 	}
 	
 	// -------------------------------------------- //
-	// SIGNATURE
+	// UNLOCK & LOCK
 	// -------------------------------------------- //
-	
-	public static String describeSign(ItemStack item)
+
+	public static boolean unlock(ItemStack item)
 	{
-		if (item == null) return Lang.NO_SIGNATURE;
-		String title = getTitle(item);
-		String author = getAuthor(item);
-		if (title == null && author == null) return Lang.NO_SIGNATURE;
-		
-		List<String> parts = new ArrayList<String>();
-		if (title != null)
-		{
-			parts.add(title);
-		}
-		if (author != null)
-		{
-			parts.add(Txt.parse("<em>")+author);
-		}
-		
-		return Txt.parse("<h>")+Txt.implode(parts, " ");
+		if (item == null) return false;
+		if (item.getType() == Material.BOOK_AND_QUILL) return true;
+		item.setType(Material.BOOK_AND_QUILL);
+		updateDisplayName(item);
+		return true;
 	}
 	
-	public static void setSigned(ItemStack item, boolean signed)
+	public static boolean lock(ItemStack item)
 	{
-		if (signed)
-		{
-			item.setType(Material.WRITTEN_BOOK);
-		}
-		else
-		{
-			item.setType(Material.BOOK_AND_QUILL);
-		}
+		if (item == null) return false;
+		if (item.getType() == Material.WRITTEN_BOOK) return true;
+		item.setType(Material.WRITTEN_BOOK);
+		updateDisplayName(item);
+		return true;
 	}
 	
-	public static boolean isSigned(ItemStack item)
+	public static boolean isLocked(ItemStack item)
 	{
+		if (item == null) return false;
 		return item.getType() == Material.WRITTEN_BOOK;
+	}
+	
+	public static boolean isUnlocked(ItemStack item)
+	{
+		if (item == null) return false;
+		return item.getType() == Material.BOOK_AND_QUILL;
 	}
 	
 	// -------------------------------------------- //
@@ -191,21 +219,48 @@ public class BookUtil
 	public static boolean containsFlag(ItemStack item, String flag)
 	{
 		if (flag == null) return false;
-		return item.getItemMeta().getLore().contains(flag);
+		if (!item.hasItemMeta()) return false;
+		ItemMeta meta = item.getItemMeta();
+		if (!meta.hasLore()) return false;
+		List<String> lore = meta.getLore();
+		return lore.contains(flag);
 	}
 	
 	public static boolean addFlag(ItemStack item, String flag)
 	{
 		if (flag == null) return false;
 		if (containsFlag(item, flag)) return false;
-		return item.getItemMeta().getLore().add(flag);
+		ItemMeta meta = item.getItemMeta();
+		if (meta.hasLore())
+		{
+			List<String> lore = meta.getLore();
+			lore.add(flag);
+			meta.setLore(lore);
+		}
+		else
+		{
+			meta.setLore(MUtil.list(flag));
+		}
+		return item.setItemMeta(meta);
 	}
 	
 	public static boolean removeFlag(ItemStack item, String flag)
 	{
 		if (flag == null) return false;
 		if (!containsFlag(item, flag)) return false;
-		return item.getItemMeta().getLore().remove(flag);
+		ItemMeta meta = item.getItemMeta();
+		if (!meta.hasLore()) return false;
+		List<String> lore = meta.getLore();
+		lore.remove(flag);
+		if (lore.size() == 0)
+		{
+			meta.setLore(null);
+		}
+		else
+		{
+			meta.setLore(lore);
+		}
+		return item.setItemMeta(meta);
 	}
 	
 	// -------------------------------------------- //

@@ -7,8 +7,10 @@ permissions:
 # THE REAL NODES
 # -------------------------------------------- #
   massivebooks.book: {description: access the book base-command, default: false}
-  massivebooks.unsign: {description: unsign a book, default: false}
-  massivebooks.unsign.other: {description: unsign a book by another author, default: false}
+  massivebooks.unlock: {description: unlock a book, default: false}
+  massivebooks.unlock.other: {description: unlock a book by another author, default: false}
+  massivebooks.lock: {description: lock a book, default: false}
+  massivebooks.lock.other: {description: lock a book by another author, default: false}
   massivebooks.clear: {description: clear a book, default: false}
   massivebooks.clear.other: {description: clear a book by another author, default: false}
   massivebooks.title: {description: change title for a book, default: false}
@@ -26,8 +28,10 @@ permissions:
     default: false
     children:
       massivebooks.book: true
-      massivebooks.unsign: true
-      massivebooks.unsign.other: true
+      massivebooks.unlock: true
+      massivebooks.unlock.other: true
+      massivebooks.lock: true
+      massivebooks.lock.other: true
       massivebooks.clear: true
       massivebooks.clear.other: true
       massivebooks.title: true
@@ -57,7 +61,8 @@ permissions:
     default: false
     children:
       massivebooks.kit.rank0: true
-      massivebooks.unsign.other: true
+      massivebooks.unlock.other: true
+      massivebooks.lock.other: true
       massivebooks.title.other: true
       massivebooks.author: true
       massivebooks.author.other: true
@@ -67,7 +72,8 @@ permissions:
     default: false
     children:
       massivebooks.book: true
-      massivebooks.unsign: true
+      massivebooks.unlock: true
+      massivebooks.lock: true
       massivebooks.clear: true
       massivebooks.clear.other: true
       massivebooks.title: true

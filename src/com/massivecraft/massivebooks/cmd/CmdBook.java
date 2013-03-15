@@ -8,7 +8,8 @@ import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 public class CmdBook extends MassiveBooksCommand
 {
 	// SubCommands
-	public CmdBookUnsign cmdBookUnsign = new CmdBookUnsign();
+	public CmdBookUnlock cmdBookUnlock = new CmdBookUnlock();
+	public CmdBookLock cmdBookLock = new CmdBookLock();
 	public CmdBookClear cmdBookClear = new CmdBookClear();
 	public CmdBookTitle cmdBookTitle = new CmdBookTitle();
 	public CmdBookAuthor cmdBookAuthor = new CmdBookAuthor();
@@ -27,7 +28,8 @@ public class CmdBook extends MassiveBooksCommand
 		this.addSubCommand(HelpCommand.get());
 		
 		// Add SubCommands
-		this.addSubCommand(this.cmdBookUnsign);
+		this.addSubCommand(this.cmdBookUnlock);
+		this.addSubCommand(this.cmdBookLock);
 		this.addSubCommand(this.cmdBookClear);
 		this.addSubCommand(this.cmdBookTitle);
 		this.addSubCommand(this.cmdBookAuthor);

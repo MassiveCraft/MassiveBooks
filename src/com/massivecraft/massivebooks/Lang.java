@@ -1,12 +1,24 @@
 package com.massivecraft.massivebooks;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
+import com.massivecraft.mcore.mixin.Mixin;
 import com.massivecraft.mcore.util.Txt;
 
 public class Lang
 {
-	public static final String NO_SIGNATURE = Txt.parse("<silver><em>not signed");
-	public static final String NO_TITLE = Txt.parse("<silver><em>no title");
-	public static final String NO_AUTHOR = Txt.parse("<silver><em>no author");
+	// -------------------------------------------- //
+	// CONSTANTS
+	// -------------------------------------------- //
+	
+	public static final String DISPLAYNAME_UNLOCKED_X = Txt.parse("<h>Unlocked %s");
+	public static final String DISPLAYNAME_LOCKED_X = Txt.parse("%s");
+	public static final String SIGCOLOR_MESSAGE = Txt.parse("<h>");
+	public static final String SIGCOLOR_DISPLAYNAME = Txt.parse("<white>");
+	public static final String BY_EMPHASIZED = Txt.parse("<em>by");
+	public static final String NO_TITLE_COLORED = Txt.parse("<silver><em>No Title");
+	public static final String NO_AUTHOR_COLORED = Txt.parse("<silver><em>No Author");
 	
 	public static final String PERMISSION_DESCRIPTION_COPYCOST_TEMPLATE = Txt.parse("copy a book for the cost %f");
 	
@@ -15,19 +27,20 @@ public class Lang
 	public static final String ACCEPTED_ITEMS_EITHER = Txt.parse("a written book or a book and quill");
 	public static final String BOOK_IN_HAND_ERROR_TEMPLATE = Txt.parse("<b>You must be holding %s.");
 	
-	// TODO: Call it "lock" instead of "sign"?
+	public static final String SAME_UNLOCK_X = Txt.parse("%s <g>is already unlocked.");
+	public static final String ALTER_UNLOCK_X = Txt.parse("%s <g>is now unlocked.");
 	
-	public static final String ALREADY_UNSIGN = Txt.parse("<g>The book is already unsigned.");
-	public static final String SUCCESS_UNSIGN_X = Txt.parse("<g>Unsigned %s<g>.");
+	public static final String SAME_LOCK_X = Txt.parse("%s <g>is already locked.");
+	public static final String ALTER_LOCK_X = Txt.parse("%s <g>is now locked.");
 	
-	public static final String ALREADY_CLEAR = Txt.parse("<g>The book is already cleared.");
-	public static final String SUCCESS_CLEAR = Txt.parse("<g>Cleared item in your hand.");
+	public static final String SAME_CLEAR_X = Txt.parse("%s <g>is already cleared.");
+	public static final String ALTER_CLEAR_X = Txt.parse("%s <g>is now cleared.");
 	
-	public static final String TITLE_ALREADY_X = Txt.parse("<g>The title is already %s<g>.");
-	public static final String TITLE_CHANGED_FROM_X_TO_Y = Txt.parse("<g>Changed title from %s <g>to %s<g>.");
+	public static final String SAME_TITLE_X = Txt.parse("<g>The title is already %s<g>.");
+	public static final String ALTER_TITLE_X_Y = Txt.parse("<g>Changed title from %s <g>to %s<g>.");
 	
-	public static final String AUTHOR_ALREADY_X = Txt.parse("<g>The author is already %s<g>.");
-	public static final String AUTHOR_CHANGED_FROM_X_TO_Y = Txt.parse("<g>Changed author from %s <g>to %s<g>.");
+	public static final String SAME_AUTHOR_X = Txt.parse("<g>The author is already %s<g>.");
+	public static final String ALTER_AUTHOR_X_Y = Txt.parse("<g>Changed author from %s <g>to %s<g>.");
 	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
 	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");
@@ -57,5 +70,103 @@ public class Lang
 	public static final String POWERTOOL_COLOR_YOU = Txt.parse("<gold>");
 	public static final String POWERTOOL_COLOR_COMMAND = Txt.parse("<c>");
 	public static final String POWERTOOL_COLOR_CHAT = Txt.parse("<white>");
+	
+	// -------------------------------------------- //
+	// METHODS
+	// -------------------------------------------- //
+	
+	public static String descTitle(String title, String color)
+	{
+		if (title == null) return NO_TITLE_COLORED;
+		return color+title;
+	}
+	
+	public static String descAuthor(String author, String color)
+	{
+		if (author == null) return NO_AUTHOR_COLORED;
+		return color+Mixin.getDisplayName(author);
+	}
+	
+	public static String descSignature(ItemStack item, String color)
+	{
+		String title = BookUtil.getTitle(item);
+		String author = BookUtil.getAuthor(item);
+		
+		String titleDescription = descTitle(title, color);
+		String authorDescription = descAuthor(author, color);
+		
+		String glue = " " + color + Lang.BY_EMPHASIZED + " ";
+		
+		return titleDescription + glue + authorDescription;
+	}
+	
+	public static String descDisplayName(ItemStack item)
+	{
+		Material type = item.getType();
+		if (type == Material.WRITTEN_BOOK)
+		{
+			if (BookUtil.isBookMetaEmpty(item)) return null;
+			return String.format(DISPLAYNAME_LOCKED_X, descSignature(item, SIGCOLOR_DISPLAYNAME));
+		}
+		else if (type == Material.BOOK_AND_QUILL)
+		{
+			if (BookUtil.isBookMetaEmpty(item)) return null;
+			return String.format(DISPLAYNAME_UNLOCKED_X, descSignature(item, SIGCOLOR_DISPLAYNAME));
+		}
+		else
+		{
+			throw new IllegalArgumentException("item must be either written book or book and quill");
+		}
+	}
+	
+	public static String getSameUnlock(ItemStack current)
+	{
+		return String.format(Lang.SAME_UNLOCK_X, descSignature(current, SIGCOLOR_MESSAGE));
+	}
+	public static String getAlterUnlock(ItemStack before)
+	{
+		return String.format(Lang.ALTER_UNLOCK_X, descSignature(before, SIGCOLOR_MESSAGE));
+	}
+	
+	public static String getSameLock(ItemStack current)
+	{
+		return String.format(Lang.SAME_LOCK_X, descSignature(current, SIGCOLOR_MESSAGE));
+	}
+	public static String getAlterLock(ItemStack before)
+	{
+		return String.format(Lang.ALTER_LOCK_X, descSignature(before, SIGCOLOR_MESSAGE));
+	}
+	
+	public static String getSameClear(ItemStack current)
+	{
+		return String.format(Lang.SAME_CLEAR_X, descSignature(current, SIGCOLOR_MESSAGE));
+	}
+	public static String getAlterClear(ItemStack before)
+	{
+		return String.format(Lang.ALTER_CLEAR_X, descSignature(before, SIGCOLOR_MESSAGE));
+	}
+	
+	public static String getSameTitle(String title)
+	{
+		return String.format(Lang.SAME_TITLE_X, descTitle(title, SIGCOLOR_MESSAGE));
+	}
+	public static String getAlterTitle(String before, String after)
+	{
+		return String.format(ALTER_TITLE_X_Y, descTitle(before, Lang.SIGCOLOR_MESSAGE), descTitle(after, Lang.SIGCOLOR_MESSAGE));
+	}
+	
+	public static String getSameAuthor(String author)
+	{
+		return String.format(Lang.SAME_AUTHOR_X, descAuthor(author, SIGCOLOR_MESSAGE));
+	}
+	public static String getAlterAuthor(String before, String after)
+	{
+		return String.format(ALTER_AUTHOR_X_Y, descAuthor(before, Lang.SIGCOLOR_MESSAGE), descAuthor(after, Lang.SIGCOLOR_MESSAGE));
+	}
+	
+
+	
+	
+	
 	
 }

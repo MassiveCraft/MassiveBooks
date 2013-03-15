@@ -9,13 +9,13 @@ import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
 
-public class CmdBookUnsign extends MassiveBooksCommand
+public class CmdBookLock extends MassiveBooksCommand
 {
-	public CmdBookUnsign()
+	public CmdBookLock()
 	{
 		super();
-		this.addAliases(ConfServer.aliasesBookUnsign);
-		this.addRequirements(ReqHasPerm.get(Perm.UNSIGN.node));
+		this.addAliases(ConfServer.aliasesBookLock);
+		this.addRequirements(ReqHasPerm.get(Perm.LOCK.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
 	
@@ -25,18 +25,18 @@ public class CmdBookUnsign extends MassiveBooksCommand
 		ItemStack item = this.arg(ARBookInHand.getEither());
 		if (item == null) return;
 		
-		if (!BookUtil.isSigned(item))
+		if (BookUtil.isLocked(item))
 		{
-			sendMessage(Lang.ALREADY_UNSIGN);
+			sendMessage(Lang.getSameLock(item));
 			return;
 		}
 		
-		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.UNSIGN_OTHER.has(sender, true)) return;
+		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.LOCK_OTHER.has(sender, true)) return;
 		
-		String signDescription = BookUtil.describeSign(item);
-		BookUtil.setSigned(item, false);
+		ItemStack before = item.clone();
+		BookUtil.lock(item);
 		me.setItemInHand(item);
 		
-		sendMessage(String.format(Lang.SUCCESS_UNSIGN_X, signDescription));
+		sendMessage(Lang.getAlterLock(before));
 	}
 }
