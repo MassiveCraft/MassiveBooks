@@ -1,5 +1,7 @@
 package com.massivecraft.massivebooks.entity;
 
+import org.bukkit.ChatColor;
+
 import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.MassiveBooks;
@@ -17,6 +19,14 @@ public class MBookColl extends Coll<MBook, String>
 	private MBookColl()
 	{
 		super(MStore.getDb(ConfServer.dburi), MassiveBooks.get(), "ai", Const.COLLECTION_BASENAME_BOOK, MBook.class, String.class, false);
+	}
+	
+	@Override
+	public String fixId(Object oid)
+	{
+		String ret = super.fixId(oid);
+		if (ret == null) return ret;
+		return ChatColor.stripColor(ret.trim().toLowerCase());
 	}
 	
 }
