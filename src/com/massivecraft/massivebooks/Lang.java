@@ -123,29 +123,29 @@ public class Lang
 	
 	public static String getSameUnlock(ItemStack current)
 	{
-		return String.format(Lang.SAME_UNLOCK_X, descSignature(current));
+		return String.format(Lang.SAME_UNLOCK_X, descDisplayName(current));
 	}
 	public static String getAlterUnlock(ItemStack before)
 	{
-		return String.format(Lang.ALTER_UNLOCK_X, descSignature(before));
+		return String.format(Lang.ALTER_UNLOCK_X, descDisplayName(before));
 	}
 	
 	public static String getSameLock(ItemStack current)
 	{
-		return String.format(Lang.SAME_LOCK_X, descSignature(current));
+		return String.format(Lang.SAME_LOCK_X, descDisplayName(current));
 	}
 	public static String getAlterLock(ItemStack before)
 	{
-		return String.format(Lang.ALTER_LOCK_X, descSignature(before));
+		return String.format(Lang.ALTER_LOCK_X, descDisplayName(before));
 	}
 	
 	public static String getSameClear(ItemStack current)
 	{
-		return String.format(Lang.SAME_CLEAR_X, descSignature(current));
+		return String.format(Lang.SAME_CLEAR_X, descDisplayName(current));
 	}
 	public static String getAlterClear(ItemStack before)
 	{
-		return String.format(Lang.ALTER_CLEAR_X, descSignature(before));
+		return String.format(Lang.ALTER_CLEAR_X, descDisplayName(before));
 	}
 	
 	public static String getSameTitle(String title)
