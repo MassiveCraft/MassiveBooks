@@ -8,6 +8,7 @@ import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
+import com.massivecraft.mcore.util.Txt;
 
 public class CmdBookTitle extends MassiveBooksCommand
 {
@@ -28,6 +29,7 @@ public class CmdBookTitle extends MassiveBooksCommand
 		if (item == null) return;
 		
 		String target = this.argConcatFrom(0);
+		target = Txt.parse(target);
 		String old = BookUtil.getTitle(item);
 		
 		if (BookUtil.isTitleEquals(item, target))
