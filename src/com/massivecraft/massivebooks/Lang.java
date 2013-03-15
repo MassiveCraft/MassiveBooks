@@ -41,9 +41,9 @@ public class Lang
 	public static final String SAME_AUTHOR_X = Txt.parse("<g>The author is already %s<g>.");
 	public static final String ALTER_AUTHOR_X_Y = Txt.parse("<g>Changed author from %s <g>to %s<g>.");
 	
-	public static final String SUCCESS_LOAD = Txt.parse("<g>Loaded %s.");
-	public static final String SUCCESS_SAVE = Txt.parse("<g>Saved %s.");
-	public static final String SUCCESS_DELETED = Txt.parse("<g>Deleted %s.");
+	public static final String SUCCESS_LOAD = Txt.parse("<g>Loaded %s<g>.");
+	public static final String SUCCESS_SAVE = Txt.parse("<g>Saved %s<g>.");
+	public static final String SUCCESS_DELETED = Txt.parse("<g>Deleted %s<g>.");
 	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
 	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");
