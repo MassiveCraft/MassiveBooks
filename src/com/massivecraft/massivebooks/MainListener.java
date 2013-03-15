@@ -8,6 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
@@ -85,6 +86,14 @@ public class MainListener implements Listener
 	{
 		BookUtil.updateDisplayNames(event.getInventory());
 		BookUtil.updateDisplayNames(event.getWhoClicked());
+	}
+	
+	// Can be cancelled but we don't care :P
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void updateBookDisplayNames(InventoryOpenEvent event)
+	{
+		BookUtil.updateDisplayNames(event.getInventory());
+		BookUtil.updateDisplayNames(event.getPlayer());
 	}
 	
 	

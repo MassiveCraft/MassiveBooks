@@ -82,7 +82,6 @@ public class BookUtil
 		{
 			sendInventoryContentToViewersSoon(inventory);
 		}
-		System.out.println("updated "+ret);
 		return ret;
 	}
 	
@@ -124,7 +123,6 @@ public class BookUtil
 			@Override
 			public void run()
 			{
-				System.out.println("Sending updates");
 				for (Player player : players)
 				{
 					player.updateInventory();
