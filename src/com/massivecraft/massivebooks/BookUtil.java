@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.SenderUtil;
 
@@ -60,52 +61,93 @@ public class BookUtil
 	}
 	
 	// -------------------------------------------- //
-	// UPDATE DISPLAYNAME
+	// UPDATE BOOKS
 	// -------------------------------------------- //
 	
-	public static int updateDisplayNames(HumanEntity player)
+	// Many books
+	
+	public static int updateBooks(HumanEntity player)
 	{
 		if (player == null) return 0;
-		return updateDisplayNames(player.getInventory());
+		return updateBooks(player.getInventory());
 	}
 	
-	public static int updateDisplayNames(Inventory inventory)
+	public static int updateBooks(Inventory inventory)
 	{
 		if (inventory == null) return 0;
 		int ret = 0;
 		for (ItemStack item : inventory.getContents())
 		{
-			if (updateDisplayName(item)) ret++;
+			if (updateBook(item)) ret++;
 		}
+		
+		//System.out.println("Updated "+ret);
 		
 		if (ret > 0)
 		{
+			//System.out.println("queuing view inv-update");
 			sendInventoryContentToViewersSoon(inventory);
 		}
 		return ret;
 	}
 	
-	public static boolean updateDisplayName(ItemStack item)
+	// One Book
+	
+	public static boolean updateBook(Item item)
+	{
+		return updateBook(item.getItemStack());
+	}
+	
+	public static boolean updateBook(ItemStack item)
 	{
 		if (item == null) return false;
 		if (!hasBookMeta(item)) return false;
-		return setDisplayName(item, Lang.descDisplayName(item));
+		if (updateSaved(item)) return true;
+		return updateDisplayName(item);
 	}
 	
-	public static boolean updateDisplayName(Item item)
+	// Saved
+	
+	public static boolean updateSaved(ItemStack item)
 	{
-		return updateDisplayName(item.getItemStack());
+		if (item == null) return false;
+		String title = getTitle(item);
+		
+		MBook mbook = MBook.get(title);
+		if (mbook == null) return false;
+		
+		ItemStack blueprint = mbook.getItem();
+		if (blueprint == null) return false;
+		
+		if (item.isSimilar(blueprint)) return false;
+		
+		item.setDurability(blueprint.getDurability());
+		item.setTypeId(blueprint.getTypeId());
+		item.setItemMeta(blueprint.getItemMeta());
+		
+		return true;
 	}
 	
-	public static boolean setDisplayName(ItemStack item, String displayName)
+	// Displayname
+	
+	public static boolean updateDisplayName(ItemStack item)
+	{
+		if (item == null) return false;
+		String targetDisplayName = Lang.descDisplayName(item);
+		return setDisplayName(item, targetDisplayName);
+	}
+	
+	public static boolean setDisplayName(ItemStack item, String targetDisplayName)
 	{
 		if (item == null) return false;
 		ItemMeta meta = item.getItemMeta();
 		String currentDisplayName = meta.getDisplayName();
-		if (MUtil.equals(currentDisplayName, displayName)) return false;
-		meta.setDisplayName(displayName);
+		if (MUtil.equals(currentDisplayName, targetDisplayName)) return false;
+		meta.setDisplayName(targetDisplayName);
 		return item.setItemMeta(meta);
 	}
+	
+	// The awesomest trick to force-update-clients :O
 	
 	public static void sendInventoryContentToViewersSoon(Inventory inventory)
 	{
@@ -149,7 +191,7 @@ public class BookUtil
 		if (meta == null) return false;
 		meta.setTitle(title);
 		if (!item.setItemMeta(meta)) return false;
-		updateDisplayName(item);
+		updateBook(item);
 		return true;
 	}
 	
@@ -266,7 +308,6 @@ public class BookUtil
 		item.setDurability((short) 0);
 		item.setType(Material.BOOK_AND_QUILL);
 		item.setItemMeta(Bukkit.getItemFactory().getItemMeta(Material.BOOK_AND_QUILL));
-		updateDisplayName(item);
 		return true;
 	}
 	
@@ -326,7 +367,7 @@ public class BookUtil
 			meta.setLore(lore);
 		}
 		if (!item.setItemMeta(meta)) return false;
-		updateDisplayName(item);
+		updateBook(item);
 		return true;
 	}
 	

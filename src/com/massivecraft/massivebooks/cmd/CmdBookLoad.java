@@ -27,7 +27,7 @@ public class CmdBookLoad extends MassiveBooksCommand
 		MBook mbook = this.argConcatFrom(0, ARMBook.get());
 		if (mbook == null) return;
 		
-		ItemStack old = this.arg(ARBookInHand.getQuill());
+		ItemStack old = this.arg(ARBookInHand.getEither());
 		if (old == null) return;
 		
 		ItemStack target = mbook.getItem();

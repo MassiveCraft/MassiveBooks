@@ -33,7 +33,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 		// Get item arg
 		ItemStack item = this.arg(ARBookInHand.getWritten());
 		if (item == null) return;
-		BookUtil.updateDisplayName(item);
+		BookUtil.updateBook(item);
 		
 		item = item.clone();
 		item.setAmount(1);

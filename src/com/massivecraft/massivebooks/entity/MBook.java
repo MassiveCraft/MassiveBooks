@@ -39,7 +39,9 @@ public class MBook extends Entity<MBook, String>
 	}
 	public void setItem(ItemStack item)
 	{
-		this.item = fixItem(item);
+		item = fixItem(item);
+		BookUtil.setDisplayName(item, null);
+		this.item = item;
 		this.changed();
 	}
 	
@@ -52,6 +54,7 @@ public class MBook extends Entity<MBook, String>
 		if (!BookUtil.hasBookMeta(item)) return null;
 		item = new ItemStack(item);
 		item.setAmount(1);
+		BookUtil.updateDisplayName(item);
 		return item;
 	}
 	

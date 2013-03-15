@@ -65,7 +65,7 @@ public class MainListener implements Listener
 			// ... do load the content into the hand of the player ...
 			ItemStack target = new ItemStack(itemFrameItem);
 			target.setAmount(itemInHand.getAmount());
-			BookUtil.updateDisplayName(target);
+			BookUtil.updateBook(target);
 			player.setItemInHand(target);
 			
 			// ... and inform of the successful frameload.
@@ -115,30 +115,30 @@ public class MainListener implements Listener
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(PlayerItemHeldEvent event)
 	{
-		BookUtil.updateDisplayNames(event.getPlayer());
+		BookUtil.updateBooks(event.getPlayer());
 	}
 	
 	// Can be cancelled but we don't care :P
 	@EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
 	public void updateBookDisplayNames(PlayerPickupItemEvent event)
 	{
-		BookUtil.updateDisplayName(event.getItem());
+		BookUtil.updateBook(event.getItem());
 	}
 	
 	// Can be cancelled but we don't care :P
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(InventoryClickEvent event)
 	{
-		BookUtil.updateDisplayNames(event.getInventory());
-		BookUtil.updateDisplayNames(event.getWhoClicked());
+		BookUtil.updateBooks(event.getInventory());
+		BookUtil.updateBooks(event.getWhoClicked());
 	}
 	
 	// Can be cancelled but we don't care :P
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(InventoryOpenEvent event)
 	{
-		BookUtil.updateDisplayNames(event.getInventory());
-		BookUtil.updateDisplayNames(event.getPlayer());
+		BookUtil.updateBooks(event.getInventory());
+		BookUtil.updateBooks(event.getPlayer());
 	}
 	
 }
