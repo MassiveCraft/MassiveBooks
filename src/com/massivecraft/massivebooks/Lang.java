@@ -85,6 +85,7 @@ public class Lang
 	
 	public static final String FRAME_CONTAINS_X = Txt.parse("%s");
 	public static final String SUCCESS_FRAMELOAD = Txt.parse("%s <i>was loaded");
+	public static final String SUCCESS_FRAMEUNLOAD = Txt.parse("%s <i>was unloaded");
 	
 	
 	
@@ -232,14 +233,20 @@ public class Lang
 	
 	
 	
-	
-	public static String getSuccessFrameload(ItemStack item)
-	{
-		return String.format(Lang.SUCCESS_FRAMELOAD, descDisplayName(item));
-	}
+
 	public static String getFrameContains(String displayname)
 	{
 		return String.format(Lang.FRAME_CONTAINS_X, displayname);
 	}
+	public static String getSuccessFrameload(ItemStack item)
+	{
+		return String.format(Lang.SUCCESS_FRAMELOAD, descDisplayName(item));
+	}
+	public static String getSuccessFrameunload(ItemStack item)
+	{
+		return String.format(Lang.SUCCESS_FRAMEUNLOAD, descDisplayName(item));
+	}
+	
+	
 	
 }

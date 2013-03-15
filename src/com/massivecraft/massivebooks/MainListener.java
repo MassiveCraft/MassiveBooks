@@ -87,13 +87,28 @@ public class MainListener implements Listener
 		// ... cancel to stop rotation ...
 		event.setCancelled(true);
 		
-		// ... do load the content into the hand of the player ...
-		ItemStack target = new ItemStack(item);
-		target.setAmount(itemInHand.getAmount());
-		player.setItemInHand(target);
-		
-		// ... and inform of the successful frameload.
-		player.sendMessage(Lang.getSuccessFrameload(target));
+		// ... unload or load ...
+		if (itemInHand.isSimilar(item))
+		{
+			// ... do unload ...
+			ItemStack target = new ItemStack(itemInHand);
+			BookUtil.clear(target);
+			player.setItemInHand(target);
+			
+			// ... and inform of the successful frameload.
+			player.sendMessage(Lang.getSuccessFrameunload(itemInHand));
+		}
+		else
+		{
+			// ... do load the content into the hand of the player ...
+			ItemStack target = new ItemStack(item);
+			target.setAmount(itemInHand.getAmount());
+			player.setItemInHand(target);
+			
+			// ... and inform of the successful frameload.
+			player.sendMessage(Lang.getSuccessFrameload(target));
+		}
+
 		return true;
 	}
 	
