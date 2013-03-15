@@ -237,9 +237,9 @@ public class Lang
 	{
 		return String.format(Lang.SUCCESS_FRAMELOAD, descDisplayName(item));
 	}
-	public static String getFrameContains(ItemStack item)
+	public static String getFrameContains(String displayname)
 	{
-		return String.format(Lang.FRAME_CONTAINS_X, descDisplayName(item));
+		return String.format(Lang.FRAME_CONTAINS_X, displayname);
 	}
 	
 }

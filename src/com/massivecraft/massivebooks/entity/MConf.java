@@ -36,6 +36,15 @@ public class MConf extends Entity<MConf, String>
 		this.newPlayerCommands = that.newPlayerCommands;
 		this.permToCopyCost = that.permToCopyCost;
 		
+		this.itemFrameLoadIfSneakTrue = that.itemFrameLoadIfSneakTrue;
+		this.itemFrameLoadIfSneakFalse = that.itemFrameLoadIfSneakFalse;
+		
+		this.itemFrameDisplaynameIfSneakTrue = that.itemFrameDisplaynameIfSneakTrue;
+		this.itemFrameDisplaynameIfSneakFalse = that.itemFrameDisplaynameIfSneakFalse;
+		
+		this.itemFrameRotateIfSneakTrue = that.itemFrameRotateIfSneakTrue;
+		this.itemFrameRotateIfSneakFalse = that.itemFrameRotateIfSneakFalse;
+		
 		return this;
 	}
 	
@@ -74,6 +83,36 @@ public class MConf extends Entity<MConf, String>
 		if (perm2val.size() == 0) return 0;
 		return PermUtil.pickFirstVal(sender, perm2val);
 	}
+	
+	// ItemFrame Load
+	
+	private boolean itemFrameLoadIfSneakTrue = false;
+	public boolean isItemFrameLoadIfSneakTrue() { return this.itemFrameLoadIfSneakTrue; }
+	public void itemFrameLoadIfSneakTrue(boolean itemFrameLoadIfSneakTrue) { this.itemFrameLoadIfSneakTrue = itemFrameLoadIfSneakTrue; this.changed(); }
+	
+	private boolean itemFrameLoadIfSneakFalse = true;
+	public boolean isItemFrameLoadIfSneakFalse() { return this.itemFrameLoadIfSneakFalse; }
+	public void itemFrameLoadIfSneakFalse(boolean itemFrameLoadIfSneakFalse) { this.itemFrameLoadIfSneakFalse = itemFrameLoadIfSneakFalse; this.changed(); }
+
+	// ItemFrame Displayname
+	
+	private boolean itemFrameDisplaynameIfSneakTrue = false;
+	public boolean isItemFrameDisplaynameIfSneakTrue() { return this.itemFrameDisplaynameIfSneakTrue; }
+	public void itemFrameDisplaynameIfSneakTrue(boolean itemFrameDisplaynameIfSneakTrue) { this.itemFrameDisplaynameIfSneakTrue = itemFrameDisplaynameIfSneakTrue; this.changed(); }
+	
+	private boolean itemFrameDisplaynameIfSneakFalse = true;
+	public boolean isItemFrameDisplaynameIfSneakFalse() { return this.itemFrameDisplaynameIfSneakFalse; }
+	public void itemFrameDisplaynameIfSneakFalse(boolean itemFrameDisplaynameIfSneakFalse) { this.itemFrameDisplaynameIfSneakFalse = itemFrameDisplaynameIfSneakFalse; this.changed(); }
+	
+	// ItemFrame Rotate
+	
+	private boolean itemFrameRotateIfSneakTrue = true;
+	public boolean isItemFrameRotateIfSneakTrue() { return this.itemFrameRotateIfSneakTrue; }
+	public void itemFrameRotateIfSneakTrue(boolean itemFrameRotateIfSneakTrue) { this.itemFrameRotateIfSneakTrue = itemFrameRotateIfSneakTrue; this.changed(); }
+	
+	private boolean itemFrameRotateIfSneakFalse = true;
+	public boolean isItemFrameRotateIfSneakFalse() { return this.itemFrameRotateIfSneakFalse; }
+	public void itemFrameRotateIfSneakFalse(boolean itemFrameRotateIfSneakFalse) { this.itemFrameRotateIfSneakFalse = itemFrameRotateIfSneakFalse; this.changed(); }
 	
 	// -------------------------------------------- //
 	// UTILS

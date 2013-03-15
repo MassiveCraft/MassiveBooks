@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.inventory.Inventory;
@@ -92,6 +93,17 @@ public class BookUtil
 	}
 	
 	// One Book
+	
+	public static boolean updateBook(ItemFrame itemFrame)
+	{
+		ItemStack item = itemFrame.getItem();
+		if (updateBook(item))
+		{
+			itemFrame.setItem(item);
+			return true;
+		}
+		return false;
+	}
 	
 	public static boolean updateBook(Item item)
 	{
