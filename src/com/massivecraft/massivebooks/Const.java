@@ -7,6 +7,7 @@ public class Const
 	public static final String COLLECTION_BASENAME_ = COLLECTION_BASENAME+"_";
 	public static final String COLLECTION_BASENAME_CONF = COLLECTION_BASENAME_+"conf";
 	public static final String COLLECTION_BASENAME_BOOK = COLLECTION_BASENAME_+"book";
+	public static final String COLLECTION_BASENAME_PLAYER = COLLECTION_BASENAME_+"player";
 	
 	// Powertool State Lore Marker
 	public static final String POWERTOOL = "POWERTOOL";
