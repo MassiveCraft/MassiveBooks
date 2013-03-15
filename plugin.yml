@@ -19,6 +19,10 @@ permissions:
   massivebooks.author.other: {description: change author for a book by another author, default: false}
   massivebooks.copy: {description: copy a book, default: false}
   massivebooks.copy.other: {description: copy a book by another author, default: false}
+  massivebooks.list: {description: list saved books, default: false}
+  massivebooks.load: {description: load a saved book, default: false}
+  massivebooks.save: {description: save a book, default: false}
+  massivebooks.delete: {description: delete a saved book, default: false}
   massivebooks.powertool: {description: set powertool state for a book, default: false}
   massivebooks.powertool.other: {description: set powertool state for a book by another author, default: false}
 # -------------------------------------------- #
@@ -40,6 +44,10 @@ permissions:
       massivebooks.author.other: true
       massivebooks.copy: true
       massivebooks.copy.other: true
+      massivebooks.list: true
+      massivebooks.load: true
+      massivebooks.save: true
+      massivebooks.delete: true
       massivebooks.powertool: true
       massivebooks.powertool.other: true
 # -------------------------------------------- #
@@ -66,6 +74,8 @@ permissions:
       massivebooks.title.other: true
       massivebooks.author: true
       massivebooks.author.other: true
+      massivebooks.save: true
+      massivebooks.delete: true
       massivebooks.powertool: true
       massivebooks.powertool.other: true
   massivebooks.kit.rank0:
@@ -79,6 +89,8 @@ permissions:
       massivebooks.title: true
       massivebooks.copy: true
       massivebooks.copy.other: true
+      massivebooks.list: true
+      massivebooks.load: true
   massivebooks.kit.default:
     default: true
     children:

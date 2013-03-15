@@ -30,6 +30,11 @@ public enum Perm
 	COPY("copy"),
 	COPY_OTHER("copy.other"),
 	
+	LIST("list"),
+	LOAD("load"),
+	SAVE("list"),
+	DELETE("delete"),
+	
 	POWERTOOL("powertool"),
 	POWERTOOL_OTHER("powertool.other"),
 	
