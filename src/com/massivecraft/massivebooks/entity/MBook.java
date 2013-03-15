@@ -2,6 +2,7 @@ package com.massivecraft.massivebooks.entity;
 
 import org.bukkit.inventory.ItemStack;
 
+import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.mcore.store.Entity;
 
 public class MBook extends Entity<MBook, String>
@@ -48,8 +49,7 @@ public class MBook extends Entity<MBook, String>
 	
 	public static ItemStack fixItem(ItemStack item)
 	{
-		if (item == null) throw new NullPointerException("item was null");
-		// TODO: Check that it's of the correct type as well?
+		if (!BookUtil.hasBookMeta(item)) return null;
 		item = item.clone();
 		item.setAmount(1);
 		return item;
