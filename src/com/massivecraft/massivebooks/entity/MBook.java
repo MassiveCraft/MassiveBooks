@@ -50,7 +50,7 @@ public class MBook extends Entity<MBook, String>
 	public static ItemStack fixItem(ItemStack item)
 	{
 		if (!BookUtil.hasBookMeta(item)) return null;
-		item = item.clone();
+		item = new ItemStack(item);
 		item.setAmount(1);
 		return item;
 	}

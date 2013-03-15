@@ -15,6 +15,7 @@ public class CmdBookDelete extends MassiveBooksCommand
 		super();
 		this.addAliases(ConfServer.aliasesBookDelete);
 		this.addRequiredArg("title");
+		this.setErrorOnToManyArgs(false);
 		this.addRequirements(ReqHasPerm.get(Perm.DELETE.node));
 	}
 	

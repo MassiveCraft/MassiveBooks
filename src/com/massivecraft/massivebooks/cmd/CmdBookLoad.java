@@ -16,6 +16,7 @@ public class CmdBookLoad extends MassiveBooksCommand
 		super();
 		this.addAliases(ConfServer.aliasesBookLoad);
 		this.addRequiredArg("title");
+		this.setErrorOnToManyArgs(false);
 		this.addRequirements(ReqHasPerm.get(Perm.LOAD.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
