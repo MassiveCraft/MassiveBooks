@@ -124,10 +124,9 @@ public class CmdBookCopy extends MassiveBooksCommand
 		// (add book copies)
 		InventoryUtil.addItemTimes(me.getInventory(), item, times);
 		
-		// Inform
-		sendMessage(String.format(Lang.SUCCESS_COPY1, times));
-		sendMessage(Lang.SUCCESS_COPY2);
-		sendMessage(String.format(Lang.SUCCESS_COPY3, moneyRequired, booksRequired, inksacsRequired, feathersRequired));
+		// Inform		
+		sendMessage(Lang.getSuccessCopyCopies(times));
+		sendMessage(Lang.getSuccessCopyResources(moneyRequired, booksRequired, inksacsRequired, feathersRequired));
 	}
 	
 	// -------------------------------------------- //

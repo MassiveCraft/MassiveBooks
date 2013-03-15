@@ -2,6 +2,7 @@ package com.massivecraft.massivebooks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -13,6 +14,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class MainListener implements Listener
 {
@@ -31,6 +33,49 @@ public class MainListener implements Listener
 	public void setup()
 	{
 		Bukkit.getPluginManager().registerEvents(this, MassiveBooks.get());
+	}
+	
+	// -------------------------------------------- //
+	// ITEM FRAME LOADING
+	// -------------------------------------------- //
+	
+	@EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+	public void itemFrameLoading(PlayerInteractEntityEvent event)
+	{
+		// If a player is interacting with an item frame ...
+		Entity entity = event.getRightClicked();
+		if (!(entity instanceof ItemFrame)) return;
+		ItemFrame itemFrame = (ItemFrame)entity;
+		
+		// ... and the player isn't sneaking ...
+		final Player player = event.getPlayer();
+		if (player.isSneaking()) return;
+		
+		// ... and there is something with BookMeta in the item frame ...
+		ItemStack itemFrameItem = itemFrame.getItem();
+		if (!BookUtil.hasBookMeta(itemFrameItem)) return;
+		
+		// ... cancel to stop rotation ...
+		event.setCancelled(true);
+		
+		// ... then if the player is holding something with BookMeta ...
+		ItemStack itemInHand = player.getItemInHand();
+		if (BookUtil.hasBookMeta(itemInHand))
+		{
+			// ... do load the content into the hand of the player ...
+			ItemStack target = new ItemStack(itemFrameItem);
+			target.setAmount(itemInHand.getAmount());
+			BookUtil.updateDisplayName(target);
+			player.setItemInHand(target);
+			
+			// ... and inform of the successful frameload.
+			player.sendMessage(Lang.getSuccessFrameload(target));
+		}
+		else
+		{
+			// ... otherwise inform the player that this feature exist.
+			player.sendMessage(Lang.getFrameContains(itemFrameItem));
+		}
 	}
 	
 	// -------------------------------------------- //
@@ -95,6 +140,5 @@ public class MainListener implements Listener
 		BookUtil.updateDisplayNames(event.getInventory());
 		BookUtil.updateDisplayNames(event.getPlayer());
 	}
-	
 	
 }

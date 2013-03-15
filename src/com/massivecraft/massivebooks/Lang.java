@@ -1,5 +1,8 @@
 package com.massivecraft.massivebooks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.mcore.mixin.Mixin;
@@ -54,11 +57,10 @@ public class Lang
 	public static final String RESOURCE_INKSACS = Txt.parse("inc sacs");
 	public static final String RESOURCE_FEATHERS = Txt.parse("feathers");
 	public static final String RESOURCE_ROOM = Txt.parse("inventory space");
-	public static final String SUCCESS_COPY1 = Txt.parse("<g>Created <h>%d <g>copies of the book.");
-	public static final String SUCCESS_COPY2 = Txt.parse("<i>These resources were used:");
-	public static final String SUCCESS_COPY3 = Txt.parse("<k>Money: <v>%f <k>Books: <v>%d <k>Ink Sacs: <v>%d <k>Feathers: <v>%d");
-	
 	public static final String REQUIRED_X_POSSESSED_Y_MISSING_Z = Txt.parse("<k>Required: <v>%s <k>Possessed: <v>%s <k>Missing: <v>%s");
+	public static final String SUCCESS_COPY_COPIES_X = Txt.parse("<g>Created <h>%d <g>copies of the book.");
+	public static final String SUCCESS_COPY_RESOURCES_X = Txt.parse("<i>Resources used: %s");
+	public static final String SUCCESS_COPY_RESOURCES_ENTRY_X_Y = Txt.parse("<k>%s: <v>%s");
 	
 	public static final String POWERTOOL_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> The book is now a powertool.");
 	public static final String POWERTOOL_CHANGED_TO_FALSE = Txt.parse("<rose>FALSE<i> The book is no longer a powertool.");
@@ -74,6 +76,11 @@ public class Lang
 	public static final String POWERTOOL_COLOR_YOU = Txt.parse("<gold>");
 	public static final String POWERTOOL_COLOR_COMMAND = Txt.parse("<c>");
 	public static final String POWERTOOL_COLOR_CHAT = Txt.parse("<white>");
+	
+	public static final String FRAME_CONTAINS_X = Txt.parse("%s");
+	public static final String SUCCESS_FRAMELOAD = Txt.parse("%s <i>was loaded");
+	
+	
 	
 	// -------------------------------------------- //
 	// METHODS
@@ -182,6 +189,51 @@ public class Lang
 	public static String getSuccessDelete(ItemStack item)
 	{
 		return String.format(Lang.SUCCESS_DELETED, descDisplayName(item));
+	}
+	
+	
+	public static String getSuccessCopyCopies(int i)
+	{
+		return String.format(Lang.SUCCESS_COPY_COPIES_X, i);
+	}
+	
+	public static String getSuccessCopyResources(double moneyRequired, int booksRequired, int inksacsRequired, int feathersRequired)
+	{
+		List<String> entries = new ArrayList<String>();
+		
+		if (moneyRequired > 0)
+		{
+			entries.add(String.format(Lang.SUCCESS_COPY_RESOURCES_ENTRY_X_Y, Lang.RESOURCE_MONEY, moneyRequired));
+		}
+		
+		if (booksRequired > 0)
+		{
+			entries.add(String.format(Lang.SUCCESS_COPY_RESOURCES_ENTRY_X_Y, Lang.RESOURCE_BOOKS, booksRequired));
+		}
+		
+		if (inksacsRequired > 0)
+		{
+			entries.add(String.format(Lang.SUCCESS_COPY_RESOURCES_ENTRY_X_Y, Lang.RESOURCE_INKSACS, inksacsRequired));
+		}
+		
+		if (feathersRequired > 0)
+		{
+			entries.add(String.format(Lang.SUCCESS_COPY_RESOURCES_ENTRY_X_Y, Lang.RESOURCE_FEATHERS, feathersRequired));
+		}
+		
+		return String.format(Lang.SUCCESS_COPY_RESOURCES_X, Txt.implode(entries, " "));
+	}
+	
+	
+	
+	
+	public static String getSuccessFrameload(ItemStack item)
+	{
+		return String.format(Lang.SUCCESS_FRAMELOAD, descDisplayName(item));
+	}
+	public static String getFrameContains(ItemStack item)
+	{
+		return String.format(Lang.FRAME_CONTAINS_X, descDisplayName(item));
 	}
 	
 }

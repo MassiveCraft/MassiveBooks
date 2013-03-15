@@ -337,7 +337,11 @@ public class BookUtil
 	public static List<String> powertoolGetRawlines(ItemStack item) throws IllegalArgumentException
 	{
 		List<String> ret = new ArrayList<String>();
-		for (String page : getPages(item))
+		
+		List<String> pages = getPages(item);
+		if (pages == null) return ret;
+		
+		for (String page : pages)
 		{
 			if (page == null) break;
 			if (page.trim().length() <= 2) break;
@@ -349,6 +353,7 @@ public class BookUtil
 				ret.add(line);
 			}
 		}
+		
 		return ret;
 	}
 	
