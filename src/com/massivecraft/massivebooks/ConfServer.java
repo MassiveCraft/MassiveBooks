@@ -23,6 +23,7 @@ public class ConfServer extends SimpleConfig
 	public static List<String> aliasesBookLoad = MUtil.list("load");
 	public static List<String> aliasesBookSave = MUtil.list("save");
 	public static List<String> aliasesBookDelete = MUtil.list("delete");
+	public static List<String> aliasesBookAutoupdate = MUtil.list("autoupdate");
 	public static List<String> aliasesBookPowertool = MUtil.list("pt", "powertool");
 	
 	// -------------------------------------------- //

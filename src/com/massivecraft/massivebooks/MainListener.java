@@ -2,6 +2,7 @@ package com.massivecraft.massivebooks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,8 +14,12 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
+
+import com.massivecraft.massivebooks.entity.MPlayer;
+import com.massivecraft.mcore.mixin.Mixin;
 
 public class MainListener implements Listener
 {
@@ -106,7 +111,34 @@ public class MainListener implements Listener
 	}
 	
 	// -------------------------------------------- //
-	// UPDATE BOOK DISPLAY NAMES
+	// AUTOUPDATE: JOIN WARN OR TOGGLE 
+	// -------------------------------------------- //
+	
+	// Can't be cancelled
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void autoupdateJoinWarnOrToggle(PlayerJoinEvent event)
+	{
+		if (!Mixin.isActualJoin(event)) return;
+		
+		final Player player = event.getPlayer();
+		MPlayer mplayer = MPlayer.get(player);
+		if (mplayer.isUsingAutoUpdate()) return;
+		
+		if (Perm.AUTOUPDATE.has(player, false))
+		{
+			// Warn
+			player.sendMessage(Lang.AUTOUPDATE_JOINWARN);
+		}
+		else
+		{
+			// Toggle
+			mplayer.setUsingAutoUpdate(true, true, false);
+		}
+		
+	}
+	
+	// -------------------------------------------- //
+	// AUTOUPDATE: PERFORM 
 	// -------------------------------------------- //
 	// The custom book naming system makes use of display names and other volatile information.
 	// Thus we attempt to update the display names kinda often!
@@ -115,13 +147,21 @@ public class MainListener implements Listener
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(PlayerItemHeldEvent event)
 	{
-		BookUtil.updateBooks(event.getPlayer());
+		final Player player = event.getPlayer();
+		MPlayer mplayer = MPlayer.get(player);
+		if (!mplayer.isUsingAutoUpdate()) return;
+		
+		BookUtil.updateBooks(player);
 	}
 	
 	// Can be cancelled but we don't care :P
 	@EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
 	public void updateBookDisplayNames(PlayerPickupItemEvent event)
 	{
+		final Player player = event.getPlayer();
+		MPlayer mplayer = MPlayer.get(player);
+		if (!mplayer.isUsingAutoUpdate()) return;
+		
 		BookUtil.updateBook(event.getItem());
 	}
 	
@@ -129,6 +169,12 @@ public class MainListener implements Listener
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(InventoryClickEvent event)
 	{
+		final HumanEntity human = event.getWhoClicked();
+		if (!(human instanceof Player)) return;
+		final Player player = (Player)human;
+		MPlayer mplayer = MPlayer.get(player);
+		if (!mplayer.isUsingAutoUpdate()) return;
+		
 		BookUtil.updateBooks(event.getInventory());
 		BookUtil.updateBooks(event.getWhoClicked());
 	}
@@ -137,8 +183,14 @@ public class MainListener implements Listener
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updateBookDisplayNames(InventoryOpenEvent event)
 	{
+		final HumanEntity human = event.getPlayer();
+		if (!(human instanceof Player)) return;
+		final Player player = (Player)human;
+		MPlayer mplayer = MPlayer.get(player);
+		if (!mplayer.isUsingAutoUpdate()) return;
+		
 		BookUtil.updateBooks(event.getInventory());
-		BookUtil.updateBooks(event.getPlayer());
+		BookUtil.updateBooks(player);
 	}
 	
 }

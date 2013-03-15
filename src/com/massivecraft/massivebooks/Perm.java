@@ -32,7 +32,7 @@ public enum Perm
 	
 	LIST("list"),
 	LOAD("load"),
-	SAVE("list"),
+	SAVE("save"),
 	DELETE("delete"),
 	
 	AUTOUPDATE("autoupdate"),

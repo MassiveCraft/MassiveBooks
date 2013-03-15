@@ -49,6 +49,12 @@ public class Lang
 	public static final String SUCCESS_DELETED = Txt.parse("<g>Deleted %s<g>.");
 	public static final String BOOK_MUST_HAVE_TITLE = Txt.parse("<b>The book must have a title.");
 	
+	public static final String AUTOUPDATE_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> Autoupdate is now true.");
+	public static final String AUTOUPDATE_CHANGED_TO_FALSE = Txt.parse("<rose>FALSE<i> Autoupdate is now false.");
+	public static final String AUTOUPDATE_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> Autoupdate was already true.");
+	public static final String AUTOUPDATE_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> Autoupdate was already false.");
+	public static final String AUTOUPDATE_JOINWARN = Txt.parse("<rose>WARNING: <i>You have disabled autoupdate for books. You may want to toggle it on.");
+	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
 	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");
 	public static final String FAILED_TO_REMOVE_X = Txt.parse("<b>Failed to remomve %s.");

@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks.entity;
 
+import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.mcore.store.SenderEntity;
 
 public class MPlayer extends SenderEntity<MPlayer>
@@ -38,6 +39,44 @@ public class MPlayer extends SenderEntity<MPlayer>
 	
 	private boolean usingAutoUpdate = true;
 	public boolean isUsingAutoUpdate() { return this.usingAutoUpdate; }
-	public void setUsingAutoUpdate(boolean usingAutoUpdate) { this.usingAutoUpdate = usingAutoUpdate; }
+	public void setUsingAutoUpdate(boolean usingAutoUpdate)
+	{
+		this.setUsingAutoUpdate(usingAutoUpdate, false, false);
+	}
+	
+	public void setUsingAutoUpdate(boolean usingAutoUpdate, boolean verbooseChange, boolean verbooseSame)
+	{
+		boolean same = (this.usingAutoUpdate == usingAutoUpdate);
+		if (same)
+		{
+			if (verbooseSame)
+			{
+				if (usingAutoUpdate)
+				{
+					this.sendMessage(Lang.AUTOUPDATE_ALREADY_TRUE);
+				}
+				else
+				{
+					this.sendMessage(Lang.AUTOUPDATE_ALREADY_FALSE);
+				}
+			}
+			return;
+		}
+		
+		this.usingAutoUpdate = usingAutoUpdate;
+		this.changed();
+		
+		if (verbooseChange)
+		{
+			if (usingAutoUpdate)
+			{
+				this.sendMessage(Lang.AUTOUPDATE_CHANGED_TO_TRUE);
+			}
+			else
+			{
+				this.sendMessage(Lang.AUTOUPDATE_CHANGED_TO_FALSE);
+			}
+		}
+	}
 
 }
