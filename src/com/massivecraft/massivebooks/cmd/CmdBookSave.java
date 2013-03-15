@@ -30,7 +30,7 @@ public class CmdBookSave extends MassiveBooksCommand
 		String title = BookUtil.getTitle(item);
 		if (title == null)
 		{
-			msg("<b>The book must have a title.");
+			sendMessage(Lang.BOOK_MUST_HAVE_TITLE);
 			return;
 		}
 		

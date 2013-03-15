@@ -44,6 +44,7 @@ public class Lang
 	public static final String SUCCESS_LOAD = Txt.parse("<g>Loaded %s<g>.");
 	public static final String SUCCESS_SAVE = Txt.parse("<g>Saved %s<g>.");
 	public static final String SUCCESS_DELETED = Txt.parse("<g>Deleted %s<g>.");
+	public static final String BOOK_MUST_HAVE_TITLE = Txt.parse("<b>The book must have a title.");
 	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
 	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");
