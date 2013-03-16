@@ -3,6 +3,7 @@ package com.massivecraft.massivebooks.cmd;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -26,7 +27,7 @@ public class CmdBookGive extends MassiveBooksCommand
 		this.addAliases(ConfServer.aliasesBookGive);
 		this.addRequiredArg("player");
 		this.addRequiredArg("amount");
-		this.addRequiredArg("title");
+		this.addOptionalArg("title", "*bookandquill*");
 		this.setErrorOnToManyArgs(false);
 		this.addRequirements(ReqHasPerm.get(Perm.GIVE.node));
 	}
@@ -56,23 +57,29 @@ public class CmdBookGive extends MassiveBooksCommand
 			}
 		}
 		
-		// What books should we give?
-		List<MBook> mbooks = new ArrayList<MBook>();
-		if (this.argConcatFrom(2).toLowerCase().equals("all"))
+		// What items should we give?
+		List<ItemStack> items = new ArrayList<ItemStack>();
+		if (!this.argIsSet(2))
 		{
-			mbooks.addAll(MBookColl.get().getAll());
+			items.add(new ItemStack(Material.BOOK_AND_QUILL));
+		}
+		else if (this.argConcatFrom(2).toLowerCase().equals("all"))
+		{
+			for (MBook mbook : MBookColl.get().getAll())
+			{
+				items.add(mbook.getItem());
+			}
 		}
 		else
 		{
-			MBook singlembook = this.argConcatFrom(2, ARMBook.get());
-			if (singlembook == null) return;
-			mbooks.add(singlembook);
+			MBook mbook = this.argConcatFrom(2, ARMBook.get());
+			if (mbook == null) return;
+			items.add(mbook.getItem());
 		}
 		
-		// Now for each book ...
-		for (MBook mbook : mbooks)
+		// Now for each item ...
+		for (ItemStack item : items)
 		{
-			ItemStack item = mbook.getItem();
 			PlayerInventory inventory = player.getInventory();
 			if (ensure && inventory.containsAtLeast(item, 1))
 			{
