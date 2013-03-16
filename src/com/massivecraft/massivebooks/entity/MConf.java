@@ -58,7 +58,7 @@ public class MConf extends Entity<MConf, String>
 	
 	// New Player Commands
 	
-	private List<String> newPlayerCommands = MUtil.list("/book ensureall {p}");
+	private List<String> newPlayerCommands = MUtil.list("/book give {p} ensure all");
 	public List<String> getNewPlayerCommands() { return new ArrayList<String>(this.newPlayerCommands); }
 	public void setNewPlayerCommands(List<String> newPlayerCommands) { this.newPlayerCommands = new ArrayList<String>(newPlayerCommands); this.changed(); }
 	

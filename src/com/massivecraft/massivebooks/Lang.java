@@ -50,6 +50,11 @@ public class Lang
 	public static final String SUCCESS_DELETED = Txt.parse("<g>Deleted %s<g>.");
 	public static final String BOOK_MUST_HAVE_TITLE = Txt.parse("<b>The book must have a title.");
 	
+	public static final String AMOUNT_MUST_BE_POSITIVE = Txt.parse("<b>amount must be positive");
+	public static final String X_ALREADY_HAVE_Y = Txt.parse("<i>%s <i>already have %s<i>.");
+	public static final String NOT_ENOUGH_ROOM_FOR_X_Y = Txt.parse("<b>Not enough room for <h>%d <b> %s<b>.");
+	public static final String X_GAVE_Y_Z_L = Txt.parse("<g>%s <g>gave %s <h>%s <g>%s<g>.");
+	
 	public static final String AUTOUPDATE_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> Autoupdate is now true.");
 	public static final String AUTOUPDATE_CHANGED_TO_FALSE = Txt.parse("<rose>FALSE<i> Autoupdate is now false.");
 	public static final String AUTOUPDATE_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> Autoupdate was already true.");
@@ -202,6 +207,23 @@ public class Lang
 	public static String getSuccessDelete(ItemStack item)
 	{
 		return String.format(Lang.SUCCESS_DELETED, descDisplayName(item));
+	}
+	
+	//
+	
+	public static String getAlreadyHave(String givee, ItemStack item)
+	{
+		return String.format(Lang.X_ALREADY_HAVE_Y, givee, descDisplayName(item));
+	}
+	
+	public static String getNotEnoughRoomFor(int amount, ItemStack item)
+	{
+		return String.format(Lang.NOT_ENOUGH_ROOM_FOR_X_Y, amount, descDisplayName(item));
+	}
+	
+	public static String getGave(String from, String to, int amount, ItemStack item)
+	{
+		return String.format(Lang.X_GAVE_Y_Z_L, from, to, amount, descDisplayName(item));
 	}
 	
 	//

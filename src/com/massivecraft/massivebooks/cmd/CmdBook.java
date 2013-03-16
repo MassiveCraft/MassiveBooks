@@ -16,6 +16,7 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookCopy cmdBookCopy = new CmdBookCopy();
 	public CmdBookList cmdBookList = new CmdBookList();
 	public CmdBookLoad cmdBookLoad = new CmdBookLoad();
+	public CmdBookGive cmdBookGive = new CmdBookGive();
 	public CmdBookSave cmdBookSave = new CmdBookSave();
 	public CmdBookDelete cmdBookDelete = new CmdBookDelete();
 	public CmdBookAutoupdate cmdBookAutoupdate = new CmdBookAutoupdate();
@@ -41,6 +42,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addSubCommand(this.cmdBookCopy);
 		this.addSubCommand(this.cmdBookList);
 		this.addSubCommand(this.cmdBookLoad);
+		this.addSubCommand(this.cmdBookGive);
 		this.addSubCommand(this.cmdBookSave);
 		this.addSubCommand(this.cmdBookDelete);
 		this.addSubCommand(this.cmdBookAutoupdate);

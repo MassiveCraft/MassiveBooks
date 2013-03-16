@@ -21,6 +21,7 @@ public class ConfServer extends SimpleConfig
 	public static List<String> aliasesBookCopy = MUtil.list("copy");
 	public static List<String> aliasesBookList = MUtil.list("list");
 	public static List<String> aliasesBookLoad = MUtil.list("load");
+	public static List<String> aliasesBookGive = MUtil.list("give");
 	public static List<String> aliasesBookSave = MUtil.list("save");
 	public static List<String> aliasesBookDelete = MUtil.list("delete");
 	public static List<String> aliasesBookAutoupdate = MUtil.list("autoupdate");
@@ -34,4 +35,3 @@ public class ConfServer extends SimpleConfig
 	public ConfServer() { super(MassiveBooks.get()); }
 	
 }
-
