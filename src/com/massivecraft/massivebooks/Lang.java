@@ -151,31 +151,38 @@ public class Lang
 		return ret;
 	}
 	
+	public static String descDisplayNameNeverNull(ItemStack item)
+	{
+		String ret = descDisplayName(item);
+		if (ret == null) ret = Txt.getMaterialName(item.getType());
+		return ret;
+	}
+	
 	public static String getSameUnlock(ItemStack current)
 	{
-		return String.format(Lang.SAME_UNLOCK_X, descDisplayName(current));
+		return String.format(Lang.SAME_UNLOCK_X, descDisplayNameNeverNull(current));
 	}
 	public static String getAlterUnlock(ItemStack before)
 	{
-		return String.format(Lang.ALTER_UNLOCK_X, descDisplayName(before));
+		return String.format(Lang.ALTER_UNLOCK_X, descDisplayNameNeverNull(before));
 	}
 	
 	public static String getSameLock(ItemStack current)
 	{
-		return String.format(Lang.SAME_LOCK_X, descDisplayName(current));
+		return String.format(Lang.SAME_LOCK_X, descDisplayNameNeverNull(current));
 	}
 	public static String getAlterLock(ItemStack before)
 	{
-		return String.format(Lang.ALTER_LOCK_X, descDisplayName(before));
+		return String.format(Lang.ALTER_LOCK_X, descDisplayNameNeverNull(before));
 	}
 	
 	public static String getSameClear(ItemStack current)
 	{
-		return String.format(Lang.SAME_CLEAR_X, descDisplayName(current));
+		return String.format(Lang.SAME_CLEAR_X, descDisplayNameNeverNull(current));
 	}
 	public static String getAlterClear(ItemStack before)
 	{
-		return String.format(Lang.ALTER_CLEAR_X, descDisplayName(before));
+		return String.format(Lang.ALTER_CLEAR_X, descDisplayNameNeverNull(before));
 	}
 	
 	public static String getSameTitle(String title)
@@ -198,32 +205,32 @@ public class Lang
 	
 	public static String getSuccessLoad(ItemStack item)
 	{
-		return String.format(Lang.SUCCESS_LOAD, descDisplayName(item));
+		return String.format(Lang.SUCCESS_LOAD, descDisplayNameNeverNull(item));
 	}
 	public static String getSuccessSave(ItemStack item)
 	{
-		return String.format(Lang.SUCCESS_SAVE, descDisplayName(item));
+		return String.format(Lang.SUCCESS_SAVE, descDisplayNameNeverNull(item));
 	}
 	public static String getSuccessDelete(ItemStack item)
 	{
-		return String.format(Lang.SUCCESS_DELETED, descDisplayName(item));
+		return String.format(Lang.SUCCESS_DELETED, descDisplayNameNeverNull(item));
 	}
 	
 	//
 	
 	public static String getAlreadyHave(String givee, ItemStack item)
 	{
-		return String.format(Lang.X_ALREADY_HAVE_Y, givee, descDisplayName(item));
+		return String.format(Lang.X_ALREADY_HAVE_Y, givee, descDisplayNameNeverNull(item));
 	}
 	
 	public static String getNotEnoughRoomFor(int amount, ItemStack item)
 	{
-		return String.format(Lang.NOT_ENOUGH_ROOM_FOR_X_Y, amount, descDisplayName(item));
+		return String.format(Lang.NOT_ENOUGH_ROOM_FOR_X_Y, amount, descDisplayNameNeverNull(item));
 	}
 	
 	public static String getGave(String from, String to, int amount, ItemStack item)
 	{
-		return String.format(Lang.X_GAVE_Y_Z_L, from, to, amount, descDisplayName(item));
+		return String.format(Lang.X_GAVE_Y_Z_L, from, to, amount, descDisplayNameNeverNull(item));
 	}
 	
 	//
@@ -268,11 +275,11 @@ public class Lang
 	}
 	public static String getFrameLoad(ItemStack item)
 	{
-		return String.format(Lang.FRAME_LOAD_X, descDisplayName(item));
+		return String.format(Lang.FRAME_LOAD_X, descDisplayNameNeverNull(item));
 	}
 	public static String getFrameUnload(ItemStack item)
 	{
-		return String.format(Lang.FRAME_UNLOAD_X, descDisplayName(item));
+		return String.format(Lang.FRAME_UNLOAD_X, descDisplayNameNeverNull(item));
 	}
 	public static String getFrameHelp()
 	{
