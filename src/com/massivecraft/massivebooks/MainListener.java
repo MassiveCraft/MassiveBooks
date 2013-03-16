@@ -104,7 +104,7 @@ public class MainListener implements Listener
 			player.sendMessage(Lang.getFrameLoad(target));
 		}
 		// ... else if the player is holding an educated but invalid guess ...
-		else if (itemInHand.getType() == Material.WRITTEN_BOOK || itemInHand.getType() == Material.BOOK)
+		else if (itemInHand.getType() == Material.WRITTEN_BOOK || itemInHand.getType() == Material.BOOK_AND_QUILL || itemInHand.getType() == Material.BOOK)
 		{
 			// ... do help.
 			player.sendMessage(Lang.getFrameHelp());

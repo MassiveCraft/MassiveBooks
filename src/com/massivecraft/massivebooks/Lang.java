@@ -36,7 +36,7 @@ public class Lang
 	public static final String ALTER_LOCK_X = Txt.parse("%s <g>is now locked.");
 	
 	public static final String SAME_CLEAR_X = Txt.parse("%s <g>is already cleared.");
-	public static final String ALTER_CLEAR_X = Txt.parse("%s <g>is now cleared.");
+	public static final String ALTER_CLEAR_X = Txt.parse("%s <g>was cleared.");
 	
 	public static final String SAME_TITLE_X = Txt.parse("<g>The title is already %s<g>.");
 	public static final String ALTER_TITLE_X_Y = Txt.parse("<g>Changed title from %s <g>to %s<g>.");
