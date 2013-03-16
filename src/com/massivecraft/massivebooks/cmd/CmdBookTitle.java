@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks.cmd;
 
+import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
@@ -29,7 +30,15 @@ public class CmdBookTitle extends MassiveBooksCommand
 		if (item == null) return;
 		
 		String target = this.argConcatFrom(0);
-		target = Txt.parse(target);
+		String targetParsed = Txt.parse(target);
+		boolean usingColor = (!ChatColor.stripColor(targetParsed).equals(targetParsed));
+		
+		if (usingColor)
+		{
+			if (!Perm.TITLE_COLOR.has(sender, true)) return;
+			target = targetParsed;
+		}
+		
 		String old = BookUtil.getTitle(item);
 		
 		if (BookUtil.isTitleEquals(item, target))

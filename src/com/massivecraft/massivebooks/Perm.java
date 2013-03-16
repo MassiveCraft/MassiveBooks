@@ -23,6 +23,7 @@ public enum Perm
 	
 	TITLE("title"),
 	TITLE_OTHER("title.other"),
+	TITLE_COLOR("title.color"),
 	
 	AUTHOR("author"),
 	AUTHOR_OTHER("author.other"),
