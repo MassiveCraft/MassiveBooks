@@ -78,6 +78,9 @@ public class Lang
 	public static final String POWERTOOL_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> The book is already a powertool.");
 	public static final String POWERTOOL_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> The book is already not a powertool.");
 	
+	public static final String POWERTOOL_NO_RUNNABLE_LINES = Txt.parse("<b>This powertool does not contain any runnable lines.");
+	public static final String POWERTOOL_ISSUE_AT_LINE_X_Y = Txt.parse("<b>Issue at line #%d: %s");
+	public static final String POWERTOOL_UNKNOWN_TAG_X = Txt.parse("<b>unknown tag <h>%s");
 	public static final String POWERTOOL_REQUIRES_YOU = Txt.parse("<b>This powertool should be used on another player.");
 	public static final String POWERTOOL_REQUIRES_BLOCK = Txt.parse("<b>This powertool should be used on a block.");
 	public static final String POWERTOOL_RAN_X_Y = Txt.parse("<g>Ran Line #%d: <white>%s");
@@ -247,6 +250,14 @@ public class Lang
 	
 	//
 	
+	public static String getPowertoolIssueAtLine(int lineIndex, String issue)
+	{
+		return String.format(POWERTOOL_ISSUE_AT_LINE_X_Y, lineIndex, issue);
+	}
+	public static String getPowertoolUnknownTag(String tag)
+	{
+		return String.format(POWERTOOL_UNKNOWN_TAG_X, tag);
+	}
 	public static String getPowertoolRan(int lineIndex, String line)
 	{
 		return String.format(Lang.POWERTOOL_RAN_X_Y, lineIndex, line);

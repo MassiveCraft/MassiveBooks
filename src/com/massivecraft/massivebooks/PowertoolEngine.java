@@ -23,7 +23,6 @@ import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEven
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
 import com.massivecraft.mcore.mixin.Mixin;
 import com.massivecraft.mcore.util.SenderUtil;
-import com.massivecraft.mcore.util.Txt;
 
 public class PowertoolEngine implements Listener
 {
@@ -153,8 +152,7 @@ public class PowertoolEngine implements Listener
 			innerevent.run();
 			if (innerevent.hasError())
 			{
-				String error = Txt.parse("<b>Issue at line #%d: %s", lineIndex, innerevent.getError());
-				event.setError(error);
+				event.setError(Lang.getPowertoolIssueAtLine(lineIndex, innerevent.getError()));
 				event.setCancelled(true);
 				return;
 			}
@@ -169,8 +167,7 @@ public class PowertoolEngine implements Listener
 		if (event.hasError()) return;
 		if (!shouldAnyLineBeExecuted(event.getReplacement()))
 		{
-			String error = Txt.parse("<b>This powertool does not contain any runnable lines.");
-			event.setError(error);
+			event.setError(Lang.POWERTOOL_NO_RUNNABLE_LINES);
 		}
 	}
 	
@@ -202,7 +199,7 @@ public class PowertoolEngine implements Listener
 			// No replacement?
 			if (tagreplacement == null && !tagevent.hasError())
 			{
-				tagevent.setError(Txt.parse("<b>unknown tag <h>%s", tag));
+				tagevent.setError(Lang.getPowertoolUnknownTag(tag));
 			}
 			
 			// Did we fail
