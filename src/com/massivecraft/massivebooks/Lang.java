@@ -245,8 +245,6 @@ public class Lang
 		return Lang.FRAME_HELP;
 	}
 	
-	
-	
 	//
 	
 	public static String getPowertoolRan(int lineIndex, String line)
