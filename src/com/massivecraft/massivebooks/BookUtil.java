@@ -17,6 +17,7 @@ import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.massivecraft.massivebooks.entity.MBook;
+import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.SenderUtil;
 
@@ -112,14 +113,16 @@ public class BookUtil
 	{
 		if (item == null) return false;
 		if (!hasBookMeta(item)) return false;
-		if (updateSaved(item)) return true;
+		if (updateServerbook(item)) return true;
 		return updateDisplayName(item);
 	}
 	
 	// Saved
 	
-	public static boolean updateSaved(ItemStack item)
+	public static boolean updateServerbook(ItemStack item)
 	{
+		if (!MConf.get().isAutoupdatingServerbooks()) return false;
+		
 		if (item == null) return false;
 		String title = getTitle(item);
 		
@@ -138,13 +141,14 @@ public class BookUtil
 		return true;
 	}
 	
-	// Displayname
+	// DisplayName
 	
 	public static boolean updateDisplayName(ItemStack item)
 	{
+		if (!MConf.get().isAutoupdatingDisplayNames()) return false;
 		if (item == null) return false;
-		String targetDisplayName = Lang.descDisplayName(item);
-		return setDisplayName(item, targetDisplayName);
+		String targetDisplayname = Lang.descDisplayName(item);
+		return setDisplayName(item, targetDisplayname);
 	}
 	
 	public static boolean setDisplayName(ItemStack item, String targetDisplayName)

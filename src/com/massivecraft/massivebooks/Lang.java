@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bukkit.inventory.ItemStack;
 
+import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.mcore.mixin.Mixin;
 import com.massivecraft.mcore.util.Txt;
 
@@ -54,6 +55,7 @@ public class Lang
 	public static final String AUTOUPDATE_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> Autoupdate was already true.");
 	public static final String AUTOUPDATE_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> Autoupdate was already false.");
 	public static final String AUTOUPDATE_JOINWARN = Txt.parse("<rose>WARNING: <i>You have disabled autoupdate for books. You may want to toggle it on.");
+	public static final String AUTOUPDATE_DERPWARN = Txt.parse("<i>Since autoupdate of serverbooks is disabled serverwide your personal toggle won't have much effect.");
 	
 	public static final String TIMES_MUST_BE_POSITIVE = Txt.parse("<b>times must be positive");
 	public static final String NOT_ENOUGH_X = Txt.parse("<b>Not enough <h>%s<b>.");
@@ -99,7 +101,14 @@ public class Lang
 	public static String descAuthor(String author)
 	{
 		if (author == null) return NO_AUTHOR_COLORED;
-		return COLOR_SIGNATURE+Mixin.getDisplayName(author);
+		if (MConf.get().isUsingAuthorDisplayName())
+		{
+			return COLOR_SIGNATURE+Mixin.getDisplayName(author);
+		}
+		else
+		{
+			return COLOR_SIGNATURE+Mixin.tryFix(author);
+		}
 	}
 	
 	public static String descSignature(ItemStack item)

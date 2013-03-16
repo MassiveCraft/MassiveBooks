@@ -40,7 +40,6 @@ public class MBook extends Entity<MBook, String>
 	public void setItem(ItemStack item)
 	{
 		item = fixItem(item);
-		BookUtil.setDisplayName(item, null);
 		this.item = item;
 		this.changed();
 	}

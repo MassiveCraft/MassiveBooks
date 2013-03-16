@@ -36,6 +36,10 @@ public class MConf extends Entity<MConf, String>
 		this.newPlayerCommands = that.newPlayerCommands;
 		this.permToCopyCost = that.permToCopyCost;
 		
+		this.autoupdatingServerbooks = that.autoupdatingServerbooks;
+		this.autoupdatingDisplayNames = that.autoupdatingDisplayNames;
+		this.usingAuthorDisplayName = that.usingAuthorDisplayName;
+		
 		this.itemFrameLoadIfSneakTrue = that.itemFrameLoadIfSneakTrue;
 		this.itemFrameLoadIfSneakFalse = that.itemFrameLoadIfSneakFalse;
 		
@@ -52,9 +56,13 @@ public class MConf extends Entity<MConf, String>
 	// FIELDS
 	// -------------------------------------------- //
 	
+	// New Player Commands
+	
 	private List<String> newPlayerCommands = MUtil.list("/book ensureall {p}");
 	public List<String> getNewPlayerCommands() { return new ArrayList<String>(this.newPlayerCommands); }
 	public void setNewPlayerCommands(List<String> newPlayerCommands) { this.newPlayerCommands = new ArrayList<String>(newPlayerCommands); this.changed(); }
+	
+	// Copy Cost
 	
 	private Map<String, Double> permToCopyCost = MUtil.map(
 		"massivebooks.copycost.free", 0D,
@@ -83,6 +91,20 @@ public class MConf extends Entity<MConf, String>
 		if (perm2val.size() == 0) return 0;
 		return PermUtil.pickFirstVal(sender, perm2val);
 	}
+	
+	// Auto Update
+	
+	private boolean autoupdatingServerbooks = true;
+	public boolean isAutoupdatingServerbooks() { return this.autoupdatingServerbooks; }
+	public void setAutoupdatingServerbooks(boolean autoupdatingServerbooks) { this.autoupdatingServerbooks = autoupdatingServerbooks; this.changed(); }
+	
+	private boolean autoupdatingDisplayNames = true;
+	public boolean isAutoupdatingDisplayNames() { return this.autoupdatingDisplayNames; }
+	public void setAutoupdatingDisplayNames(boolean autoupdatingDisplayNames) { this.autoupdatingDisplayNames = autoupdatingDisplayNames; this.changed(); }
+	
+	private boolean usingAuthorDisplayName = false;
+	public boolean isUsingAuthorDisplayName() { return this.usingAuthorDisplayName; }
+	public void setUsingAuthorDisplayName(boolean usingAuthorDisplayName) { this.usingAuthorDisplayName = usingAuthorDisplayName; this.changed(); }
 	
 	// ItemFrame Load
 	
