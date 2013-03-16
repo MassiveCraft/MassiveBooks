@@ -56,6 +56,7 @@ public class MassiveBooks extends MPlugin
 		
 		// Listeners
 		MainListener.get().setup();
+		PowertoolEngine.get().setup();
 		
 		postEnable();
 	}

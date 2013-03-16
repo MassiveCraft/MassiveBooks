@@ -68,26 +68,24 @@ public class Lang
 	public static final String SUCCESS_COPY_RESOURCES_X = Txt.parse("<i>Resources used: %s");
 	public static final String SUCCESS_COPY_RESOURCES_ENTRY_X_Y = Txt.parse("<k>%s: <v>%s");
 	
+	public static final String FRAME_CONTAINS_X = Txt.parse("%s");
+	public static final String SUCCESS_FRAMELOAD = Txt.parse("%s <i>was loaded");
+	public static final String SUCCESS_FRAMEUNLOAD = Txt.parse("%s <i>was unloaded");
+	
 	public static final String POWERTOOL_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> The book is now a powertool.");
 	public static final String POWERTOOL_CHANGED_TO_FALSE = Txt.parse("<rose>FALSE<i> The book is no longer a powertool.");
 	public static final String POWERTOOL_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> The book is already a powertool.");
 	public static final String POWERTOOL_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> The book is already not a powertool.");
 	
-	public static final String POWERTOOL_YOU_SHOULD = Txt.parse("<b>This powertool should be used on another player.");
-	public static final String POWERTOOL_YOU_SHOULDNT = Txt.parse("<b>This powertool shouldn't be used on another player.");
-	public static final String POWERTOOL_RAN = Txt.parse("<g>RAN: <h>%s");
-	public static final String POWERTOOL_FAILED = Txt.parse("<b>FAILED: <h>%s <b>%s");
+	public static final String POWERTOOL_REQUIRES_YOU = Txt.parse("<b>This powertool should be used on another player.");
+	public static final String POWERTOOL_REQUIRES_BLOCK = Txt.parse("<b>This powertool should be used on a block.");
+	public static final String POWERTOOL_RAN_X_Y = Txt.parse("<g>Ran Line #%d: <white>%s");
+	public static final String POWERTOOL_FAILED_X_Y_Z = Txt.parse("<b>Failed Line #%d: <white>%s <b>%s");
 	
 	public static final String POWERTOOL_COLOR_ME = Txt.parse("<pink>");
 	public static final String POWERTOOL_COLOR_YOU = Txt.parse("<gold>");
 	public static final String POWERTOOL_COLOR_COMMAND = Txt.parse("<c>");
 	public static final String POWERTOOL_COLOR_CHAT = Txt.parse("<white>");
-	
-	public static final String FRAME_CONTAINS_X = Txt.parse("%s");
-	public static final String SUCCESS_FRAMELOAD = Txt.parse("%s <i>was loaded");
-	public static final String SUCCESS_FRAMEUNLOAD = Txt.parse("%s <i>was unloaded");
-	
-	
 	
 	// -------------------------------------------- //
 	// METHODS
@@ -198,6 +196,7 @@ public class Lang
 		return String.format(Lang.SUCCESS_DELETED, descDisplayName(item));
 	}
 	
+	//
 	
 	public static String getSuccessCopyCopies(int i)
 	{
@@ -230,10 +229,9 @@ public class Lang
 		
 		return String.format(Lang.SUCCESS_COPY_RESOURCES_X, Txt.implode(entries, " "));
 	}
-	
-	
-	
 
+	//
+	
 	public static String getFrameContains(String displayname)
 	{
 		return String.format(Lang.FRAME_CONTAINS_X, displayname);
@@ -247,6 +245,15 @@ public class Lang
 		return String.format(Lang.SUCCESS_FRAMEUNLOAD, descDisplayName(item));
 	}
 	
+	//
 	
+	public static String getPowertoolRan(int lineIndex, String line)
+	{
+		return String.format(Lang.POWERTOOL_RAN_X_Y, lineIndex, line);
+	}
+	public static String getPowertoolRan(int lineIndex, String line, String error)
+	{
+		return String.format(Lang.POWERTOOL_FAILED_X_Y_Z, lineIndex, line, error);
+	}	
 	
 }

@@ -9,11 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
@@ -154,33 +152,6 @@ public class MainListener implements Listener
 		
 		// ... stop rotation.
 		event.setCancelled(true);
-	}
-	
-	// -------------------------------------------- //
-	// POWERTOOL
-	// -------------------------------------------- //
-	
-	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-	public void powertool(PlayerInteractEvent event)
-	{
-		// If a player is left-clicking something ...
-		Action action = event.getAction();
-		if (action != Action.LEFT_CLICK_AIR && action != Action.LEFT_CLICK_BLOCK) return;
-		
-		// ... attempt a powertool use.
-		BookUtil.powertoolUse(event, event.getPlayer(), null);
-	}
-	
-	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-	public void powertool(PlayerInteractEntityEvent event)
-	{
-		// If a player is interacting with another player ...
-		Entity entity = event.getRightClicked();
-		if (!(entity instanceof Player)) return;
-		Player you = (Player)entity;
-		
-		// ... attempt a powertool use.
-		BookUtil.powertoolUse(event, event.getPlayer(), you);
 	}
 	
 	// -------------------------------------------- //

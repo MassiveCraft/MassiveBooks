@@ -1,6 +1,5 @@
 package com.massivecraft.massivebooks;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,7 +11,6 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
@@ -387,7 +385,9 @@ public class BookUtil
 	// POWERTOOL
 	// -------------------------------------------- //
 	
-	public static List<String> powertoolGetRawlines(ItemStack item) throws IllegalArgumentException
+	/*
+	
+	public static List<String> powertoolGetRawlines(ItemStack item)
 	{
 		List<String> ret = new ArrayList<String>();
 		
@@ -481,7 +481,7 @@ public class BookUtil
 		boolean isYouPowertool = powertoolLinesContains(rawlines, Const.POWERTOOL_YOU);
 		if (isYouPowertool && you == null)
 		{
-			me.sendMessage(Lang.POWERTOOL_YOU_SHOULD);
+			me.sendMessage(Lang.POWERTOOL_REQUIRES_YOU);
 			return;
 		}
 		else if (!isYouPowertool && you != null)
@@ -508,5 +508,6 @@ public class BookUtil
 		}
 	}
 	
+	*/
 	
 }

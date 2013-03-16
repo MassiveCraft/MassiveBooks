@@ -28,6 +28,6 @@ public class CmdBookDelete extends MassiveBooksCommand
 		ItemStack target = mbook.getItem();
 		mbook.detach();
 		
-		sendMessage(Lang.getSuccessLoad(target));
+		sendMessage(Lang.getSuccessDelete(target));
 	}
 }
