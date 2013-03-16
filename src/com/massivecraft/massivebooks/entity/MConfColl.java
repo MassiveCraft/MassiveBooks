@@ -3,6 +3,7 @@ package com.massivecraft.massivebooks.entity;
 import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.MassiveBooks;
+import com.massivecraft.mcore.MCore;
 import com.massivecraft.mcore.store.Coll;
 import com.massivecraft.mcore.store.MStore;
 
@@ -27,6 +28,7 @@ public class MConfColl extends Coll<MConf, String>
 	public void init()
 	{
 		super.init();
+		this.get(MCore.INSTANCE);
 		this.createUpdatePermissionNodes();
 	}
 	
