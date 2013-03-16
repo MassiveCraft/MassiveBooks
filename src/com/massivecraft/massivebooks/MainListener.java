@@ -69,56 +69,63 @@ public class MainListener implements Listener
 		// Add more here if you want to in the future :P
 	}
 	
-	public boolean itemFrameLoad(PlayerInteractEntityEvent event, ItemStack item, Player player, boolean sneaking)
+	public boolean itemFrameLoad(PlayerInteractEntityEvent event, ItemStack itemInFrame, Player player, boolean sneaking)
 	{
 		// If loading is allowed ...
 		if (sneaking == true && !MConf.get().isItemFrameLoadIfSneakTrue()) return false;
 		if (sneaking == false && !MConf.get().isItemFrameLoadIfSneakFalse()) return false;
 		
 		// ... and there is something with BookMeta in the item frame ...
-		if (!BookUtil.hasBookMeta(item)) return false;
+		if (!BookUtil.hasBookMeta(itemInFrame)) return false;
 		
-		// ... and the player is holding something with BookMeta ...
+		// ... now do different stuff depending on what item the player is holding ...
 		ItemStack itemInHand = player.getItemInHand();
-		if (!BookUtil.hasBookMeta(itemInHand)) return false;
-		
-		// ... cancel to stop rotation ...
-		event.setCancelled(true);
-		
-		// ... unload or load ...
-		if (itemInHand.isSimilar(item))
+	
+		// ... if the player is holding a similar item ...
+		if (itemInHand.isSimilar(itemInFrame))
 		{
 			// ... do unload ...
 			ItemStack target = new ItemStack(itemInHand);
 			BookUtil.clear(target);
 			player.setItemInHand(target);
 			
-			// ... and inform of the successful frameload.
-			player.sendMessage(Lang.getSuccessFrameunload(itemInHand));
+			// ... and inform.
+			player.sendMessage(Lang.getFrameUnload(itemInHand));
 		}
-		else
+		// ... else if the player is holding a clear book and quill ...
+		else if (BookUtil.isCleared(itemInHand))
 		{
-			// ... do load the content into the hand of the player ...
-			ItemStack target = new ItemStack(item);
+			// ... do unload ...
+			ItemStack target = new ItemStack(itemInFrame);
 			target.setAmount(itemInHand.getAmount());
 			player.setItemInHand(target);
 			
-			// ... and inform of the successful frameload.
-			player.sendMessage(Lang.getSuccessFrameload(target));
+			// ... and inform.
+			player.sendMessage(Lang.getFrameLoad(target));
 		}
-
+		// ... else if the player is holding an educated but invalid guess ...
+		else if (itemInHand.getType() == Material.WRITTEN_BOOK || itemInHand.getType() == Material.BOOK)
+		{
+			// ... do help.
+			player.sendMessage(Lang.getFrameHelp());
+		}
+		
+		// ... then cancel to stop rotation ...
+		event.setCancelled(true);
+		
+		// ... and return true which means that no displayname info should be sent.
 		return true;
 	}
 	
-	public boolean itemFrameDisplayname(PlayerInteractEntityEvent event, ItemStack item, Player player, boolean sneaking)
+	public boolean itemFrameDisplayname(PlayerInteractEntityEvent event, ItemStack itemInFrame, Player player, boolean sneaking)
 	{
 		// If displayname is allowed ...
 		if (sneaking == true && !MConf.get().isItemFrameDisplaynameIfSneakTrue()) return false;
 		if (sneaking == false && !MConf.get().isItemFrameDisplaynameIfSneakFalse()) return false;
 		
 		// ... and there is something with displayname in the item frame ...
-		if (!item.hasItemMeta()) return false;
-		ItemMeta meta = item.getItemMeta();
+		if (!itemInFrame.hasItemMeta()) return false;
+		ItemMeta meta = itemInFrame.getItemMeta();
 		if (!meta.hasDisplayName()) return false;
 		String displayname = meta.getDisplayName();
 		

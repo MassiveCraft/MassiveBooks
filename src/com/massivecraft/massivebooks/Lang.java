@@ -69,8 +69,9 @@ public class Lang
 	public static final String SUCCESS_COPY_RESOURCES_ENTRY_X_Y = Txt.parse("<k>%s: <v>%s");
 	
 	public static final String FRAME_CONTAINS_X = Txt.parse("%s");
-	public static final String SUCCESS_FRAMELOAD = Txt.parse("%s <i>was loaded");
-	public static final String SUCCESS_FRAMEUNLOAD = Txt.parse("%s <i>was unloaded");
+	public static final String FRAME_LOAD_X = Txt.parse("%s <i>was loaded");
+	public static final String FRAME_UNLOAD_X = Txt.parse("%s <i>was unloaded");
+	public static final String FRAME_HELP = Txt.parse("<i>You must hold an <h>empty bookandquil <i>to load the book.");
 	
 	public static final String POWERTOOL_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> The book is now a powertool.");
 	public static final String POWERTOOL_CHANGED_TO_FALSE = Txt.parse("<rose>FALSE<i> The book is no longer a powertool.");
@@ -81,11 +82,6 @@ public class Lang
 	public static final String POWERTOOL_REQUIRES_BLOCK = Txt.parse("<b>This powertool should be used on a block.");
 	public static final String POWERTOOL_RAN_X_Y = Txt.parse("<g>Ran Line #%d: <white>%s");
 	public static final String POWERTOOL_FAILED_X_Y_Z = Txt.parse("<b>Failed Line #%d: <white>%s <b>%s");
-	
-	public static final String POWERTOOL_COLOR_ME = Txt.parse("<pink>");
-	public static final String POWERTOOL_COLOR_YOU = Txt.parse("<gold>");
-	public static final String POWERTOOL_COLOR_COMMAND = Txt.parse("<c>");
-	public static final String POWERTOOL_COLOR_CHAT = Txt.parse("<white>");
 	
 	// -------------------------------------------- //
 	// METHODS
@@ -236,14 +232,20 @@ public class Lang
 	{
 		return String.format(Lang.FRAME_CONTAINS_X, displayname);
 	}
-	public static String getSuccessFrameload(ItemStack item)
+	public static String getFrameLoad(ItemStack item)
 	{
-		return String.format(Lang.SUCCESS_FRAMELOAD, descDisplayName(item));
+		return String.format(Lang.FRAME_LOAD_X, descDisplayName(item));
 	}
-	public static String getSuccessFrameunload(ItemStack item)
+	public static String getFrameUnload(ItemStack item)
 	{
-		return String.format(Lang.SUCCESS_FRAMEUNLOAD, descDisplayName(item));
+		return String.format(Lang.FRAME_UNLOAD_X, descDisplayName(item));
 	}
+	public static String getFrameHelp()
+	{
+		return Lang.FRAME_HELP;
+	}
+	
+	
 	
 	//
 	

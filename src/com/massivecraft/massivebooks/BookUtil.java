@@ -317,7 +317,7 @@ public class BookUtil
 	{
 		item.setDurability((short) 0);
 		item.setType(Material.BOOK_AND_QUILL);
-		item.setItemMeta(Bukkit.getItemFactory().getItemMeta(Material.BOOK_AND_QUILL));
+		item.setItemMeta(null);
 		return true;
 	}
 	
