@@ -46,7 +46,8 @@ public class MainListener implements Listener
 	// -------------------------------------------- //
 	
 	// Can be cancelled but we don't care :P
-	@EventHandler(priority = EventPriority.MONITOR)
+	// NOTE: Placed at low so that the content update on LOWEST will run before.
+	@EventHandler(priority = EventPriority.LOW)
 	public void itemFrameLoadAndDisplayname(PlayerInteractEntityEvent event)
 	{
 		// If a player is interacting with an item frame ...
