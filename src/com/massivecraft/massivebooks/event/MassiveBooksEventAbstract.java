@@ -1,18 +1,10 @@
 package com.massivecraft.massivebooks.event;
 
-import java.io.Serializable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
-public abstract class MassiveBookEventAbstract extends Event implements Runnable, Serializable
+public abstract class MassiveBooksEventAbstract extends Event implements Runnable
 {
-	// -------------------------------------------- //
-	// SERIAL
-	// -------------------------------------------- //
-	
-	private static final long serialVersionUID = 1L;
-	
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //

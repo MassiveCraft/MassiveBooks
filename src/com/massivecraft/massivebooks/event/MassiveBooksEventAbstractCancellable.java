@@ -2,14 +2,8 @@ package com.massivecraft.massivebooks.event;
 
 import org.bukkit.event.Cancellable;
 
-public abstract class MassiveBookEventAbstractCancellable extends MassiveBookEventAbstract implements Cancellable
+public abstract class MassiveBooksEventAbstractCancellable extends MassiveBooksEventAbstract implements Cancellable
 {
-	// -------------------------------------------- //
-	// SERIAL
-	// -------------------------------------------- //
-	
-	private static final long serialVersionUID = 1L;
-
 	// -------------------------------------------- //
 	// FIELDS
 	// -------------------------------------------- //
