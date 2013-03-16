@@ -22,6 +22,7 @@ permissions:
   massivebooks.copy.other: {description: copy a book by another author, default: false}
   massivebooks.list: {description: list saved books, default: false}
   massivebooks.load: {description: load a saved book, default: false}
+  massivebooks.give: {description: give saved book(s), default: false}
   massivebooks.save: {description: save a book, default: false}
   massivebooks.delete: {description: delete a saved book, default: false}
   massivebooks.autoupdate: {description: alter your autoupdate state, default: false}
@@ -49,6 +50,7 @@ permissions:
       massivebooks.copy.other: true
       massivebooks.list: true
       massivebooks.load: true
+      massivebooks.give: true
       massivebooks.save: true
       massivebooks.delete: true
       massivebooks.autoupdate: true
@@ -80,6 +82,7 @@ permissions:
       massivebooks.author: true
       massivebooks.author.other: true
       massivebooks.copy.other: true
+      massivebooks.give: true
       massivebooks.save: true
       massivebooks.delete: true
       massivebooks.autoupdate: true

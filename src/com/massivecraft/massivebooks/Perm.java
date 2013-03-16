@@ -33,6 +33,7 @@ public enum Perm
 	
 	LIST("list"),
 	LOAD("load"),
+	GIVE("give"),
 	SAVE("save"),
 	DELETE("delete"),
 	
