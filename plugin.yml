@@ -1,6 +1,6 @@
 main: com.massivecraft.massivebooks.MassiveBooks
 name: massivebooks
-version: 1.0.0_dev
+version: 1.0.0
 depend: [mcore]
 permissions:
 # -------------------------------------------- #
