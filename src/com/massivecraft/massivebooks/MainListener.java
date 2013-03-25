@@ -2,6 +2,7 @@ package com.massivecraft.massivebooks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.ItemFrame;
@@ -21,6 +22,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.mcore.mixin.Mixin;
+import com.massivecraft.mcore.util.SenderUtil;
+import com.massivecraft.mcore.util.Txt;
 
 public class MainListener implements Listener
 {
@@ -39,6 +42,49 @@ public class MainListener implements Listener
 	public void setup()
 	{
 		Bukkit.getPluginManager().registerEvents(this, MassiveBooks.get());
+	}
+	
+	// -------------------------------------------- //
+	// NEW PLAYER COMMANDS
+	// -------------------------------------------- //
+	
+	@EventHandler(priority = EventPriority.MONITOR)
+	public void newPlayerCommands(PlayerJoinEvent event)
+	{
+		// If a player is joining the server for the first time ...
+		final Player player = event.getPlayer();
+		if (Mixin.hasPlayedBefore(SenderUtil.getSenderId(player))) return;
+		
+		// ... and we are using new player commands ...
+		if (!MConf.get().isUsingNewPlayerCommands()) return;
+		
+		// ... prepare a task ...
+		Runnable task = new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				final ConsoleCommandSender consoleSender = Bukkit.getConsoleSender();
+				MassiveBooks.get().log(Lang.getNewPlayerCommandsForX(player));
+				for (String cmd : MConf.get().getNewPlayerCommands())
+				{
+					cmd = Txt.removeLeadingCommandDust(cmd);
+					cmd = cmd.replace("{p}", player.getName());
+					cmd = cmd.replace("{player}", player.getName());
+					Bukkit.getServer().dispatchCommand(consoleSender, cmd);
+				}
+			}
+		};
+		
+		// ... and run it either now or later.
+		if (MConf.get().isUsingNewPlayerCommandsDelayTicks())
+		{
+			Bukkit.getScheduler().scheduleSyncDelayedTask(MassiveBooks.get(), task, MConf.get().getNewPlayerCommandsDelayTicks());
+		}
+		else
+		{
+			task.run();
+		}
 	}
 	
 	// -------------------------------------------- //

@@ -3,6 +3,7 @@ package com.massivecraft.massivebooks;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.entity.MConf;
@@ -14,6 +15,8 @@ public class Lang
 	// -------------------------------------------- //
 	// CONSTANTS
 	// -------------------------------------------- //
+	
+	public static final String NEW_PLAYER_COMMANDS_FOR_X = Txt.parse("<i>Running newplayer commands for <h>%s<i>.");
 	
 	public static final String STATE_POWERTOOL = Txt.parse("POWERTOOL");
 	public static final String STATE_UNLOCKED = Txt.parse("UNLOCKED");
@@ -96,6 +99,11 @@ public class Lang
 	// -------------------------------------------- //
 	// METHODS
 	// -------------------------------------------- //
+	
+	public static String getNewPlayerCommandsForX(Player player)
+	{
+		return String.format(NEW_PLAYER_COMMANDS_FOR_X, Mixin.getDisplayName(player));
+	}
 	
 	public static String descTitle(String title)
 	{

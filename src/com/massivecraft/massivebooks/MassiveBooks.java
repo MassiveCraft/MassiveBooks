@@ -40,8 +40,8 @@ public class MassiveBooks extends MPlugin
 	{
 		if ( ! preEnable()) return;
 		
-		// Load server config
-		ConfServer.i.load();
+		// Load Server Config
+		ConfServer.get().load();
 		
 		// Initialize Collections
 		MConfColl.get().init();
@@ -54,7 +54,7 @@ public class MassiveBooks extends MPlugin
 		this.cmdBook = new CmdBook();
 		this.cmdBook.register(this, true);
 		
-		// Listeners
+		// Setup Listeners
 		MainListener.get().setup();
 		PowertoolEngine.get().setup();
 		

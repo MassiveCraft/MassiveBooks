@@ -8,7 +8,15 @@ import com.massivecraft.mcore.util.MUtil;
 public class ConfServer extends SimpleConfig
 {
 	// -------------------------------------------- //
-	// META
+	// INSTANCE & CONSTRUCT
+	// -------------------------------------------- //
+	
+	private static transient ConfServer i = new ConfServer();
+	public static ConfServer get() { return i; }
+	public ConfServer() { super(MassiveBooks.get()); }
+	
+	// -------------------------------------------- //
+	// FIELDS
 	// -------------------------------------------- //
 	
 	public static String dburi = "default";
@@ -26,12 +34,5 @@ public class ConfServer extends SimpleConfig
 	public static List<String> aliasesBookDelete = MUtil.list("delete");
 	public static List<String> aliasesBookAutoupdate = MUtil.list("autoupdate");
 	public static List<String> aliasesBookPowertool = MUtil.list("pt", "powertool");
-	
-	// -------------------------------------------- //
-	// PERSISTENCE
-	// -------------------------------------------- //
-	
-	public static transient ConfServer i = new ConfServer();
-	public ConfServer() { super(MassiveBooks.get()); }
 	
 }

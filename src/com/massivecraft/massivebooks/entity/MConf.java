@@ -33,7 +33,11 @@ public class MConf extends Entity<MConf, String>
 	@Override
 	public MConf load(MConf that)
 	{
+		this.usingNewPlayerCommands = that.usingNewPlayerCommands;
 		this.newPlayerCommands = that.newPlayerCommands;
+		this.usingNewPlayerCommandsDelayTicks = that.usingNewPlayerCommandsDelayTicks;
+		this.newPlayerCommandsDelayTicks = that.newPlayerCommandsDelayTicks;
+		
 		this.permToCopyCost = that.permToCopyCost;
 		
 		this.autoupdatingServerbooks = that.autoupdatingServerbooks;
@@ -58,9 +62,21 @@ public class MConf extends Entity<MConf, String>
 	
 	// New Player Commands
 	
+	private boolean usingNewPlayerCommands = true;
+	public boolean isUsingNewPlayerCommands() { return this.usingNewPlayerCommands; }
+	public void setUsingNewPlayerCommands(boolean usingNewPlayerCommands) { this.usingNewPlayerCommands = usingNewPlayerCommands; this.changed(); }
+	
 	private List<String> newPlayerCommands = MUtil.list("/book give {p} ensure all");
 	public List<String> getNewPlayerCommands() { return new ArrayList<String>(this.newPlayerCommands); }
 	public void setNewPlayerCommands(List<String> newPlayerCommands) { this.newPlayerCommands = new ArrayList<String>(newPlayerCommands); this.changed(); }
+	
+	private boolean usingNewPlayerCommandsDelayTicks = true;
+	public boolean isUsingNewPlayerCommandsDelayTicks() { return this.usingNewPlayerCommandsDelayTicks; }
+	public void setUsingNewPlayerCommandsDelayTicks(boolean usingNewPlayerCommandsDelayTicks) { this.usingNewPlayerCommandsDelayTicks = usingNewPlayerCommandsDelayTicks; this.changed(); }
+	
+	private int newPlayerCommandsDelayTicks = 5;
+	public int getNewPlayerCommandsDelayTicks() { return this.newPlayerCommandsDelayTicks; }
+	public void setNewPlayerCommandsDelayTicks(int newPlayerCommandsDelayTicks) { this.newPlayerCommandsDelayTicks = newPlayerCommandsDelayTicks; this.changed(); }
 	
 	// Copy Cost
 	
