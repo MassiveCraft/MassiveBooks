@@ -101,11 +101,9 @@ public class MConf extends Entity<MConf, String>
 	public void setPermToCopyCost(Map<String, Double> permToCopyCost) { this.permToCopyCost = new LinkedHashMap<String, Double>(permToCopyCost); this.changed(); }
 	public double getCopyCost(Permissible permissible)
 	{
-		if (permissible == null) return 0;
-		Map<String, Double> perm2val = this.getPermToCopyCost();
-		if (perm2val == null) return 0;
-		if (perm2val.size() == 0) return 0;
-		return PermUtil.pickFirstVal(permissible, perm2val);
+		Double ret = PermUtil.pickFirstVal(permissible, this.getPermToCopyCost());
+		if (ret == null) ret = 0D;
+		return ret;
 	}
 	
 	// Auto Update
