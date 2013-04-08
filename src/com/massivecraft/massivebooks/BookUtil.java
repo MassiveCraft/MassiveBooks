@@ -386,132 +386,16 @@ public class BookUtil
 	}
 	
 	// -------------------------------------------- //
-	// POWERTOOL
+	// COPY PERMS
 	// -------------------------------------------- //
 	
-	/*
-	
-	public static List<String> powertoolGetRawlines(ItemStack item)
+	public static boolean hasCopyPerm(ItemStack item, CommandSender sender, boolean verboose)
 	{
-		List<String> ret = new ArrayList<String>();
-		
-		List<String> pages = getPages(item);
-		if (pages == null) return ret;
-		
-		for (String page : pages)
-		{
-			if (page == null) break;
-			if (page.trim().length() <= 2) break;
-			for (String line : page.split("\\r?\\n"))
-			{
-				if (line == null) continue;
-				line = line.trim();
-				if (line.length() == 0) continue;
-				ret.add(line);
-			}
-		}
-		
-		return ret;
+		if (BookUtil.isAuthorEquals(item, sender)) return true;
+		if (!Perm.COPY_OTHER.has(sender, true)) return false;
+		if (!BookUtil.containsFlag(item, Const.COPYRIGHTED)) return true;
+		if (!Perm.COPY_COPYRIGHTED.has(sender, true)) return false;
+		return true;
 	}
-	
-	public static boolean powertoolLinesContains(List<String> lines, String target)
-	{
-		for (String line : lines)
-		{
-			if (line.contains(target)) return true;
-		}
-		return false;
-	}
-	
-	public static String powertoolProccessRawline(String rawline, String meId, String youId, String colorBase, String colorMe, String colorYou)
-	{
-		String ret = rawline;
-		
-		if (meId != null)
-		{
-			ret = ret.replace(Const.POWERTOOL_ME, colorMe+meId+colorBase);
-		}
-		
-		if (youId != null)
-		{
-			ret = ret.replace(Const.POWERTOOL_YOU, colorYou+youId+colorBase);
-		}
-		
-		return colorBase+ret;
-	}
-	
-	public static String powertoolProccessRawline(String rawline, String meId, String youId, boolean color)
-	{
-		String colorMe = "";
-		String colorYou = "";
-		String colorBase = "";
-		
-		if (color)
-		{
-			colorMe = Lang.POWERTOOL_COLOR_ME;
-			colorYou = Lang.POWERTOOL_COLOR_YOU;
-			boolean command = rawline.startsWith("/");
-			if (command)
-			{
-				colorBase = Lang.POWERTOOL_COLOR_COMMAND;
-			}
-			else
-			{
-				colorBase = Lang.POWERTOOL_COLOR_CHAT;
-			}
-		}
-		
-		return powertoolProccessRawline(rawline, meId, youId, colorBase, colorMe, colorYou);
-	}
-	
-	public static String powertoolProccessRawline(String rawline, Player me, Player you, boolean color)
-	{
-		return powertoolProccessRawline(rawline, SenderUtil.getSenderId(me), SenderUtil.getSenderId(you), color);
-	}
-	
-	public static void powertoolUse(Cancellable cancellable, Player me, Player you)
-	{
-		// If the player is holding a powertool ...
-		ItemStack item = me.getItemInHand();
-		if (!containsFlag(item, Const.POWERTOOL)) return;
-		
-		// ... cancel the event ...
-		cancellable.setCancelled(true);
-		
-		// ... extract the rawlines from the powertool ...
-		List<String> rawlines = powertoolGetRawlines(item);
-		
-		// ... ensure the powertool is/isnt used on other player ...
-		boolean isYouPowertool = powertoolLinesContains(rawlines, Const.POWERTOOL_YOU);
-		if (isYouPowertool && you == null)
-		{
-			me.sendMessage(Lang.POWERTOOL_REQUIRES_YOU);
-			return;
-		}
-		else if (!isYouPowertool && you != null)
-		{
-			me.sendMessage(Lang.POWERTOOL_YOU_SHOULDNT);
-			return;
-		}
-		
-		// ... try to run each of them.
-		for (String rawline : rawlines)
-		{
-			String prolineFlat = powertoolProccessRawline(rawline, me, you, false);
-			String prolineColored = powertoolProccessRawline(rawline, me, you, true);
-			
-			try
-			{
-				me.chat(prolineFlat);
-				me.sendMessage(String.format(Lang.POWERTOOL_RAN, prolineColored));
-			}
-			catch (Exception e)
-			{
-				me.sendMessage(String.format(Lang.POWERTOOL_FAILED, prolineColored, e.getMessage()));
-			}
-		}
-	}
-	
-	*/
 	
 }

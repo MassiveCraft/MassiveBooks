@@ -88,6 +88,11 @@ public class Lang
 	public static final String POWERTOOL_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> The book is already a powertool.");
 	public static final String POWERTOOL_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> The book is already not a powertool.");
 	
+	public static final String COPYRIGHTED_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> The book is now copyrighted.");
+	public static final String COPYRIGHTED_CHANGED_TO_FALSE = Txt.parse("<rose>FALSE<i> The book is no longer copyrighted.");
+	public static final String COPYRIGHTED_ALREADY_TRUE = Txt.parse("<lime>TRUE<i> The book is already copyrighted.");
+	public static final String COPYRIGHTED_ALREADY_FALSE = Txt.parse("<rose>FALSE<i> The book is already not copyrighted.");
+	
 	public static final String POWERTOOL_NO_RUNNABLE_LINES = Txt.parse("<b>This powertool does not contain any runnable lines.");
 	public static final String POWERTOOL_ISSUE_AT_LINE_X_Y = Txt.parse("<b>Issue at line #%d: %s");
 	public static final String POWERTOOL_UNKNOWN_TAG_X = Txt.parse("<b>unknown tag <h>%s");

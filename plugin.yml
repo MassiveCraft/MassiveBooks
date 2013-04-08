@@ -87,7 +87,6 @@ permissions:
       massivebooks.title.color: true
       massivebooks.author: true
       massivebooks.author.other: true
-      massivebooks.copy.other: true
       massivebooks.copy.copyrighted: true
       massivebooks.give: true
       massivebooks.save: true
@@ -106,6 +105,7 @@ permissions:
       massivebooks.clear.other: true
       massivebooks.title: true
       massivebooks.copy: true
+      massivebooks.copy.other: true
       massivebooks.list: true
       massivebooks.load: true
       massivebooks.copyrighted: true

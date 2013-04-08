@@ -47,8 +47,8 @@ public class CmdBookCopy extends MassiveBooksCommand
 			return;
 		}
 
-		// Check other-perm if another author
-		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.COPY_OTHER.has(sender, true)) return;
+		// Has right to copy?
+		if (!BookUtil.hasCopyPerm(item, sender, true)) return;
 		
 		// What do we require?
 		double moneyRequired = times * MConf.get().getCopyCost(me);

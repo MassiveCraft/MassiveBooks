@@ -21,7 +21,7 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookDelete cmdBookDelete = new CmdBookDelete();
 	public CmdBookAutoupdate cmdBookAutoupdate = new CmdBookAutoupdate();
 	public CmdBookPowertool cmdBookPowertool = new CmdBookPowertool();
-	// TODO
+	public CmdBookCopyrighted cmdBookCopyrighted = new CmdBookCopyrighted();
 	
 	public CmdBook()
 	{
@@ -47,7 +47,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addSubCommand(this.cmdBookDelete);
 		this.addSubCommand(this.cmdBookAutoupdate);
 		this.addSubCommand(this.cmdBookPowertool);
-		// TODO
+		this.addSubCommand(this.cmdBookCopyrighted);
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.BOOK.node));

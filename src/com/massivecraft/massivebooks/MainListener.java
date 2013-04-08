@@ -125,6 +125,9 @@ public class MainListener implements Listener
 		// ... and there is something with BookMeta in the item frame ...
 		if (!BookUtil.hasBookMeta(itemInFrame)) return false;
 		
+		// ... then cancel to stop rotation ...
+		event.setCancelled(true);
+		
 		// ... now do different stuff depending on what item the player is holding ...
 		ItemStack itemInHand = player.getItemInHand();
 	
@@ -142,7 +145,10 @@ public class MainListener implements Listener
 		// ... else if the player is holding a clear book and quill ...
 		else if (BookUtil.isCleared(itemInHand))
 		{
-			// ... do unload ...
+			// Has right to copy?
+			if (!BookUtil.hasCopyPerm(itemInFrame, player, true)) return true;
+			
+			// ... do load ...
 			ItemStack target = new ItemStack(itemInFrame);
 			target.setAmount(itemInHand.getAmount());
 			player.setItemInHand(target);
@@ -156,9 +162,6 @@ public class MainListener implements Listener
 			// ... do help.
 			player.sendMessage(Lang.getFrameHelp());
 		}
-		
-		// ... then cancel to stop rotation ...
-		event.setCancelled(true);
 		
 		// ... and return true which means that no displayname info should be sent.
 		return true;
