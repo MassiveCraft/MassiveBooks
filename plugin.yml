@@ -20,6 +20,7 @@ permissions:
   massivebooks.author.other: {description: change author for a book by another author, default: false}
   massivebooks.copy: {description: copy a book, default: false}
   massivebooks.copy.other: {description: copy a book by another author, default: false}
+  massivebooks.copy.copyrighted: {description: copy a copyrighted book by another author, default: false}
   massivebooks.list: {description: list saved books, default: false}
   massivebooks.load: {description: load a saved book, default: false}
   massivebooks.give: {description: give saved book(s), default: false}
@@ -28,6 +29,8 @@ permissions:
   massivebooks.autoupdate: {description: alter your autoupdate state, default: false}
   massivebooks.powertool: {description: set powertool state for a book, default: false}
   massivebooks.powertool.other: {description: set powertool state for a book by another author, default: false}
+  massivebooks.copyrighted: {description: set copyrighted state for a book, default: false}
+  massivebooks.copyrighted.other: {description: set copyrighted state for a book by another author, default: false}
 # -------------------------------------------- #
 # START NOTATION
 # -------------------------------------------- #
@@ -48,6 +51,7 @@ permissions:
       massivebooks.author.other: true
       massivebooks.copy: true
       massivebooks.copy.other: true
+      massivebooks.copy.copyrighted: true
       massivebooks.list: true
       massivebooks.load: true
       massivebooks.give: true
@@ -56,6 +60,8 @@ permissions:
       massivebooks.autoupdate: true
       massivebooks.powertool: true
       massivebooks.powertool.other: true
+      massivebooks.copyrighted: true
+      massivebooks.copyrighted.other: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -82,12 +88,14 @@ permissions:
       massivebooks.author: true
       massivebooks.author.other: true
       massivebooks.copy.other: true
+      massivebooks.copy.copyrighted: true
       massivebooks.give: true
       massivebooks.save: true
       massivebooks.delete: true
       massivebooks.autoupdate: true
       massivebooks.powertool: true
       massivebooks.powertool.other: true
+      massivebooks.copyrighted.other: true
   massivebooks.kit.rank0:
     default: false
     children:
@@ -100,6 +108,7 @@ permissions:
       massivebooks.copy: true
       massivebooks.list: true
       massivebooks.load: true
+      massivebooks.copyrighted: true
   massivebooks.kit.default:
     default: true
     children:

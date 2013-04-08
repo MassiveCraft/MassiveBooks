@@ -30,6 +30,7 @@ public enum Perm
 	
 	COPY("copy"),
 	COPY_OTHER("copy.other"),
+	COPY_COPYRIGHTED("copy.copyrighted"),
 	
 	LIST("list"),
 	LOAD("load"),
@@ -41,6 +42,9 @@ public enum Perm
 	
 	POWERTOOL("powertool"),
 	POWERTOOL_OTHER("powertool.other"),
+	
+	COPYRIGHTED("copyrighted"),
+	COPYRIGHTED_OTHER("copyrighted.other"),
 	
 	// END OF LIST
 	;
