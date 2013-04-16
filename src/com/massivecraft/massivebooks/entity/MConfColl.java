@@ -7,7 +7,7 @@ import com.massivecraft.mcore.MCore;
 import com.massivecraft.mcore.store.Coll;
 import com.massivecraft.mcore.store.MStore;
 
-public class MConfColl extends Coll<MConf, String>
+public class MConfColl extends Coll<MConf>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -17,7 +17,7 @@ public class MConfColl extends Coll<MConf, String>
 	public static MConfColl get() { return i; }
 	private MConfColl()
 	{
-		super(MStore.getDb(ConfServer.dburi), MassiveBooks.get(), "ai", Const.COLLECTION_BASENAME_CONF, MConf.class, String.class, true);
+		super(Const.COLLECTION_BASENAME_CONF, MConf.class, MStore.getDb(ConfServer.dburi), MassiveBooks.get(), true, false);
 	}
 	
 	// -------------------------------------------- //

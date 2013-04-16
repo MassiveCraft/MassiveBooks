@@ -8,7 +8,7 @@ import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.mcore.store.Coll;
 import com.massivecraft.mcore.store.MStore;
 
-public class MBookColl extends Coll<MBook, String>
+public class MBookColl extends Coll<MBook>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -18,7 +18,7 @@ public class MBookColl extends Coll<MBook, String>
 	public static MBookColl get() { return i; }
 	private MBookColl()
 	{
-		super(MStore.getDb(ConfServer.dburi), MassiveBooks.get(), "ai", Const.COLLECTION_BASENAME_BOOK, MBook.class, String.class, false);
+		super(Const.COLLECTION_BASENAME_BOOK, MBook.class, MStore.getDb(ConfServer.dburi), MassiveBooks.get());
 	}
 	
 	// -------------------------------------------- //

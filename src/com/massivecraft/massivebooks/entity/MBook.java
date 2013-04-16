@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.mcore.store.Entity;
 
-public class MBook extends Entity<MBook, String>
+public class MBook extends Entity<MBook>
 {	
 	// -------------------------------------------- //
 	// META
@@ -16,9 +16,9 @@ public class MBook extends Entity<MBook, String>
 		return MBookColl.get().get(oid);
 	}
 	
-	//----------------------------------------------//
+	// -------------------------------------------- //
 	// OVERRIDE
-	//----------------------------------------------//
+	// -------------------------------------------- //
 	
 	@Override
 	public MBook load(MBook that)
