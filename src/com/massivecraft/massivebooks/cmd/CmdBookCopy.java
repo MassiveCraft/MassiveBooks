@@ -8,12 +8,12 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
-import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.mcore.cmd.arg.ARInteger;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
+import com.massivecraft.mcore.money.Money;
 import com.massivecraft.mcore.util.InventoryUtil;
 
 public class CmdBookCopy extends MassiveBooksCommand
@@ -72,11 +72,11 @@ public class CmdBookCopy extends MassiveBooksCommand
 		// Check ...
 		
 		// ... money (this is only a preliminary check)
-		if (MassiveBooks.get().economy != null)
+		if (Money.enabled(me))
 		{
-			if (!MassiveBooks.get().economy.has(me.getName(), me.getWorld().getName(), moneyRequired))
+			if (!Money.has(me, moneyRequired))
 			{
-				double moneyPossesed = MassiveBooks.get().economy.getBalance(me.getName(), me.getWorld().getName());
+				double moneyPossesed = Money.get(me);
 				double moneyMissing = moneyRequired - moneyPossesed;
 				this.sendCheckFailMessage(Lang.RESOURCE_MONEY, moneyRequired, moneyPossesed, moneyMissing);
 				return;
@@ -102,9 +102,9 @@ public class CmdBookCopy extends MassiveBooksCommand
 		// Remove ...
 		
 		// ... money (real check here)
-		if (MassiveBooks.get().economy != null)
+		if (Money.enabled(me))
 		{
-			if (!MassiveBooks.get().economy.withdrawPlayer(me.getName(), me.getWorld().getName(), moneyRequired).transactionSuccess())
+			if (!Money.subtract(me, moneyRequired))
 			{
 				sendMessage(String.format(Lang.FAILED_TO_REMOVE_X, Lang.RESOURCE_MONEY));
 				return;
