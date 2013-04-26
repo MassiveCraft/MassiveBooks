@@ -70,7 +70,7 @@ public class Lang
 	public static final String FAILED_TO_REMOVE_X = Txt.parse("<b>Failed to remomve %s.");
 	public static final String RESOURCE_MONEY = Txt.parse("money");
 	public static final String RESOURCE_BOOKS = Txt.parse("books");
-	public static final String RESOURCE_INKSACS = Txt.parse("inc sacs");
+	public static final String RESOURCE_INKSACS = Txt.parse("ink sacks");
 	public static final String RESOURCE_FEATHERS = Txt.parse("feathers");
 	public static final String RESOURCE_ROOM = Txt.parse("inventory space");
 	public static final String REQUIRED_X_POSSESSED_Y_MISSING_Z = Txt.parse("<k>Required: <v>%s <k>Possessed: <v>%s <k>Missing: <v>%s");
