@@ -25,8 +25,8 @@ public class CmdBookGive extends MassiveBooksCommand
 	{
 		this.addAliases(ConfServer.aliasesBookGive);
 		
-		this.addRequiredArg("player");
-		this.addRequiredArg("amount");
+		this.addOptionalArg("player", "you");
+		this.addOptionalArg("amount", "1");
 		this.addOptionalArg("title", "*bookandquill*");
 		this.setErrorOnToManyArgs(false);
 		
@@ -37,19 +37,24 @@ public class CmdBookGive extends MassiveBooksCommand
 	public void perform()
 	{
 		// What player should we give to?
-		Player player = this.arg(0, ARPlayer.getStart());
+		if (me == null && !this.argIsSet(0))
+		{
+			msg("<b>The player argument is required from console.");
+			return;
+		}
+		Player player = this.arg(0, ARPlayer.getStart(), me);
 		if (player == null) return;
 		
 		// How many? or perhaps ensure the player has at least one?
 		Integer amount = 1;
 		boolean ensure = false;
-		if (this.arg(1).toLowerCase().startsWith("e"))
+		if (this.argIsSet(1) && this.arg(1).toLowerCase().startsWith("e"))
 		{
 			ensure = true;
 		}
 		else
 		{
-			amount = this.arg(1, ARInteger.get());
+			amount = this.arg(1, ARInteger.get(), 1);
 			if (amount == null) return;
 			if (amount <= 0)
 			{
