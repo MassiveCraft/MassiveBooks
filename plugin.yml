@@ -34,6 +34,7 @@ permissions:
   massivebooks.powertool.other: {description: set powertool state for a book by another author, default: false}
   massivebooks.copyrighted: {description: set copyrighted state for a book, default: false}
   massivebooks.copyrighted.other: {description: set copyrighted state for a book by another author, default: false}
+  massivebooks.version: {description: see plugin version, default: false}
 # -------------------------------------------- #
 # START NOTATION
 # -------------------------------------------- #
@@ -65,6 +66,7 @@ permissions:
       massivebooks.powertool.other: true
       massivebooks.copyrighted: true
       massivebooks.copyrighted.other: true
+      massivebooks.version: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -112,6 +114,7 @@ permissions:
       massivebooks.list: true
       massivebooks.load: true
       massivebooks.copyrighted: true
+      massivebooks.version: true
   massivebooks.kit.default:
     default: true
     children:

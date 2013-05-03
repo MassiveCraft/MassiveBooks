@@ -12,9 +12,10 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 {
 	public CmdBookAutoupdate()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookAutoupdate);
+		
 		this.addOptionalArg("true/false", "toggle");
+		
 		this.addRequirements(ReqHasPerm.get(Perm.AUTOUPDATE.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

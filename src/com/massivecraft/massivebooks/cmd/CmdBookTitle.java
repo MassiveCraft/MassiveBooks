@@ -15,10 +15,11 @@ public class CmdBookTitle extends MassiveBooksCommand
 {
 	public CmdBookTitle()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookTitle);
+		
 		this.addRequiredArg("title");
 		this.setErrorOnToManyArgs(false);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.TITLE.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

@@ -20,9 +20,10 @@ public class CmdBookCopy extends MassiveBooksCommand
 {
 	public CmdBookCopy()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookCopy);
+		
 		this.addOptionalArg("times", "1");
+		
 		this.addRequirements(ReqHasPerm.get(Perm.COPY.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

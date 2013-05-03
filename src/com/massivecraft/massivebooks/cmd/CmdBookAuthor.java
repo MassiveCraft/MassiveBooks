@@ -14,10 +14,11 @@ public class CmdBookAuthor extends MassiveBooksCommand
 {
 	public CmdBookAuthor()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookAuthor);
+		
 		this.addRequiredArg("author");
 		this.setErrorOnToManyArgs(false);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.AUTHOR.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

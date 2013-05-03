@@ -15,8 +15,8 @@ public class CmdBookSave extends MassiveBooksCommand
 {
 	public CmdBookSave()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookSave);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.SAVE.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

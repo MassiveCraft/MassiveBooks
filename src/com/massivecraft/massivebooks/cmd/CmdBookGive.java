@@ -23,12 +23,13 @@ public class CmdBookGive extends MassiveBooksCommand
 {
 	public CmdBookGive()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookGive);
+		
 		this.addRequiredArg("player");
 		this.addRequiredArg("amount");
 		this.addOptionalArg("title", "*bookandquill*");
 		this.setErrorOnToManyArgs(false);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.GIVE.node));
 	}
 	

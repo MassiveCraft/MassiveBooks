@@ -15,9 +15,10 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 {
 	public CmdBookCopyrighted()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookCopyrighted);
+		
 		this.addOptionalArg("true/false", "toggle");
+		
 		this.addRequirements(ReqHasPerm.get(Perm.COPYRIGHTED.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

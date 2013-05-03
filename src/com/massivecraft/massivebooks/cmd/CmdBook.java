@@ -1,8 +1,10 @@
 package com.massivecraft.massivebooks.cmd;
 
 import com.massivecraft.massivebooks.ConfServer;
+import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.HelpCommand;
+import com.massivecraft.mcore.cmd.VersionCommand;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdBook extends MassiveBooksCommand
@@ -22,11 +24,10 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookAutoupdate cmdBookAutoupdate = new CmdBookAutoupdate();
 	public CmdBookPowertool cmdBookPowertool = new CmdBookPowertool();
 	public CmdBookCopyrighted cmdBookCopyrighted = new CmdBookCopyrighted();
+	public VersionCommand cmdBookVersion = new VersionCommand(MassiveBooks.get(), Perm.VERSION.node, "v", "version");
 	
 	public CmdBook()
 	{
-		super();
-		
 		// Aliases
 		this.setAliases(ConfServer.aliasesBook);
 		
@@ -48,6 +49,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addSubCommand(this.cmdBookAutoupdate);
 		this.addSubCommand(this.cmdBookPowertool);
 		this.addSubCommand(this.cmdBookCopyrighted);
+		this.addSubCommand(this.cmdBookVersion);
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.BOOK.node));

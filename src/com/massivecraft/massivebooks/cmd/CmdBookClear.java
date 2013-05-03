@@ -13,8 +13,8 @@ public class CmdBookClear extends MassiveBooksCommand
 {
 	public CmdBookClear()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookClear);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.CLEAR.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

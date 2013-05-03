@@ -12,10 +12,11 @@ public class CmdBookDelete extends MassiveBooksCommand
 {
 	public CmdBookDelete()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookDelete);
+		
 		this.addRequiredArg("title");
 		this.setErrorOnToManyArgs(false);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.DELETE.node));
 	}
 	

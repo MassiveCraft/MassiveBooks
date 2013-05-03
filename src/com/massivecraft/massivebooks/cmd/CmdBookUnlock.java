@@ -13,8 +13,8 @@ public class CmdBookUnlock extends MassiveBooksCommand
 {
 	public CmdBookUnlock()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookUnlock);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.UNLOCK.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

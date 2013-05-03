@@ -46,6 +46,8 @@ public enum Perm
 	COPYRIGHTED("copyrighted"),
 	COPYRIGHTED_OTHER("copyrighted.other"),
 	
+	VERSION("version"),
+	
 	// END OF LIST
 	;
 	
@@ -77,4 +79,5 @@ public enum Perm
 	{
 		return has(permissible, false);
 	}
+	
 }

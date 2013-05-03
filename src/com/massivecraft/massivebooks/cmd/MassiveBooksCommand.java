@@ -16,7 +16,6 @@ public abstract class MassiveBooksCommand extends MCommand
 	
 	public MassiveBooksCommand()
 	{
-		super();
 		this.setVisibilityMode(VisibilityMode.SECRET);
 	}
 }

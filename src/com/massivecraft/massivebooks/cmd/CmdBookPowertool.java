@@ -15,9 +15,10 @@ public class CmdBookPowertool extends MassiveBooksCommand
 {
 	public CmdBookPowertool()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookPowertool);
+		
 		this.addOptionalArg("true/false", "toggle");
+		
 		this.addRequirements(ReqHasPerm.get(Perm.POWERTOOL.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}

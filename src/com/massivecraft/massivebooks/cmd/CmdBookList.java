@@ -17,9 +17,10 @@ public class CmdBookList extends MassiveBooksCommand
 {
 	public CmdBookList()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookList);
+		
 		this.addOptionalArg("page", "1");
+		
 		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));
 	}
 	

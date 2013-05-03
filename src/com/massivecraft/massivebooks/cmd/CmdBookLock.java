@@ -13,8 +13,8 @@ public class CmdBookLock extends MassiveBooksCommand
 {
 	public CmdBookLock()
 	{
-		super();
 		this.addAliases(ConfServer.aliasesBookLock);
+		
 		this.addRequirements(ReqHasPerm.get(Perm.LOCK.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
