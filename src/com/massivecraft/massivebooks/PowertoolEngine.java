@@ -354,7 +354,6 @@ public class PowertoolEngine implements Listener
 		if (line == null) return false;
 		if (line.length() == 0) return false;
 		if (line.startsWith("#")) return false;
-		if (line.startsWith("//")) return false;
 		return true;
 	}
 	
