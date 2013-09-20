@@ -135,7 +135,7 @@ public class BookUtil
 		if (item.isSimilar(blueprint)) return false;
 		
 		item.setDurability(blueprint.getDurability());
-		item.setTypeId(blueprint.getTypeId());
+		item.setType(blueprint.getType());
 		item.setItemMeta(blueprint.getItemMeta());
 		
 		return true;
