@@ -10,7 +10,6 @@ import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.PermissionDefault;
 
 import com.massivecraft.massivebooks.Lang;
-import com.massivecraft.mcore.MCore;
 import com.massivecraft.mcore.store.Entity;
 import com.massivecraft.mcore.util.MUtil;
 import com.massivecraft.mcore.util.PermUtil;
@@ -21,10 +20,8 @@ public class MConf extends Entity<MConf>
 	// META
 	// -------------------------------------------- //
 	
-	public static MConf get()
-	{
-		return MConfColl.get().get(MCore.INSTANCE);
-	}
+	protected static transient MConf i;
+	public static MConf get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE
