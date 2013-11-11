@@ -2,7 +2,6 @@ package com.massivecraft.massivebooks.cmd;
 
 import org.bukkit.inventory.ItemStack;
 
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
@@ -12,7 +11,7 @@ public class CmdBookDelete extends MassiveBooksCommand
 {
 	public CmdBookDelete()
 	{
-		this.addAliases(ConfServer.aliasesBookDelete);
+		this.addAliases("delete");
 		
 		this.addRequiredArg("title");
 		this.setErrorOnToManyArgs(false);

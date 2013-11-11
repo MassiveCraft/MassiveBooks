@@ -4,7 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
@@ -15,7 +14,7 @@ public class CmdBookTitle extends MassiveBooksCommand
 {
 	public CmdBookTitle()
 	{
-		this.addAliases(ConfServer.aliasesBookTitle);
+		this.addAliases("title");
 		
 		this.addRequiredArg("title");
 		this.setErrorOnToManyArgs(false);

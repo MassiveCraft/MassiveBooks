@@ -30,6 +30,8 @@ public class MConf extends Entity<MConf>
 	@Override
 	public MConf load(MConf that)
 	{
+		this.aliasesBook = that.aliasesBook;
+		
 		this.usingNewPlayerCommands = that.usingNewPlayerCommands;
 		this.newPlayerCommands = that.newPlayerCommands;
 		this.usingNewPlayerCommandsDelayTicks = that.usingNewPlayerCommandsDelayTicks;
@@ -56,6 +58,9 @@ public class MConf extends Entity<MConf>
 	// -------------------------------------------- //
 	// FIELDS
 	// -------------------------------------------- //
+	
+	// Command Aliases
+	public List<String> aliasesBook = MUtil.list("book", "books");
 	
 	// New Player Commands
 	

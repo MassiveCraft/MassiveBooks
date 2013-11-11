@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
@@ -23,7 +22,7 @@ public class CmdBookGive extends MassiveBooksCommand
 {
 	public CmdBookGive()
 	{
-		this.addAliases(ConfServer.aliasesBookGive);
+		this.addAliases("give");
 		
 		this.addOptionalArg("player", "you");
 		this.addOptionalArg("amount", "1");

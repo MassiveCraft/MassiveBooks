@@ -6,7 +6,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
@@ -20,7 +19,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 {
 	public CmdBookCopy()
 	{
-		this.addAliases(ConfServer.aliasesBookCopy);
+		this.addAliases("copy");
 		
 		this.addOptionalArg("times", "1");
 		

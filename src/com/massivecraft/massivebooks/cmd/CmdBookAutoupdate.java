@@ -1,6 +1,5 @@
 package com.massivecraft.massivebooks.cmd;
 
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
@@ -12,7 +11,7 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 {
 	public CmdBookAutoupdate()
 	{
-		this.addAliases(ConfServer.aliasesBookAutoupdate);
+		this.addAliases("autoupdate");
 		
 		this.addOptionalArg("true/false", "toggle");
 		

@@ -3,7 +3,6 @@ package com.massivecraft.massivebooks.cmd;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
@@ -15,7 +14,7 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 {
 	public CmdBookCopyrighted()
 	{
-		this.addAliases(ConfServer.aliasesBookCopyrighted);
+		this.addAliases("cr", "copyrighted");
 		
 		this.addOptionalArg("true/false", "toggle");
 		

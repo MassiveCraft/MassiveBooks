@@ -1,6 +1,5 @@
 package com.massivecraft.massivebooks.entity;
 
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.mcore.store.MStore;
@@ -16,7 +15,7 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	public static MPlayerColl get() { return i; }
 	private MPlayerColl()
 	{
-		super(Const.COLLECTION_BASENAME_PLAYER, MPlayer.class, MStore.getDb(ConfServer.dburi), MassiveBooks.get());
+		super(Const.COLLECTION_PLAYER, MPlayer.class, MStore.getDb(), MassiveBooks.get());
 	}
 	
 }

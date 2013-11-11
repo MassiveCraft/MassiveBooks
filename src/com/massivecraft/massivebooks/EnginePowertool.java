@@ -5,27 +5,27 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLineEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
+import com.massivecraft.mcore.EngineAbstract;
 import com.massivecraft.mcore.mixin.Mixin;
 import com.massivecraft.mcore.util.SenderUtil;
 
-public class PowertoolEngine implements Listener
+public class EnginePowertool extends EngineAbstract
 {
 	// -------------------------------------------- //
 	// CONSTANTS
@@ -43,17 +43,18 @@ public class PowertoolEngine implements Listener
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static PowertoolEngine i = new PowertoolEngine();
-	public static PowertoolEngine get() { return i; }
-	public PowertoolEngine() {}
+	private static EnginePowertool i = new EnginePowertool();
+	public static EnginePowertool get() { return i; }
+	public EnginePowertool() {}
 	
 	// -------------------------------------------- //
-	// SETUP
+	// OVERRIDE
 	// -------------------------------------------- //
 	
-	public void setup()
+	@Override
+	public Plugin getPlugin()
 	{
-		Bukkit.getPluginManager().registerEvents(this, MassiveBooks.get());
+		return MassiveBooks.get();
 	}
 	
 	// -------------------------------------------- //

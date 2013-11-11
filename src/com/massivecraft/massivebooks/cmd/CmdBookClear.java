@@ -3,7 +3,6 @@ package com.massivecraft.massivebooks.cmd;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
@@ -13,7 +12,7 @@ public class CmdBookClear extends MassiveBooksCommand
 {
 	public CmdBookClear()
 	{
-		this.addAliases(ConfServer.aliasesBookClear);
+		this.addAliases("clear");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.CLEAR.node));
 		this.addRequirements(ReqIsPlayer.get());

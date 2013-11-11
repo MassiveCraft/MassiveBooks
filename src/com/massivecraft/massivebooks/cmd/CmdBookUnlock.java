@@ -3,7 +3,6 @@ package com.massivecraft.massivebooks.cmd;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
@@ -13,7 +12,7 @@ public class CmdBookUnlock extends MassiveBooksCommand
 {
 	public CmdBookUnlock()
 	{
-		this.addAliases(ConfServer.aliasesBookUnlock);
+		this.addAliases("unlock");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.UNLOCK.node));
 		this.addRequirements(ReqIsPlayer.get());

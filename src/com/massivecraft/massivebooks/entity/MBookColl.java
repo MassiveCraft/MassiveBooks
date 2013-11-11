@@ -2,7 +2,6 @@ package com.massivecraft.massivebooks.entity;
 
 import org.bukkit.ChatColor;
 
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.mcore.store.Coll;
@@ -18,7 +17,7 @@ public class MBookColl extends Coll<MBook>
 	public static MBookColl get() { return i; }
 	private MBookColl()
 	{
-		super(Const.COLLECTION_BASENAME_BOOK, MBook.class, MStore.getDb(ConfServer.dburi), MassiveBooks.get());
+		super(Const.COLLECTION_BOOK, MBook.class, MStore.getDb(), MassiveBooks.get());
 	}
 	
 	// -------------------------------------------- //

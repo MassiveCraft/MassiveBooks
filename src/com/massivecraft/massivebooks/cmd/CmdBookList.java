@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
@@ -17,7 +16,7 @@ public class CmdBookList extends MassiveBooksCommand
 {
 	public CmdBookList()
 	{
-		this.addAliases(ConfServer.aliasesBookList);
+		this.addAliases("list");
 		
 		this.addOptionalArg("page", "1");
 		

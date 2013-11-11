@@ -1,6 +1,5 @@
 package com.massivecraft.massivebooks.entity;
 
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.mcore.MCore;
@@ -17,7 +16,7 @@ public class MConfColl extends Coll<MConf>
 	public static MConfColl get() { return i; }
 	private MConfColl()
 	{
-		super(Const.COLLECTION_BASENAME_CONF, MConf.class, MStore.getDb(ConfServer.dburi), MassiveBooks.get());
+		super(Const.COLLECTION_CONF, MConf.class, MStore.getDb(), MassiveBooks.get());
 	}
 	
 	// -------------------------------------------- //

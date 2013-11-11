@@ -9,7 +9,6 @@ import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -18,30 +17,33 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
+import com.massivecraft.mcore.EngineAbstract;
 import com.massivecraft.mcore.mixin.Mixin;
 import com.massivecraft.mcore.util.SenderUtil;
 import com.massivecraft.mcore.util.Txt;
 
-public class MainListener implements Listener
+public class EngineMain extends EngineAbstract
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static MainListener i = new MainListener();
-	public static MainListener get() { return i; }
-	public MainListener() {}
+	private static EngineMain i = new EngineMain();
+	public static EngineMain get() { return i; }
+	public EngineMain() {}
 	
 	// -------------------------------------------- //
-	// SETUP
+	// OVERRIDE
 	// -------------------------------------------- //
 	
-	public void setup()
+	@Override
+	public Plugin getPlugin()
 	{
-		Bukkit.getPluginManager().registerEvents(this, MassiveBooks.get());
+		return MassiveBooks.get();
 	}
 	
 	// -------------------------------------------- //

@@ -3,7 +3,6 @@ package com.massivecraft.massivebooks.cmd;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
-import com.massivecraft.massivebooks.ConfServer;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
@@ -14,7 +13,7 @@ public class CmdBookAuthor extends MassiveBooksCommand
 {
 	public CmdBookAuthor()
 	{
-		this.addAliases(ConfServer.aliasesBookAuthor);
+		this.addAliases("author");
 		
 		this.addRequiredArg("author");
 		this.setErrorOnToManyArgs(false);

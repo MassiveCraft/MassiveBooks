@@ -1,15 +1,20 @@
 package com.massivecraft.massivebooks.cmd;
 
-import com.massivecraft.massivebooks.ConfServer;
+import java.util.List;
+
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.mcore.cmd.HelpCommand;
 import com.massivecraft.mcore.cmd.VersionCommand;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 
 public class CmdBook extends MassiveBooksCommand
 {
-	// SubCommands
+	// -------------------------------------------- //
+	// FIELDS
+	// -------------------------------------------- //
+	
 	public CmdBookUnlock cmdBookUnlock = new CmdBookUnlock();
 	public CmdBookLock cmdBookLock = new CmdBookLock();
 	public CmdBookClear cmdBookClear = new CmdBookClear();
@@ -26,15 +31,14 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookCopyrighted cmdBookCopyrighted = new CmdBookCopyrighted();
 	public VersionCommand cmdBookVersion = new VersionCommand(MassiveBooks.get(), Perm.VERSION.node, "v", "version");
 	
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBook()
 	{
-		// Aliases
-		this.setAliases(ConfServer.aliasesBook);
-		
-		// Help SubCommand 
-		this.addSubCommand(HelpCommand.get());
-		
 		// Add SubCommands
+		this.addSubCommand(HelpCommand.get());
 		this.addSubCommand(this.cmdBookUnlock);
 		this.addSubCommand(this.cmdBookLock);
 		this.addSubCommand(this.cmdBookClear);
@@ -55,10 +59,14 @@ public class CmdBook extends MassiveBooksCommand
 		this.addRequirements(ReqHasPerm.get(Perm.BOOK.node));
 	}
 	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
 	@Override
-	public void perform()
+	public List<String> getAliases()
 	{
-		this.getCommandChain().add(this);
-		HelpCommand.getInstance().execute(this.sender, this.args, this.commandChain);
+		return MConf.get().aliasesBook;
 	}
+
 }

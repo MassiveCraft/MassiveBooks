@@ -2,12 +2,12 @@ package com.massivecraft.massivebooks;
 
 public class Const
 {
-	// MStore Collection Names
-	public static final String COLLECTION_BASENAME = "massivebooks";
-	public static final String COLLECTION_BASENAME_ = COLLECTION_BASENAME+"_";
-	public static final String COLLECTION_BASENAME_CONF = COLLECTION_BASENAME_+"conf";
-	public static final String COLLECTION_BASENAME_BOOK = COLLECTION_BASENAME_+"book";
-	public static final String COLLECTION_BASENAME_PLAYER = COLLECTION_BASENAME_+"player";
+	// Collections & Aspects
+	public static final String BASENAME = "massivebooks";
+	public static final String BASENAME_ = BASENAME+"_";
+	public static final String COLLECTION_CONF = BASENAME_+"mconf";
+	public static final String COLLECTION_BOOK = BASENAME_+"mbook";
+	public static final String COLLECTION_PLAYER = BASENAME_+"mplayer";
 	
 	// Lore-Flags
 	public static final String POWERTOOL = "POWERTOOL";
