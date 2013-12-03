@@ -72,7 +72,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 		// Check ...
 		
 		// ... money (this is only a preliminary check)
-		if (Money.enabled(me))
+		if (Money.enabled())
 		{
 			if (!Money.has(me, moneyRequired))
 			{
@@ -102,9 +102,9 @@ public class CmdBookCopy extends MassiveBooksCommand
 		// Remove ...
 		
 		// ... money (real check here)
-		if (Money.enabled(me))
+		if (Money.enabled())
 		{
-			if (!Money.subtract(me, moneyRequired))
+			if (!Money.despawn(me, me, moneyRequired, "MassiveBooks"))
 			{
 				sendMessage(String.format(Lang.FAILED_TO_REMOVE_X, Lang.RESOURCE_MONEY));
 				return;
