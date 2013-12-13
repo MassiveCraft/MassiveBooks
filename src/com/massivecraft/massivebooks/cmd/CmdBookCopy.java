@@ -102,7 +102,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 		// Remove ...
 		
 		// ... money (real check here)
-		if (Money.enabled())
+		if (Money.enabled() && moneyRequired != 0)
 		{
 			if (!Money.despawn(me, me, moneyRequired, "MassiveBooks"))
 			{
