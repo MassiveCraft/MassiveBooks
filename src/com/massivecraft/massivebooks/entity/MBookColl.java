@@ -17,7 +17,7 @@ public class MBookColl extends Coll<MBook>
 	public static MBookColl get() { return i; }
 	private MBookColl()
 	{
-		super(Const.COLLECTION_BOOK, MBook.class, MStore.getDb(), MassiveBooks.get());
+		super(Const.COLLECTION_MBOOK, MBook.class, MStore.getDb(), MassiveBooks.get());
 	}
 	
 	// -------------------------------------------- //

@@ -16,7 +16,7 @@ public class MConfColl extends Coll<MConf>
 	public static MConfColl get() { return i; }
 	private MConfColl()
 	{
-		super(Const.COLLECTION_CONF, MConf.class, MStore.getDb(), MassiveBooks.get());
+		super(Const.COLLECTION_MCONF, MConf.class, MStore.getDb(), MassiveBooks.get());
 	}
 	
 	// -------------------------------------------- //

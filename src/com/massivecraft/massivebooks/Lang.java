@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.mcore.mixin.Mixin;
+import com.massivecraft.mcore.util.IdUtil;
 import com.massivecraft.mcore.util.Txt;
 
 public class Lang
@@ -119,13 +120,13 @@ public class Lang
 	public static String descAuthor(String author)
 	{
 		if (author == null) return NO_AUTHOR_COLORED;
-		if (MConf.get().isUsingAuthorDisplayName())
+		if (MConf.get().usingAuthorDisplayName)
 		{
-			return COLOR_SIGNATURE+Mixin.getDisplayName(author);
+			return COLOR_SIGNATURE + Mixin.getDisplayName(author);
 		}
 		else
 		{
-			return COLOR_SIGNATURE+Mixin.tryFix(author);
+			return COLOR_SIGNATURE + IdUtil.getName(author);
 		}
 	}
 	

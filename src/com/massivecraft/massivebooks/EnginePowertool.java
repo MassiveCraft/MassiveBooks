@@ -14,7 +14,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -23,7 +22,7 @@ import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEven
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
 import com.massivecraft.mcore.EngineAbstract;
 import com.massivecraft.mcore.mixin.Mixin;
-import com.massivecraft.mcore.util.SenderUtil;
+import com.massivecraft.mcore.util.IdUtil;
 
 public class EnginePowertool extends EngineAbstract
 {
@@ -253,7 +252,7 @@ public class EnginePowertool extends EngineAbstract
 			break;
 			
 			case "you.name":
-				you = SenderUtil.getAsPlayer(event.getEntityClicked());
+				you = IdUtil.getAsPlayer(event.getEntityClicked());
 				if (you == null)
 				{
 					event.setError(Lang.POWERTOOL_REQUIRES_YOU);
@@ -265,7 +264,7 @@ public class EnginePowertool extends EngineAbstract
 			break;
 			
 			case "you.id":
-				you = SenderUtil.getAsPlayer(event.getEntityClicked());
+				you = IdUtil.getAsPlayer(event.getEntityClicked());
 				if (you == null)
 				{
 					event.setError(Lang.POWERTOOL_REQUIRES_YOU);
@@ -277,7 +276,7 @@ public class EnginePowertool extends EngineAbstract
 			break;
 			
 			case "you.displayname":
-				you = SenderUtil.getAsPlayer(event.getEntityClicked());
+				you = IdUtil.getAsPlayer(event.getEntityClicked());
 				if (you == null)
 				{
 					event.setError(Lang.POWERTOOL_REQUIRES_YOU);

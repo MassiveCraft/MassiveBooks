@@ -15,7 +15,7 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	public static MPlayerColl get() { return i; }
 	private MPlayerColl()
 	{
-		super(Const.COLLECTION_PLAYER, MPlayer.class, MStore.getDb(), MassiveBooks.get());
+		super(Const.COLLECTION_MPLAYER, MPlayer.class, MStore.getDb(), MassiveBooks.get());
 	}
 	
 }

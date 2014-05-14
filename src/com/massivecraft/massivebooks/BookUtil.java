@@ -18,8 +18,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MConf;
+import com.massivecraft.mcore.util.IdUtil;
 import com.massivecraft.mcore.util.MUtil;
-import com.massivecraft.mcore.util.SenderUtil;
 
 public class BookUtil
 {	
@@ -121,7 +121,7 @@ public class BookUtil
 	
 	public static boolean updateServerbook(ItemStack item)
 	{
-		if (!MConf.get().isAutoupdatingServerbooks()) return false;
+		if (!MConf.get().autoupdatingServerbooks) return false;
 		
 		if (item == null) return false;
 		String title = getTitle(item);
@@ -145,7 +145,7 @@ public class BookUtil
 	
 	public static boolean updateDisplayName(ItemStack item)
 	{
-		if (!MConf.get().isAutoupdatingDisplayNames()) return false;
+		if (!MConf.get().autoupdatingDisplayNames) return false;
 		if (item == null) return false;
 		String targetDisplayname = Lang.descDisplayName(item);
 		return setDisplayName(item, targetDisplayname);
@@ -247,7 +247,7 @@ public class BookUtil
 	
 	public static boolean isAuthorEquals(ItemStack item, CommandSender author)
 	{
-		return isAuthorEqualsId(item, SenderUtil.getSenderId(author));
+		return isAuthorEqualsId(item, IdUtil.getName(author));
 	}
 	
 	// -------------------------------------------- //

@@ -26,7 +26,7 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 		Boolean targetState = this.arg(0, ARBoolean.get(), !currentState);
 		if (targetState == null) return;
 		
-		if (!MConf.get().isAutoupdatingServerbooks())
+		if (!MConf.get().autoupdatingServerbooks)
 		{
 			sendMessage(Lang.AUTOUPDATE_DERPWARN);
 		}

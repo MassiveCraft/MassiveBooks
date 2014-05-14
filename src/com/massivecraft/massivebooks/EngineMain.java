@@ -23,7 +23,6 @@ import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.mcore.EngineAbstract;
 import com.massivecraft.mcore.mixin.Mixin;
-import com.massivecraft.mcore.util.SenderUtil;
 import com.massivecraft.mcore.util.Txt;
 
 public class EngineMain extends EngineAbstract
@@ -55,10 +54,10 @@ public class EngineMain extends EngineAbstract
 	{
 		// If a player is joining the server for the first time ...
 		final Player player = event.getPlayer();
-		if (Mixin.hasPlayedBefore(SenderUtil.getSenderId(player))) return;
+		if (Mixin.hasPlayedBefore(player)) return;
 		
 		// ... and we are using new player commands ...
-		if (!MConf.get().isUsingNewPlayerCommands()) return;
+		if (!MConf.get().usingNewPlayerCommands) return;
 		
 		// ... prepare a task ...
 		Runnable task = new Runnable()
@@ -68,7 +67,7 @@ public class EngineMain extends EngineAbstract
 			{
 				final ConsoleCommandSender consoleSender = Bukkit.getConsoleSender();
 				MassiveBooks.get().log(Lang.getNewPlayerCommandsForX(player));
-				for (String cmd : MConf.get().getNewPlayerCommands())
+				for (String cmd : MConf.get().newPlayerCommands)
 				{
 					cmd = Txt.removeLeadingCommandDust(cmd);
 					cmd = cmd.replace("{p}", player.getName());
@@ -79,9 +78,9 @@ public class EngineMain extends EngineAbstract
 		};
 		
 		// ... and run it either now or later.
-		if (MConf.get().isUsingNewPlayerCommandsDelayTicks())
+		if (MConf.get().usingNewPlayerCommandsDelayTicks)
 		{
-			Bukkit.getScheduler().scheduleSyncDelayedTask(MassiveBooks.get(), task, MConf.get().getNewPlayerCommandsDelayTicks());
+			Bukkit.getScheduler().scheduleSyncDelayedTask(MassiveBooks.get(), task, MConf.get().newPlayerCommandsDelayTicks);
 		}
 		else
 		{
@@ -121,8 +120,8 @@ public class EngineMain extends EngineAbstract
 	public boolean itemFrameLoad(PlayerInteractEntityEvent event, ItemStack itemInFrame, Player player, boolean sneaking)
 	{
 		// If loading is allowed ...
-		if (sneaking == true && !MConf.get().isItemFrameLoadIfSneakTrue()) return false;
-		if (sneaking == false && !MConf.get().isItemFrameLoadIfSneakFalse()) return false;
+		if (sneaking == true && !MConf.get().itemFrameLoadIfSneakTrue) return false;
+		if (sneaking == false && !MConf.get().itemFrameLoadIfSneakFalse) return false;
 		
 		// ... and there is something with BookMeta in the item frame ...
 		if (!BookUtil.hasBookMeta(itemInFrame)) return false;
@@ -172,8 +171,8 @@ public class EngineMain extends EngineAbstract
 	public boolean itemFrameDisplayname(PlayerInteractEntityEvent event, ItemStack itemInFrame, Player player, boolean sneaking)
 	{
 		// If displayname is allowed ...
-		if (sneaking == true && !MConf.get().isItemFrameDisplaynameIfSneakTrue()) return false;
-		if (sneaking == false && !MConf.get().isItemFrameDisplaynameIfSneakFalse()) return false;
+		if (sneaking == true && !MConf.get().itemFrameDisplaynameIfSneakTrue) return false;
+		if (sneaking == false && !MConf.get().itemFrameDisplaynameIfSneakFalse) return false;
 		
 		// ... and there is something with displayname in the item frame ...
 		if (!itemInFrame.hasItemMeta()) return false;
@@ -206,8 +205,8 @@ public class EngineMain extends EngineAbstract
 		// ... possibly ...
 		final Player player = event.getPlayer();
 		final boolean sneaking = player.isSneaking();
-		if (sneaking == true && MConf.get().isItemFrameRotateIfSneakTrue()) return;
-		if (sneaking == false && MConf.get().isItemFrameRotateIfSneakFalse()) return;
+		if (sneaking == true && MConf.get().itemFrameRotateIfSneakTrue) return;
+		if (sneaking == false && MConf.get().itemFrameRotateIfSneakFalse) return;
 		
 		// ... stop rotation.
 		event.setCancelled(true);

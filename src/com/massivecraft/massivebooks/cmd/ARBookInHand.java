@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.mcore.cmd.arg.ArgReaderAbstract;
 import com.massivecraft.mcore.cmd.arg.ArgResult;
-import com.massivecraft.mcore.util.SenderUtil;
+import com.massivecraft.mcore.util.IdUtil;
 
 public class ARBookInHand extends ArgReaderAbstract<ItemStack>
 {
@@ -78,7 +78,7 @@ public class ARBookInHand extends ArgReaderAbstract<ItemStack>
 	
 	public ItemStack getItemStack(CommandSender sender)
 	{
-		Player player = SenderUtil.getAsPlayer(sender);
+		Player player = IdUtil.getAsPlayer(sender);
 		if (player == null) return null;
 		
 		ItemStack ret = player.getItemInHand();
