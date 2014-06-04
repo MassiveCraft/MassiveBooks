@@ -5,9 +5,9 @@ import java.util.List;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.mcore.cmd.HelpCommand;
-import com.massivecraft.mcore.cmd.VersionCommand;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.cmd.HelpCommand;
+import com.massivecraft.massivecore.cmd.VersionCommand;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 
 public class CmdBook extends MassiveBooksCommand
 {

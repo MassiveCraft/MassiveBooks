@@ -1,7 +1,7 @@
 package com.massivecraft.massivebooks.entity;
 
 import com.massivecraft.massivebooks.Lang;
-import com.massivecraft.mcore.store.SenderEntity;
+import com.massivecraft.massivecore.store.SenderEntity;
 
 public class MPlayer extends SenderEntity<MPlayer>
 {

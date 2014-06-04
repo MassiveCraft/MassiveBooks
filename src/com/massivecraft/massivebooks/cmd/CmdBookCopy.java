@@ -9,11 +9,11 @@ import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.mcore.cmd.arg.ARInteger;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
-import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
-import com.massivecraft.mcore.money.Money;
-import com.massivecraft.mcore.util.InventoryUtil;
+import com.massivecraft.massivecore.cmd.arg.ARInteger;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.money.Money;
+import com.massivecraft.massivecore.util.InventoryUtil;
 
 public class CmdBookCopy extends MassiveBooksCommand
 {

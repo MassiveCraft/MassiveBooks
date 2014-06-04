@@ -7,9 +7,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.mcore.mixin.Mixin;
-import com.massivecraft.mcore.util.IdUtil;
-import com.massivecraft.mcore.util.Txt;
+import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.Txt;
 
 public class Lang
 {

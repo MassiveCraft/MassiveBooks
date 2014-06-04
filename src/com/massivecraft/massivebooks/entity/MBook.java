@@ -3,7 +3,7 @@ package com.massivecraft.massivebooks.entity;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
-import com.massivecraft.mcore.store.Entity;
+import com.massivecraft.massivecore.store.Entity;
 
 public class MBook extends Entity<MBook>
 {	

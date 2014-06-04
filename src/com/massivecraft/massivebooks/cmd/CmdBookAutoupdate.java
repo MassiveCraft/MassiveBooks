@@ -3,9 +3,9 @@ package com.massivecraft.massivebooks.cmd;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.mcore.cmd.arg.ARBoolean;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
-import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.cmd.arg.ARBoolean;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
 
 public class CmdBookAutoupdate extends MassiveBooksCommand
 {

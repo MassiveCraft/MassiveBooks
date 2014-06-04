@@ -5,8 +5,8 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
-import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
 
 public class CmdBookLoad extends MassiveBooksCommand
 {

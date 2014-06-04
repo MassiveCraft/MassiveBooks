@@ -20,9 +20,9 @@ import org.bukkit.plugin.Plugin;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLineEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
-import com.massivecraft.mcore.EngineAbstract;
-import com.massivecraft.mcore.mixin.Mixin;
-import com.massivecraft.mcore.util.IdUtil;
+import com.massivecraft.massivecore.EngineAbstract;
+import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.IdUtil;
 
 public class EnginePowertool extends EngineAbstract
 {

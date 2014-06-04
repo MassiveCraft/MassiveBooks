@@ -18,8 +18,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.mcore.util.IdUtil;
-import com.massivecraft.mcore.util.MUtil;
+import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.MUtil;
 
 public class BookUtil
 {	

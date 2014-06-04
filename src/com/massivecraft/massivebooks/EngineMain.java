@@ -21,9 +21,9 @@ import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
-import com.massivecraft.mcore.EngineAbstract;
-import com.massivecraft.mcore.mixin.Mixin;
-import com.massivecraft.mcore.util.Txt;
+import com.massivecraft.massivecore.EngineAbstract;
+import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.Txt;
 
 public class EngineMain extends EngineAbstract
 {

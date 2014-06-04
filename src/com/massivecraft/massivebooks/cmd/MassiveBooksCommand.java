@@ -1,10 +1,10 @@
 package com.massivecraft.massivebooks.cmd;
 
 import com.massivecraft.massivebooks.entity.MPlayer;
-import com.massivecraft.mcore.cmd.MCommand;
-import com.massivecraft.mcore.cmd.VisibilityMode;
+import com.massivecraft.massivecore.cmd.MassiveCommand;
+import com.massivecraft.massivecore.cmd.VisibilityMode;
 
-public abstract class MassiveBooksCommand extends MCommand
+public abstract class MassiveBooksCommand extends MassiveCommand
 {
 	public MPlayer mme;
 	

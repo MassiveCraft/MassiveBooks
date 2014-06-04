@@ -4,8 +4,8 @@ import org.bukkit.ChatColor;
 
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.MassiveBooks;
-import com.massivecraft.mcore.store.Coll;
-import com.massivecraft.mcore.store.MStore;
+import com.massivecraft.massivecore.store.Coll;
+import com.massivecraft.massivecore.store.MStore;
 
 public class MBookColl extends Coll<MBook>
 {

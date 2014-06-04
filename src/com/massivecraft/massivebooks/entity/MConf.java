@@ -8,9 +8,9 @@ import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.PermissionDefault;
 
 import com.massivecraft.massivebooks.Lang;
-import com.massivecraft.mcore.store.Entity;
-import com.massivecraft.mcore.util.MUtil;
-import com.massivecraft.mcore.util.PermUtil;
+import com.massivecraft.massivecore.store.Entity;
+import com.massivecraft.massivecore.util.MUtil;
+import com.massivecraft.massivecore.util.PermUtil;
 
 public class MConf extends Entity<MConf>
 {

@@ -6,9 +6,9 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.mcore.cmd.req.ReqHasPerm;
-import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
-import com.massivecraft.mcore.util.Txt;
+import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.util.Txt;
 
 public class CmdBookTitle extends MassiveBooksCommand
 {

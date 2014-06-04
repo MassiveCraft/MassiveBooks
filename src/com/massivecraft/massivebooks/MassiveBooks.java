@@ -3,9 +3,9 @@ package com.massivecraft.massivebooks;
 import com.massivecraft.massivebooks.cmd.CmdBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivebooks.entity.MConfColl;
-import com.massivecraft.mcore.MPlugin;
+import com.massivecraft.massivecore.MassivePlugin;
 
-public class MassiveBooks extends MPlugin 
+public class MassiveBooks extends MassivePlugin 
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT

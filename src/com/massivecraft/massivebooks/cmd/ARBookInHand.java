@@ -6,9 +6,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
-import com.massivecraft.mcore.cmd.arg.ArgReaderAbstract;
-import com.massivecraft.mcore.cmd.arg.ArgResult;
-import com.massivecraft.mcore.util.IdUtil;
+import com.massivecraft.massivecore.cmd.arg.ArgReaderAbstract;
+import com.massivecraft.massivecore.cmd.arg.ArgResult;
+import com.massivecraft.massivecore.util.IdUtil;
 
 public class ARBookInHand extends ArgReaderAbstract<ItemStack>
 {

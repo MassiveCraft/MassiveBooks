@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
-import com.massivecraft.mcore.cmd.arg.ARAbstractSelect;
+import com.massivecraft.massivecore.cmd.arg.ARAbstractSelect;
 
 public class ARMBook extends ARAbstractSelect<MBook>
 {
