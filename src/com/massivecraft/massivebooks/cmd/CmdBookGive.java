@@ -88,7 +88,7 @@ public class CmdBookGive extends MassiveBooksCommand
 			PlayerInventory inventory = player.getInventory();
 			if (ensure && inventory.containsAtLeast(item, 1))
 			{
-				sender.sendMessage(Lang.getAlreadyHave(Mixin.getDisplayName(player), item));
+				sender.sendMessage(Lang.getAlreadyHave(Mixin.getDisplayName(player, sender), item));
 				player.sendMessage(Lang.getAlreadyHave("You", item));
 				continue;
 			}
@@ -102,8 +102,8 @@ public class CmdBookGive extends MassiveBooksCommand
 			
 			InventoryUtil.addItemTimes(inventory, item, amount);
 			
-			sender.sendMessage(Lang.getGave("You", Mixin.getDisplayName(player), amount, item));
-			player.sendMessage(Lang.getGave(Mixin.getDisplayName(sender), "you", amount, item));
+			sender.sendMessage(Lang.getGave("You", Mixin.getDisplayName(player, sender), amount, item));
+			player.sendMessage(Lang.getGave(Mixin.getDisplayName(sender, player), "you", amount, item));
 		}
 	}
 	

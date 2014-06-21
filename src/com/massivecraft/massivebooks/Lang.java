@@ -106,9 +106,9 @@ public class Lang
 	// METHODS
 	// -------------------------------------------- //
 	
-	public static String getNewPlayerCommandsForX(Player player)
+	public static String getNewPlayerCommandsForX(Player player, Object watcherObject)
 	{
-		return String.format(NEW_PLAYER_COMMANDS_FOR_X, Mixin.getDisplayName(player));
+		return String.format(NEW_PLAYER_COMMANDS_FOR_X, Mixin.getDisplayName(player, watcherObject));
 	}
 	
 	public static String descTitle(String title)
@@ -122,7 +122,7 @@ public class Lang
 		if (author == null) return NO_AUTHOR_COLORED;
 		if (MConf.get().usingAuthorDisplayName)
 		{
-			return COLOR_SIGNATURE + Mixin.getDisplayName(author);
+			return COLOR_SIGNATURE + Mixin.getDisplayName(author, null); // TODO: We must always view from the perspective of the universe unless we use protocollib or something.
 		}
 		else
 		{

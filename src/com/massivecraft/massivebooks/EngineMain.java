@@ -66,7 +66,7 @@ public class EngineMain extends EngineAbstract
 			public void run()
 			{
 				final ConsoleCommandSender consoleSender = Bukkit.getConsoleSender();
-				MassiveBooks.get().log(Lang.getNewPlayerCommandsForX(player));
+				MassiveBooks.get().log(Lang.getNewPlayerCommandsForX(player, consoleSender));
 				for (String cmd : MConf.get().newPlayerCommands)
 				{
 					cmd = Txt.removeLeadingCommandDust(cmd);

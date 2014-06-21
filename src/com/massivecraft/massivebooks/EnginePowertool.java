@@ -248,7 +248,7 @@ public class EnginePowertool extends EngineAbstract
 			
 			case "me.displayname":
 				me = event.getPlayer();
-				event.setReplacement(Mixin.getDisplayName(me));
+				event.setReplacement(Mixin.getDisplayName(me, me));
 			break;
 			
 			case "you.name":
@@ -276,6 +276,7 @@ public class EnginePowertool extends EngineAbstract
 			break;
 			
 			case "you.displayname":
+				me = event.getPlayer();
 				you = IdUtil.getAsPlayer(event.getEntityClicked());
 				if (you == null)
 				{
@@ -283,7 +284,7 @@ public class EnginePowertool extends EngineAbstract
 				}
 				else
 				{
-					event.setReplacement(Mixin.getDisplayName(you));
+					event.setReplacement(Mixin.getDisplayName(you, me));
 				}
 			break;
 			
