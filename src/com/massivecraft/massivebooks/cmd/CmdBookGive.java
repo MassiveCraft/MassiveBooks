@@ -41,7 +41,7 @@ public class CmdBookGive extends MassiveBooksCommand
 			msg("<b>The player argument is required from console.");
 			return;
 		}
-		Player player = this.arg(0, ARPlayer.getStart(), me);
+		Player player = this.arg(0, ARPlayer.get(), me);
 		if (player == null) return;
 		
 		// How many? or perhaps ensure the player has at least one?
