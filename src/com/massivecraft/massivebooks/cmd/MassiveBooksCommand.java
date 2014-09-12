@@ -14,6 +14,12 @@ public abstract class MassiveBooksCommand extends MassiveCommand
 		this.mme = MPlayer.get(this.sender);
 	}
 	
+	@Override
+	public void unsetSenderVars()
+	{
+		this.mme = null;
+	}
+	
 	public MassiveBooksCommand()
 	{
 		this.setVisibilityMode(VisibilityMode.SECRET);
