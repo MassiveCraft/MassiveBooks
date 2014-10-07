@@ -1,10 +1,13 @@
 package com.massivecraft.massivebooks.entity;
 
+import java.util.Map.Entry;
+
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivecore.MassiveCore;
 import com.massivecraft.massivecore.store.Coll;
 import com.massivecraft.massivecore.store.MStore;
+import com.massivecraft.massivecore.xlib.gson.JsonElement;
 
 public class MConfColl extends Coll<MConf>
 {
@@ -32,9 +35,9 @@ public class MConfColl extends Coll<MConf>
 	}
 	
 	@Override
-	public synchronized void loadFromRemote(Object oid)
+	public synchronized void loadFromRemote(Object oid, Entry<JsonElement, Long> entry, boolean entrySupplied)
 	{
-		super.loadFromRemote(oid);
+		super.loadFromRemote(oid, entry, entrySupplied);
 		if ( ! this.inited()) return;
 		this.createUpdatePermissionNodes();
 	}
