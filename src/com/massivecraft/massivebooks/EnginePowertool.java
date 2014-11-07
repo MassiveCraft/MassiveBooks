@@ -234,95 +234,96 @@ public class EnginePowertool extends EngineAbstract
 		Player me;
 		Player you;
 		Block block;
-		switch(event.getTag())
+		final String tag = event.getTag();
+		
+		
+		if (tag.equals("me.name"))
 		{
-			case "me.name":
-				me = event.getPlayer();
-				event.setReplacement(me.getName());
-			break;
-			
-			case "me.id":
-				me = event.getPlayer();
-				event.setReplacement(String.valueOf(me.getEntityId()));
-			break;
-			
-			case "me.displayname":
-				me = event.getPlayer();
-				event.setReplacement(Mixin.getDisplayName(me, me));
-			break;
-			
-			case "you.name":
-				you = IdUtil.getAsPlayer(event.getEntityClicked());
-				if (you == null)
-				{
-					event.setError(Lang.POWERTOOL_REQUIRES_YOU);
-				}
-				else
-				{
-					event.setReplacement(you.getName());
-				}
-			break;
-			
-			case "you.id":
-				you = IdUtil.getAsPlayer(event.getEntityClicked());
-				if (you == null)
-				{
-					event.setError(Lang.POWERTOOL_REQUIRES_YOU);
-				}
-				else
-				{
-					event.setReplacement(String.valueOf(you.getEntityId()));
-				}
-			break;
-			
-			case "you.displayname":
-				me = event.getPlayer();
-				you = IdUtil.getAsPlayer(event.getEntityClicked());
-				if (you == null)
-				{
-					event.setError(Lang.POWERTOOL_REQUIRES_YOU);
-				}
-				else
-				{
-					event.setReplacement(Mixin.getDisplayName(you, me));
-				}
-			break;
-			
-			case "block.x":
-				block = event.getBlockClicked();
-				if (block == null)
-				{
-					event.setError(Lang.POWERTOOL_REQUIRES_BLOCK);
-				}
-				else
-				{
-					event.setReplacement(String.valueOf(block.getX()));
-				}
-			break;
-			
-			case "block.y":
-				block = event.getBlockClicked();
-				if (block == null)
-				{
-					event.setError(Lang.POWERTOOL_REQUIRES_BLOCK);
-				}
-				else
-				{
-					event.setReplacement(String.valueOf(block.getY()));
-				}
-			break;
-			
-			case "block.z":
-				block = event.getBlockClicked();
-				if (block == null)
-				{
-					event.setError(Lang.POWERTOOL_REQUIRES_BLOCK);
-				}
-				else
-				{
-					event.setReplacement(String.valueOf(block.getZ()));
-				}
-			break;
+			me = event.getPlayer();
+			event.setReplacement(me.getName());
+		}
+		else if (tag.equals("me.id"))
+		{
+			me = event.getPlayer();
+			event.setReplacement(String.valueOf(me.getEntityId()));
+		}
+		else if (tag.equals("me.displayname"))
+		{
+			me = event.getPlayer();
+			event.setReplacement(Mixin.getDisplayName(me, me));
+		}
+		else if (tag.equals("you.name"))
+		{
+			you = IdUtil.getAsPlayer(event.getEntityClicked());
+			if (you == null)
+			{
+				event.setError(Lang.POWERTOOL_REQUIRES_YOU);
+			}
+			else
+			{
+				event.setReplacement(you.getName());
+			}
+		}
+		else if (tag.equals("you.id"))
+		{
+			you = IdUtil.getAsPlayer(event.getEntityClicked());
+			if (you == null)
+			{
+				event.setError(Lang.POWERTOOL_REQUIRES_YOU);
+			}
+			else
+			{
+				event.setReplacement(String.valueOf(you.getEntityId()));
+			}
+		}
+		else if (tag.equals("you.displayname"))
+		{
+			me = event.getPlayer();
+			you = IdUtil.getAsPlayer(event.getEntityClicked());
+			if (you == null)
+			{
+				event.setError(Lang.POWERTOOL_REQUIRES_YOU);
+			}
+			else
+			{
+				event.setReplacement(Mixin.getDisplayName(you, me));
+			}
+		}
+		else if (tag.equals("block.x"))
+		{
+			block = event.getBlockClicked();
+			if (block == null)
+			{
+				event.setError(Lang.POWERTOOL_REQUIRES_BLOCK);
+			}
+			else
+			{
+				event.setReplacement(String.valueOf(block.getX()));
+			}
+		}
+		else if (tag.equals("block.y"))
+		{
+			block = event.getBlockClicked();
+			if (block == null)
+			{
+				event.setError(Lang.POWERTOOL_REQUIRES_BLOCK);
+			}
+			else
+			{
+				event.setReplacement(String.valueOf(block.getY()));
+			}
+		}
+		else if (tag.equals("block.z"))
+		{
+			block = event.getBlockClicked();
+			if (block == null)
+			{
+				event.setError(Lang.POWERTOOL_REQUIRES_BLOCK);
+			}
+			else
+			{
+				event.setReplacement(String.valueOf(block.getZ()));
+			}
 		}
 	}
 	
