@@ -38,7 +38,7 @@ public class MassiveBooks extends MassivePlugin
 		
 		// Commands
 		this.cmdBook = new CmdBook();
-		this.cmdBook.register();
+		this.cmdBook.register(this);
 		
 		// Setup Listeners
 		EngineMain.get().activate();
