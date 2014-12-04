@@ -19,6 +19,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.MUtil;
 
 public class BookUtil
@@ -175,13 +176,12 @@ public class BookUtil
 		}
 		Bukkit.getScheduler().scheduleSyncDelayedTask(MassiveBooks.get(), new Runnable()
 		{
-			@SuppressWarnings("deprecation")
 			@Override
 			public void run()
 			{
 				for (Player player : players)
 				{
-					player.updateInventory();
+					InventoryUtil.update(player);
 				}
 			}
 		});
