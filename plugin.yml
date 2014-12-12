@@ -1,6 +1,6 @@
 main: com.massivecraft.massivebooks.MassiveBooks
 name: MassiveBooks
-version: 2.7.3
+version: 2.7.4
 website: http://massivecraft.com/massivebooks
 authors: [Cayorion]
 description: §eMassiveBooks provides book related features such as better displaynames, copying books, unlocking locked books for more editing, powertools, unique serverbooks, and ingame libraries using item frames. §aCayorion §efrom the minecraft server §aMassiveCraft §eis the lead programmer. Feel free to visit us at §bhttp://massivecraft.com
