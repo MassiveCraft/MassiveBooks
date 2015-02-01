@@ -19,6 +19,16 @@ public class MBookColl extends Coll<MBook>
 	{
 		super(Const.COLLECTION_MBOOK, MBook.class, MStore.getDb(), MassiveBooks.get());
 	}
+
+	// -------------------------------------------- //
+	// STACK TRACEABILITY
+	// -------------------------------------------- //
+	
+	@Override
+	public void onTick()
+	{
+		super.onTick();
+	}
 	
 	// -------------------------------------------- //
 	// OVERRIDE
