@@ -17,5 +17,15 @@ public class MPlayerColl extends SenderColl<MPlayer>
 	{
 		super(Const.COLLECTION_MPLAYER, MPlayer.class, MStore.getDb(), MassiveBooks.get());
 	}
+
+	// -------------------------------------------- //
+	// STACK TRACEABILITY
+	// -------------------------------------------- //
+	
+	@Override
+	public void onTick()
+	{
+		super.onTick();
+	}
 	
 }
