@@ -5,6 +5,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
 import com.massivecraft.massivecore.util.IdUtil;
@@ -23,10 +24,9 @@ public class CmdBookAuthor extends MassiveBooksCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		ItemStack item = this.arg(ARBookInHand.getWritten());
-		if (item == null) return;
 		
 		String target = this.argConcatFrom(0);
 		target = IdUtil.getName(target);

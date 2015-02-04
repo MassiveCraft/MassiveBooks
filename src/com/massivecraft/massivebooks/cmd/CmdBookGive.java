@@ -12,6 +12,7 @@ import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.arg.ARInteger;
 import com.massivecraft.massivecore.cmd.arg.ARPlayer;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
@@ -33,7 +34,7 @@ public class CmdBookGive extends MassiveBooksCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		// What player should we give to?
 		if (me == null && !this.argIsSet(0))
@@ -42,7 +43,6 @@ public class CmdBookGive extends MassiveBooksCommand
 			return;
 		}
 		Player player = this.arg(0, ARPlayer.get(), me);
-		if (player == null) return;
 		
 		// How many? or perhaps ensure the player has at least one?
 		Integer amount = 1;
@@ -54,7 +54,6 @@ public class CmdBookGive extends MassiveBooksCommand
 		else
 		{
 			amount = this.arg(1, ARInteger.get(), 1);
-			if (amount == null) return;
 			if (amount <= 0)
 			{
 				sendMessage(Lang.AMOUNT_MUST_BE_POSITIVE);
@@ -78,7 +77,6 @@ public class CmdBookGive extends MassiveBooksCommand
 		else
 		{
 			MBook mbook = this.argConcatFrom(2, ARMBook.get());
-			if (mbook == null) return;
 			items.add(mbook.getItem());
 		}
 		

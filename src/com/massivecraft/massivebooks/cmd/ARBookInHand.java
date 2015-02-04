@@ -6,8 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.arg.ArgReaderAbstract;
-import com.massivecraft.massivecore.cmd.arg.ArgResult;
 import com.massivecraft.massivecore.util.IdUtil;
 
 public class ARBookInHand extends ArgReaderAbstract<ItemStack>
@@ -46,18 +46,12 @@ public class ARBookInHand extends ArgReaderAbstract<ItemStack>
 	// -------------------------------------------- //
 	
 	@Override
-	public ArgResult<ItemStack> read(String arg, CommandSender sender)
+	public ItemStack read(String arg, CommandSender sender) throws MassiveCommandException
 	{
-		ArgResult<ItemStack> ret = new ArgResult<ItemStack>();
+		ItemStack ret = this.getItemStack(sender);
+		if (ret != null) return ret;
 		
-		ret.setResult(this.getItemStack(sender));
-		
-		if (!ret.hasResult())
-		{
-			ret.setErrors(this.getError());
-		}
-		
-		return ret;
+		throw new MassiveCommandException().addMessage(this.getError());
 	}
 	
 	// -------------------------------------------- //

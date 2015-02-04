@@ -5,6 +5,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
 
@@ -19,10 +20,9 @@ public class CmdBookLock extends MassiveBooksCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		ItemStack item = this.arg(ARBookInHand.getEither());
-		if (item == null) return;
 		
 		if (BookUtil.isLocked(item))
 		{

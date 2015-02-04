@@ -6,6 +6,7 @@ import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivecore.cmd.MassiveCommandException;
 import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
@@ -23,15 +24,13 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 	}
 	
 	@Override
-	public void perform()
+	public void perform() throws MassiveCommandException
 	{
 		// Args
 		ItemStack item = this.arg(ARBookInHand.getWritten());
-		if (item == null) return;
 		
 		boolean currentState = BookUtil.containsFlag(item, Const.COPYRIGHTED);
 		Boolean targetState = this.arg(0, ARBoolean.get(), !currentState);
-		if (targetState == null) return;
 		
 		// Detect NoChange
 		if (targetState == currentState)
