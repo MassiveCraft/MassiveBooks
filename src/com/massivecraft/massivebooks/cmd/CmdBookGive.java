@@ -12,7 +12,7 @@ import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
-import com.massivecraft.massivecore.cmd.MassiveCommandException;
+import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.arg.ARInteger;
 import com.massivecraft.massivecore.cmd.arg.ARPlayer;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
@@ -34,7 +34,7 @@ public class CmdBookGive extends MassiveBooksCommand
 	}
 	
 	@Override
-	public void perform() throws MassiveCommandException
+	public void perform() throws MassiveException
 	{
 		// What player should we give to?
 		if (me == null && !this.argIsSet(0))

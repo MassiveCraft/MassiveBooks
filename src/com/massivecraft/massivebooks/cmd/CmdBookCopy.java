@@ -9,7 +9,7 @@ import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.massivecore.cmd.MassiveCommandException;
+import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.arg.ARInteger;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
@@ -29,7 +29,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 	}
 	
 	@Override
-	public void perform() throws MassiveCommandException
+	public void perform() throws MassiveException
 	{
 		// Get item arg
 		ItemStack item = this.arg(ARBookInHand.getWritten());
