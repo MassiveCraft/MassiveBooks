@@ -35,9 +35,9 @@ public class MConfColl extends Coll<MConf>
 	}
 	
 	@Override
-	public synchronized void loadFromRemote(Object oid, Entry<JsonElement, Long> entry, boolean entrySupplied)
+	public synchronized void loadFromRemote(Object oid, Entry<JsonElement, Long> entry)
 	{
-		super.loadFromRemote(oid, entry, entrySupplied);
+		super.loadFromRemote(oid, entry);
 		if ( ! this.inited()) return;
 		this.createUpdatePermissionNodes();
 	}
