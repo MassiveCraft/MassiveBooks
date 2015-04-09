@@ -22,7 +22,7 @@ public class ARMBook extends ARAbstractSelect<MBook>
 	// -------------------------------------------- //
 	
 	@Override
-	public String typename()
+	public String getTypeName()
 	{
 		return "saved book";
 	}
@@ -37,6 +37,12 @@ public class ARMBook extends ARAbstractSelect<MBook>
 	public Collection<String> altNames(CommandSender sender)
 	{
 		return MBookColl.get().getIds();
+	}
+
+	@Override
+	public Collection<String> getTabList(CommandSender sender, String arg)
+	{
+		return this.altNames(sender);
 	}
 
 }

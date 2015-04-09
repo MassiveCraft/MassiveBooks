@@ -1,5 +1,7 @@
 package com.massivecraft.massivebooks.cmd;
 
+import java.util.Collection;
+
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -7,10 +9,10 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ArgReaderAbstract;
+import com.massivecraft.massivecore.cmd.arg.ARAbstract;
 import com.massivecraft.massivecore.util.IdUtil;
 
-public class ARBookInHand extends ArgReaderAbstract<ItemStack>
+public class ARBookInHand extends ARAbstract<ItemStack>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -53,7 +55,13 @@ public class ARBookInHand extends ArgReaderAbstract<ItemStack>
 		
 		throw new MassiveException().addMessage(this.getError());
 	}
-	
+
+	@Override
+	public Collection<String> getTabList(CommandSender sender, String arg)
+	{
+		return null;
+	}
+
 	// -------------------------------------------- //
 	// EXTRAS
 	// -------------------------------------------- //
