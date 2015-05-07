@@ -14,7 +14,7 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 	{
 		this.addAliases("autoupdate");
 		
-		this.addOptionalArg("true/false", "toggle");
+		this.addArg(ARBoolean.get(), "true/false", "toggle");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.AUTOUPDATE.node));
 		this.addRequirements(ReqIsPlayer.get());
@@ -24,7 +24,7 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		boolean currentState = mme.isUsingAutoUpdate();
-		Boolean targetState = this.arg(0, ARBoolean.get(), !currentState);
+		boolean targetState = this.readArg(!currentState);
 		
 		if (!MConf.get().autoupdatingServerbooks)
 		{
@@ -33,4 +33,5 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 		
 		mme.setUsingAutoUpdate(targetState, true, true);
 	}
+	
 }

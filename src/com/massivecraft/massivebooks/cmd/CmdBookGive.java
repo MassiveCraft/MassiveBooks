@@ -1,7 +1,7 @@
 package com.massivecraft.massivebooks.cmd;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,10 +10,10 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.entity.MBook;
-import com.massivecraft.massivebooks.entity.MBookColl;
+import com.massivecraft.massivebooks.cmd.arg.ARBookAmount;
+import com.massivecraft.massivebooks.cmd.arg.ARMBookItem;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARInteger;
+import com.massivecraft.massivecore.cmd.arg.ARAll;
 import com.massivecraft.massivecore.cmd.arg.ARPlayer;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.mixin.Mixin;
@@ -23,12 +23,13 @@ public class CmdBookGive extends MassiveBooksCommand
 {
 	public CmdBookGive()
 	{
+		// Aliases
 		this.addAliases("give");
 		
-		this.addOptionalArg("player", "you");
-		this.addOptionalArg("amount", "1");
-		this.addOptionalArg("title", "*bookandquill*");
-		this.setErrorOnToManyArgs(false);
+		// Args
+		this.addArg(ARPlayer.get(), true, "player", "you");
+		this.addArg(ARBookAmount.get(), "amount", "1");
+		this.addArg(ARAll.get(ARMBookItem.get()), "title", "*bookandquill*", true);
 		
 		this.addRequirements(ReqHasPerm.get(Perm.GIVE.node));
 	}
@@ -36,49 +37,15 @@ public class CmdBookGive extends MassiveBooksCommand
 	@Override
 	public void perform() throws MassiveException
 	{
-		// What player should we give to?
-		if (me == null && !this.argIsSet(0))
-		{
-			msg("<b>The player argument is required from console.");
-			return;
-		}
-		Player player = this.arg(0, ARPlayer.get(), me);
+		Player player = this.readArg(me);
 		
 		// How many? or perhaps ensure the player has at least one?
-		Integer amount = 1;
-		boolean ensure = false;
-		if (this.argIsSet(1) && this.arg(1).toLowerCase().startsWith("e"))
-		{
-			ensure = true;
-		}
-		else
-		{
-			amount = this.arg(1, ARInteger.get(), 1);
-			if (amount <= 0)
-			{
-				sendMessage(Lang.AMOUNT_MUST_BE_POSITIVE);
-				return;
-			}
-		}
+		Integer amount = this.readArg(1);
+		boolean ensure = amount == ARBookAmount.ENSURE;
+		if (ensure) amount = 1;
 		
 		// What items should we give?
-		List<ItemStack> items = new ArrayList<ItemStack>();
-		if (!this.argIsSet(2))
-		{
-			items.add(new ItemStack(Material.BOOK_AND_QUILL));
-		}
-		else if (this.argConcatFrom(2).toLowerCase().equals("all"))
-		{
-			for (MBook mbook : MBookColl.get().getAll())
-			{
-				items.add(mbook.getItem());
-			}
-		}
-		else
-		{
-			MBook mbook = this.argConcatFrom(2, ARMBook.get());
-			items.add(mbook.getItem());
-		}
+		Collection<ItemStack> items = this.readArg(Collections.singleton(new ItemStack(Material.BOOK_AND_QUILL)));
 		
 		// Now for each item ...
 		for (ItemStack item : items)
@@ -104,9 +71,5 @@ public class CmdBookGive extends MassiveBooksCommand
 			player.sendMessage(Lang.getGave(Mixin.getDisplayName(sender, player), "you", amount, item));
 		}
 	}
-	
-	public void give(Player player, int amount, MBook mbook)
-	{
-		
-	}
+
 }

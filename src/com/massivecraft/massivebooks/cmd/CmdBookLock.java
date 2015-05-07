@@ -5,6 +5,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
@@ -13,8 +14,10 @@ public class CmdBookLock extends MassiveBooksCommand
 {
 	public CmdBookLock()
 	{
+		// Aliases
 		this.addAliases("lock");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.LOCK.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
@@ -22,7 +25,7 @@ public class CmdBookLock extends MassiveBooksCommand
 	@Override
 	public void perform() throws MassiveException
 	{
-		ItemStack item = this.arg(ARBookInHand.getEither());
+		ItemStack item = ARBookInHand.getEither().read(sender);
 		
 		if (BookUtil.isLocked(item))
 		{
@@ -38,4 +41,5 @@ public class CmdBookLock extends MassiveBooksCommand
 		
 		sendMessage(Lang.getAlterLock(before));
 	}
+
 }

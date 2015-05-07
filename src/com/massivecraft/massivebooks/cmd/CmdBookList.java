@@ -9,7 +9,7 @@ import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARInteger;
+import com.massivecraft.massivecore.cmd.ArgSetting;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.util.Txt;
 
@@ -19,7 +19,7 @@ public class CmdBookList extends MassiveBooksCommand
 	{
 		this.addAliases("list");
 		
-		this.addOptionalArg("page", "1");
+		this.addArg(ArgSetting.getPager());
 		
 		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));
 	}
@@ -28,7 +28,7 @@ public class CmdBookList extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Args
-		Integer pageHumanBased = this.arg(0, ARInteger.get(), 1);
+		int pageHumanBased = this.readArg(1);
 		
 		// Create Messages
 		List<String> lines = new ArrayList<String>();
@@ -42,4 +42,5 @@ public class CmdBookList extends MassiveBooksCommand
 		// Send them
 		this.sendMessage(Txt.getPage(lines, pageHumanBased, String.valueOf(mbooks.size())+" Saved Books", sender));	
 	}
+
 }

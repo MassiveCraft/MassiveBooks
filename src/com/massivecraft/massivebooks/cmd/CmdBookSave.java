@@ -5,6 +5,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivecore.MassiveException;
@@ -15,8 +16,10 @@ public class CmdBookSave extends MassiveBooksCommand
 {
 	public CmdBookSave()
 	{
+		// Aliases
 		this.addAliases("save");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.SAVE.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
@@ -24,7 +27,7 @@ public class CmdBookSave extends MassiveBooksCommand
 	@Override
 	public void perform() throws MassiveException
 	{
-		ItemStack item = this.arg(ARBookInHand.getEither());		
+		ItemStack item = ARBookInHand.getEither().read(sender);		
 		
 		String title = BookUtil.getTitle(item);
 		if (title == null)
@@ -38,4 +41,5 @@ public class CmdBookSave extends MassiveBooksCommand
 		
 		sendMessage(Lang.getSuccessSave(item));
 	}
+
 }

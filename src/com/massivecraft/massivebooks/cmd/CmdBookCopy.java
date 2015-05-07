@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.arg.ARInteger;
@@ -22,7 +23,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 	{
 		this.addAliases("copy");
 		
-		this.addOptionalArg("times", "1");
+		this.addArg(ARInteger.get(), "times", "1");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.COPY.node));
 		this.addRequirements(ReqIsPlayer.get());
@@ -32,20 +33,15 @@ public class CmdBookCopy extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Get item arg
-		ItemStack item = this.arg(ARBookInHand.getWritten());
+		ItemStack item = ARBookInHand.getWritten().read(sender);
 		BookUtil.updateBook(item);
 		
 		item = item.clone();
 		item.setAmount(1);
 		
 		// Get times arg
-		Integer times = this.arg(0, ARInteger.get(), 1);
-		if (times == null) return;
-		if (times <= 0)
-		{
-			sendMessage(Lang.TIMES_MUST_BE_POSITIVE);
-			return;
-		}
+		int times = this.readArg(1);
+		if (times <= 0) throw new MassiveException().addMessage(Lang.TIMES_MUST_BE_POSITIVE);
 
 		// Has right to copy?
 		if (!BookUtil.hasCopyPerm(item, sender, true)) return;

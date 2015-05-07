@@ -6,6 +6,7 @@ import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
@@ -17,7 +18,7 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 	{
 		this.addAliases("cr", "copyrighted");
 		
-		this.addOptionalArg("true/false", "toggle");
+		this.addArg(ARBoolean.get(), "true/false", "toggle");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.COPYRIGHTED.node));
 		this.addRequirements(ReqIsPlayer.get());
@@ -27,10 +28,10 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Args
-		ItemStack item = this.arg(ARBookInHand.getWritten());
+		ItemStack item = this.readArgFrom(ARBookInHand.getWritten());
 		
 		boolean currentState = BookUtil.containsFlag(item, Const.COPYRIGHTED);
-		Boolean targetState = this.arg(0, ARBoolean.get(), !currentState);
+		boolean targetState = this.readArg(!currentState);
 		
 		// Detect NoChange
 		if (targetState == currentState)
@@ -61,4 +62,5 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 			sendMessage(Lang.COPYRIGHTED_CHANGED_TO_FALSE);
 		}
 	}
+
 }

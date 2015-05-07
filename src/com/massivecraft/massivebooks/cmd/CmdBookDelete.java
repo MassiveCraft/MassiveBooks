@@ -4,6 +4,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.cmd.arg.ARMBook;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
@@ -14,8 +15,7 @@ public class CmdBookDelete extends MassiveBooksCommand
 	{
 		this.addAliases("delete");
 		
-		this.addRequiredArg("title");
-		this.setErrorOnToManyArgs(false);
+		this.addArg(ARMBook.get(), "title", true);
 		
 		this.addRequirements(ReqHasPerm.get(Perm.DELETE.node));
 	}
@@ -23,11 +23,12 @@ public class CmdBookDelete extends MassiveBooksCommand
 	@Override
 	public void perform() throws MassiveException
 	{
-		MBook mbook = this.argConcatFrom(0, ARMBook.get());
+		MBook mbook = this.readArg();
 		
 		ItemStack target = mbook.getItem();
 		mbook.detach();
 		
 		sendMessage(Lang.getSuccessDelete(target));
 	}
+
 }

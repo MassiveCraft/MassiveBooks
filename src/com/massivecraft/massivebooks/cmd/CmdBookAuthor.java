@@ -5,7 +5,9 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
 import com.massivecraft.massivecore.MassiveException;
+import com.massivecraft.massivecore.cmd.arg.ARString;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
 import com.massivecraft.massivecore.util.IdUtil;
@@ -14,11 +16,13 @@ public class CmdBookAuthor extends MassiveBooksCommand
 {
 	public CmdBookAuthor()
 	{
+		// Aliases
 		this.addAliases("author");
 		
-		this.addRequiredArg("author");
-		this.setErrorOnToManyArgs(false);
+		// Args
+		this.addArg(ARString.get(), "author", true);
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.AUTHOR.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
@@ -26,9 +30,9 @@ public class CmdBookAuthor extends MassiveBooksCommand
 	@Override
 	public void perform() throws MassiveException
 	{
-		ItemStack item = this.arg(ARBookInHand.getWritten());
+		ItemStack item = ARBookInHand.getWritten().read(sender);
 		
-		String target = this.argConcatFrom(0);
+		String target = this.readArg();
 		target = IdUtil.getName(target);
 		String old = BookUtil.getAuthor(item);
 
@@ -45,4 +49,5 @@ public class CmdBookAuthor extends MassiveBooksCommand
 		
 		sendMessage(Lang.getAlterAuthor(old, target));
 	}
+	
 }

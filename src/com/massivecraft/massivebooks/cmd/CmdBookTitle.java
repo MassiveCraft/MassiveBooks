@@ -6,7 +6,9 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
+import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
 import com.massivecraft.massivecore.MassiveException;
+import com.massivecraft.massivecore.cmd.arg.ARString;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
 import com.massivecraft.massivecore.util.Txt;
@@ -15,11 +17,13 @@ public class CmdBookTitle extends MassiveBooksCommand
 {
 	public CmdBookTitle()
 	{
+		// Aliases
 		this.addAliases("title");
 		
-		this.addRequiredArg("title");
-		this.setErrorOnToManyArgs(false);
+		// Args
+		this.addArg(ARString.get(), "title", true);
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.TITLE.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
@@ -27,9 +31,9 @@ public class CmdBookTitle extends MassiveBooksCommand
 	@Override
 	public void perform() throws MassiveException
 	{
-		ItemStack item = this.arg(ARBookInHand.getWritten());
+		ItemStack item = ARBookInHand.getWritten().read(sender);
 		
-		String target = this.argConcatFrom(0);
+		String target = this.readArg();
 		String targetParsed = Txt.parse(target);
 		boolean usingColor = (!ChatColor.stripColor(targetParsed).equals(targetParsed));
 		
