@@ -28,7 +28,7 @@ public class CmdBookGive extends MassiveBooksCommand
 		
 		// Args
 		this.addArg(ARPlayer.get(), true, "player", "you");
-		this.addArg(ARBookAmount.get(), "amount", "1");
+		this.addArg(1, ARBookAmount.get(), "amount", "1");
 		this.addArg(ARAll.get(ARMBookItem.get()), "title", "*bookandquill*", true);
 		
 		this.addRequirements(ReqHasPerm.get(Perm.GIVE.node));
@@ -40,7 +40,7 @@ public class CmdBookGive extends MassiveBooksCommand
 		Player player = this.readArg(me);
 		
 		// How many? or perhaps ensure the player has at least one?
-		Integer amount = this.readArg(1);
+		Integer amount = this.readArg();
 		boolean ensure = amount == ARBookAmount.ENSURE;
 		if (ensure) amount = 1;
 		

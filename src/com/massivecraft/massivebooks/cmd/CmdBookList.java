@@ -19,7 +19,7 @@ public class CmdBookList extends MassiveBooksCommand
 	{
 		this.addAliases("list");
 		
-		this.addArg(ArgSetting.getPager());
+		this.addArg(ArgSetting.getPage());
 		
 		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));
 	}
@@ -28,7 +28,7 @@ public class CmdBookList extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Args
-		int pageHumanBased = this.readArg(1);
+		int page = this.readArg();
 		
 		// Create Messages
 		List<String> lines = new ArrayList<String>();
@@ -40,7 +40,7 @@ public class CmdBookList extends MassiveBooksCommand
 		}
 		
 		// Send them
-		this.sendMessage(Txt.getPage(lines, pageHumanBased, String.valueOf(mbooks.size())+" Saved Books", sender));	
+		this.sendMessage(Txt.getPage(lines, page, String.valueOf(mbooks.size())+" Saved Books", sender));	
 	}
 
 }

@@ -23,7 +23,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 	{
 		this.addAliases("copy");
 		
-		this.addArg(ARInteger.get(), "times", "1");
+		this.addArg(1, ARInteger.get(), "times", "1");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.COPY.node));
 		this.addRequirements(ReqIsPlayer.get());
@@ -40,7 +40,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 		item.setAmount(1);
 		
 		// Get times arg
-		int times = this.readArg(1);
+		int times = this.readArg();
 		if (times <= 0) throw new MassiveException().addMessage(Lang.TIMES_MUST_BE_POSITIVE);
 
 		// Has right to copy?
