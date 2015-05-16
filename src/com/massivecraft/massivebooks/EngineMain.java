@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,6 +22,7 @@ import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.massivecore.EngineAbstract;
 import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 
@@ -55,7 +55,7 @@ public class EngineMain extends EngineAbstract
 	{
 		// If a player is joining the server for the first time ...
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		if (Mixin.hasPlayedBefore(player)) return;
 		
 		// ... and we are using new player commands ...
@@ -111,7 +111,7 @@ public class EngineMain extends EngineAbstract
 		
 		// ... check it the player is sneaking ...
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		final boolean sneaking = player.isSneaking();
 		
 		if (this.itemFrameLoad(event, item, player, sneaking)) return;
@@ -207,7 +207,7 @@ public class EngineMain extends EngineAbstract
 		
 		// ... possibly ...
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		final boolean sneaking = player.isSneaking();
 		if (sneaking == true && MConf.get().itemFrameRotateIfSneakTrue) return;
 		if (sneaking == false && MConf.get().itemFrameRotateIfSneakFalse) return;
@@ -227,7 +227,7 @@ public class EngineMain extends EngineAbstract
 		if (!Mixin.isActualJoin(event)) return;
 		
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (mplayer.isUsingAutoUpdate()) return;
 		
@@ -263,7 +263,7 @@ public class EngineMain extends EngineAbstract
 		ItemFrame itemFrame = (ItemFrame)entity;
 		
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
@@ -275,7 +275,7 @@ public class EngineMain extends EngineAbstract
 	public void updatePerform(PlayerItemHeldEvent event)
 	{
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
@@ -287,7 +287,7 @@ public class EngineMain extends EngineAbstract
 	public void updatePerform(PlayerPickupItemEvent event)
 	{
 		final Player player = event.getPlayer();
-		if (MUtil.isNpc(player)) return;
+		if (MUtil.isntPlayer(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
@@ -298,9 +298,9 @@ public class EngineMain extends EngineAbstract
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updatePerform(InventoryClickEvent event)
 	{
-		final HumanEntity human = event.getWhoClicked();
-		if (!(human instanceof Player)) return;
-		final Player player = (Player)human;
+		final Player player = IdUtil.getAsPlayer(event.getWhoClicked());
+		if (MUtil.isntPlayer(player)) return;
+		
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
@@ -312,9 +312,9 @@ public class EngineMain extends EngineAbstract
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updatePerform(InventoryOpenEvent event)
 	{
-		final HumanEntity human = event.getPlayer();
-		if (!(human instanceof Player)) return;
-		final Player player = (Player)human;
+		final Player player = IdUtil.getAsPlayer(event.getPlayer());
+		if (MUtil.isntPlayer(player)) return;
+		
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
