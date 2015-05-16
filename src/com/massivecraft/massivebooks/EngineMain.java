@@ -23,6 +23,7 @@ import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.massivecore.EngineAbstract;
 import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 
 public class EngineMain extends EngineAbstract
@@ -54,6 +55,7 @@ public class EngineMain extends EngineAbstract
 	{
 		// If a player is joining the server for the first time ...
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		if (Mixin.hasPlayedBefore(player)) return;
 		
 		// ... and we are using new player commands ...
@@ -109,6 +111,7 @@ public class EngineMain extends EngineAbstract
 		
 		// ... check it the player is sneaking ...
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		final boolean sneaking = player.isSneaking();
 		
 		if (this.itemFrameLoad(event, item, player, sneaking)) return;
@@ -204,6 +207,7 @@ public class EngineMain extends EngineAbstract
 		
 		// ... possibly ...
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		final boolean sneaking = player.isSneaking();
 		if (sneaking == true && MConf.get().itemFrameRotateIfSneakTrue) return;
 		if (sneaking == false && MConf.get().itemFrameRotateIfSneakFalse) return;
@@ -223,6 +227,7 @@ public class EngineMain extends EngineAbstract
 		if (!Mixin.isActualJoin(event)) return;
 		
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (mplayer.isUsingAutoUpdate()) return;
 		
@@ -258,6 +263,7 @@ public class EngineMain extends EngineAbstract
 		ItemFrame itemFrame = (ItemFrame)entity;
 		
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
@@ -269,6 +275,7 @@ public class EngineMain extends EngineAbstract
 	public void updatePerform(PlayerItemHeldEvent event)
 	{
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
@@ -280,6 +287,7 @@ public class EngineMain extends EngineAbstract
 	public void updatePerform(PlayerPickupItemEvent event)
 	{
 		final Player player = event.getPlayer();
+		if (MUtil.isNpc(player)) return;
 		MPlayer mplayer = MPlayer.get(player);
 		if (!mplayer.isUsingAutoUpdate()) return;
 		
