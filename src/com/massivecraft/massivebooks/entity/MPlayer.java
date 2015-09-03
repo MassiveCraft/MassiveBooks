@@ -53,11 +53,11 @@ public class MPlayer extends SenderEntity<MPlayer>
 			{
 				if (usingAutoUpdate)
 				{
-					this.sendMessage(Lang.AUTOUPDATE_ALREADY_TRUE);
+					this.message(Lang.AUTOUPDATE_ALREADY_TRUE);
 				}
 				else
 				{
-					this.sendMessage(Lang.AUTOUPDATE_ALREADY_FALSE);
+					this.message(Lang.AUTOUPDATE_ALREADY_FALSE);
 				}
 			}
 			return;
@@ -70,11 +70,11 @@ public class MPlayer extends SenderEntity<MPlayer>
 		{
 			if (usingAutoUpdate)
 			{
-				this.sendMessage(Lang.AUTOUPDATE_CHANGED_TO_TRUE);
+				this.message(Lang.AUTOUPDATE_CHANGED_TO_TRUE);
 			}
 			else
 			{
-				this.sendMessage(Lang.AUTOUPDATE_CHANGED_TO_FALSE);
+				this.message(Lang.AUTOUPDATE_CHANGED_TO_FALSE);
 			}
 		}
 	}

@@ -28,7 +28,7 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 		
 		if (!MConf.get().autoupdatingServerbooks)
 		{
-			sendMessage(Lang.AUTOUPDATE_DERPWARN);
+			message(Lang.AUTOUPDATE_DERPWARN);
 		}
 		
 		mme.setUsingAutoUpdate(targetState, true, true);

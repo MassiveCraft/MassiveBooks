@@ -38,11 +38,11 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 		{
 			if (targetState)
 			{
-				sendMessage(Lang.COPYRIGHTED_ALREADY_TRUE);
+				message(Lang.COPYRIGHTED_ALREADY_TRUE);
 			}
 			else
 			{
-				sendMessage(Lang.COPYRIGHTED_ALREADY_FALSE);
+				message(Lang.COPYRIGHTED_ALREADY_FALSE);
 			}
 			return;
 		}
@@ -54,12 +54,12 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 		if (targetState)
 		{
 			BookUtil.addFlag(item, Const.COPYRIGHTED);
-			sendMessage(Lang.COPYRIGHTED_CHANGED_TO_TRUE);
+			message(Lang.COPYRIGHTED_CHANGED_TO_TRUE);
 		}
 		else
 		{
 			BookUtil.removeFlag(item, Const.COPYRIGHTED);
-			sendMessage(Lang.COPYRIGHTED_CHANGED_TO_FALSE);
+			message(Lang.COPYRIGHTED_CHANGED_TO_FALSE);
 		}
 	}
 

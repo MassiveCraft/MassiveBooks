@@ -29,7 +29,7 @@ public class CmdBookLock extends MassiveBooksCommand
 		
 		if (BookUtil.isLocked(item))
 		{
-			sendMessage(Lang.getSameLock(item));
+			message(Lang.getSameLock(item));
 			return;
 		}
 		
@@ -39,7 +39,7 @@ public class CmdBookLock extends MassiveBooksCommand
 		BookUtil.lock(item);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.getAlterLock(before));
+		message(Lang.getAlterLock(before));
 	}
 
 }

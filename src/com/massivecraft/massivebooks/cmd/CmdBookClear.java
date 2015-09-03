@@ -29,7 +29,7 @@ public class CmdBookClear extends MassiveBooksCommand
 		
 		if (BookUtil.isCleared(item))
 		{
-			sendMessage(Lang.getSameClear(item));
+			message(Lang.getSameClear(item));
 			return;
 		}
 		
@@ -39,6 +39,6 @@ public class CmdBookClear extends MassiveBooksCommand
 		BookUtil.clear(item);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.getAlterClear(before));
+		message(Lang.getAlterClear(before));
 	}
 }

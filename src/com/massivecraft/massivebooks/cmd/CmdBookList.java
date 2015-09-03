@@ -40,7 +40,7 @@ public class CmdBookList extends MassiveBooksCommand
 		}
 		
 		// Send them
-		this.sendMessage(Txt.getPage(lines, page, String.valueOf(mbooks.size())+" Saved Books", sender));	
+		this.message(Txt.getPage(lines, page, String.valueOf(mbooks.size())+" Saved Books", sender));	
 	}
 
 }

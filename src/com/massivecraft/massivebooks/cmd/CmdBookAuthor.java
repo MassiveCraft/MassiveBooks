@@ -38,7 +38,7 @@ public class CmdBookAuthor extends MassiveBooksCommand
 
 		if (BookUtil.isAuthorEqualsId(item, target))
 		{
-			sendMessage(Lang.getSameAuthor(old));
+			message(Lang.getSameAuthor(old));
 			return;
 		}
 		
@@ -47,7 +47,7 @@ public class CmdBookAuthor extends MassiveBooksCommand
 		BookUtil.setAuthor(item, target);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.getAlterAuthor(old, target));
+		message(Lang.getAlterAuthor(old, target));
 	}
 	
 }

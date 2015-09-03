@@ -32,14 +32,14 @@ public class CmdBookSave extends MassiveBooksCommand
 		String title = BookUtil.getTitle(item);
 		if (title == null)
 		{
-			sendMessage(Lang.BOOK_MUST_HAVE_TITLE);
+			message(Lang.BOOK_MUST_HAVE_TITLE);
 			return;
 		}
 		
 		MBook mbook = MBookColl.get().get(title, true);
 		mbook.setItem(item);
 		
-		sendMessage(Lang.getSuccessSave(item));
+		message(Lang.getSuccessSave(item));
 	}
 
 }

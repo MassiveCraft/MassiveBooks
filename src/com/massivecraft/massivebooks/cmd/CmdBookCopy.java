@@ -102,7 +102,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 		{
 			if (!Money.despawn(me, me, moneyRequired, "MassiveBooks"))
 			{
-				sendMessage(String.format(Lang.FAILED_TO_REMOVE_X, Lang.RESOURCE_MONEY));
+				message(String.format(Lang.FAILED_TO_REMOVE_X, Lang.RESOURCE_MONEY));
 				return;
 			}
 		}
@@ -121,8 +121,8 @@ public class CmdBookCopy extends MassiveBooksCommand
 		InventoryUtil.addItemTimes(me.getInventory(), item, times);
 		
 		// Inform		
-		sendMessage(Lang.getSuccessCopyCopies(times));
-		sendMessage(Lang.getSuccessCopyResources(moneyRequired, booksRequired, inksacsRequired, feathersRequired));
+		message(Lang.getSuccessCopyCopies(times));
+		message(Lang.getSuccessCopyResources(moneyRequired, booksRequired, inksacsRequired, feathersRequired));
 	}
 	
 	// -------------------------------------------- //
@@ -140,9 +140,9 @@ public class CmdBookCopy extends MassiveBooksCommand
 	public void sendCheckFailMessage(String resourceName, Object required, Object possessed, Object missing)
 	{
 		String notEnoughMessage = String.format(Lang.NOT_ENOUGH_X, resourceName); 
-		this.sendMessage(notEnoughMessage);
+		this.message(notEnoughMessage);
 		String reportMessage = String.format(Lang.REQUIRED_X_POSSESSED_Y_MISSING_Z, required, possessed, missing);
-		this.sendMessage(reportMessage);
+		this.message(reportMessage);
 	}
 	
 }

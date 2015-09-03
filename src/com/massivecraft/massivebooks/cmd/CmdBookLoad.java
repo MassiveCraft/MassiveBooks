@@ -37,7 +37,7 @@ public class CmdBookLoad extends MassiveBooksCommand
 		
 		me.setItemInHand(target);
 		
-		sendMessage(Lang.getSuccessLoad(target));
+		message(Lang.getSuccessLoad(target));
 	}
 
 }

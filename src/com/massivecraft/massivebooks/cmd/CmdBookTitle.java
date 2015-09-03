@@ -47,7 +47,7 @@ public class CmdBookTitle extends MassiveBooksCommand
 		
 		if (BookUtil.isTitleEquals(item, target))
 		{
-			sendMessage(Lang.getSameTitle(old));
+			message(Lang.getSameTitle(old));
 			return;
 		}
 		
@@ -56,6 +56,6 @@ public class CmdBookTitle extends MassiveBooksCommand
 		BookUtil.setTitle(item, target);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.getAlterTitle(old, target));
+		message(Lang.getAlterTitle(old, target));
 	}
 }

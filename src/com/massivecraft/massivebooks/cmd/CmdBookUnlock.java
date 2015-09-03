@@ -29,7 +29,7 @@ public class CmdBookUnlock extends MassiveBooksCommand
 		
 		if (BookUtil.isUnlocked(item))
 		{
-			sendMessage(Lang.getSameUnlock(item));
+			message(Lang.getSameUnlock(item));
 			return;
 		}
 		
@@ -39,7 +39,7 @@ public class CmdBookUnlock extends MassiveBooksCommand
 		BookUtil.unlock(item);
 		me.setItemInHand(item);
 		
-		sendMessage(Lang.getAlterUnlock(before));
+		message(Lang.getAlterUnlock(before));
 	}
 
 }

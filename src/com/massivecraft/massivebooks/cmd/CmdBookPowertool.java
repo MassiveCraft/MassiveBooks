@@ -41,11 +41,11 @@ public class CmdBookPowertool extends MassiveBooksCommand
 		{
 			if (targetState)
 			{
-				sendMessage(Lang.POWERTOOL_ALREADY_TRUE);
+				message(Lang.POWERTOOL_ALREADY_TRUE);
 			}
 			else
 			{
-				sendMessage(Lang.POWERTOOL_ALREADY_FALSE);
+				message(Lang.POWERTOOL_ALREADY_FALSE);
 			}
 			return;
 		}
@@ -57,12 +57,12 @@ public class CmdBookPowertool extends MassiveBooksCommand
 		if (targetState)
 		{
 			BookUtil.addFlag(item, Const.POWERTOOL);
-			sendMessage(Lang.POWERTOOL_CHANGED_TO_TRUE);
+			message(Lang.POWERTOOL_CHANGED_TO_TRUE);
 		}
 		else
 		{
 			BookUtil.removeFlag(item, Const.POWERTOOL);
-			sendMessage(Lang.POWERTOOL_CHANGED_TO_FALSE);
+			message(Lang.POWERTOOL_CHANGED_TO_FALSE);
 		}
 	}
 
