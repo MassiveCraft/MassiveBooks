@@ -5,7 +5,6 @@ import java.util.List;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.massivecore.cmd.HelpCommand;
 import com.massivecraft.massivecore.cmd.VersionCommand;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 
@@ -38,7 +37,6 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBook()
 	{
 		// Add SubCommands
-		this.addSubCommand(HelpCommand.get());
 		this.addSubCommand(this.cmdBookUnlock);
 		this.addSubCommand(this.cmdBookLock);
 		this.addSubCommand(this.cmdBookClear);
