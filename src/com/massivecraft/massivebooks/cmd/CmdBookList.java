@@ -7,7 +7,7 @@ import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.ArgSetting;
+import com.massivecraft.massivecore.cmd.Parameter;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.pager.Pager;
 import com.massivecraft.massivecore.pager.Stringifier;
@@ -18,7 +18,7 @@ public class CmdBookList extends MassiveBooksCommand
 	{
 		this.addAliases("list");
 		
-		this.addArg(ArgSetting.getPage());
+		this.addParameter(Parameter.getPage());
 		
 		this.addRequirements(ReqHasPerm.get(Perm.LIST.node));
 	}

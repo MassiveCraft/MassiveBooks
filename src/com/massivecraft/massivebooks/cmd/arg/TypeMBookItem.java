@@ -10,17 +10,17 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARAbstract;
-import com.massivecraft.massivecore.cmd.arg.ARAllAble;
+import com.massivecraft.massivecore.cmd.type.TypeAbstract;
+import com.massivecraft.massivecore.cmd.type.TypeAllAble;
 
-public class ARMBookItem extends ARAbstract<ItemStack> implements ARAllAble<ItemStack>
+public class TypeMBookItem extends TypeAbstract<ItemStack> implements TypeAllAble<ItemStack>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static ARMBookItem i = new ARMBookItem();
-	public static ARMBookItem get() { return i; }
+	private static TypeMBookItem i = new TypeMBookItem();
+	public static TypeMBookItem get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE
@@ -29,14 +29,14 @@ public class ARMBookItem extends ARAbstract<ItemStack> implements ARAllAble<Item
 	@Override
 	public ItemStack read(String arg, CommandSender sender) throws MassiveException
 	{
-		MBook mbook = ARMBook.get().read(arg, sender);
+		MBook mbook = TypeMBook.get().read(arg, sender);
 		return mbook.getItem();
 	}
 	
 	@Override
 	public Collection<String> getTabList(CommandSender sender, String arg)
 	{
-		return ARMBook.get().getTabList(sender, arg);
+		return TypeMBook.get().getTabList(sender, arg);
 	}
 
 	@Override

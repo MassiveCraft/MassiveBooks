@@ -8,12 +8,12 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
+import com.massivecraft.massivebooks.cmd.arg.TypeBookInHand;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARInteger;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.cmd.type.TypeInteger;
 import com.massivecraft.massivecore.money.Money;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
@@ -23,7 +23,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 	{
 		this.addAliases("copy");
 		
-		this.addArg(1, ARInteger.get(), "times", "1");
+		this.addParameter(1, TypeInteger.get(), "times", "1");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.COPY.node));
 		this.addRequirements(ReqIsPlayer.get());
@@ -33,7 +33,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Get item arg
-		ItemStack item = ARBookInHand.getWritten().read(sender);
+		ItemStack item = TypeBookInHand.getWritten().read(sender);
 		BookUtil.updateBook(item);
 		
 		item = item.clone();

@@ -4,8 +4,8 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
-import com.massivecraft.massivebooks.cmd.arg.ARMBook;
+import com.massivecraft.massivebooks.cmd.arg.TypeBookInHand;
+import com.massivecraft.massivebooks.cmd.arg.TypeMBook;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
@@ -18,8 +18,8 @@ public class CmdBookLoad extends MassiveBooksCommand
 		// Aliases
 		this.addAliases("load");
 		
-		// Args
-		this.addArg(ARMBook.get(), "title", true);
+		// Parameters
+		this.addParameter(TypeMBook.get(), "title", true);
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.LOAD.node));
@@ -30,7 +30,7 @@ public class CmdBookLoad extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		MBook mbook = this.readArg();
-		ItemStack old = ARBookInHand.getEither().read(sender);
+		ItemStack old = TypeBookInHand.getEither().read(sender);
 		
 		ItemStack target = mbook.getItem();
 		target.setAmount(old.getAmount());

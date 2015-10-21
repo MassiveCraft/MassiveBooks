@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
+import com.massivecraft.massivebooks.cmd.arg.TypeBookInHand;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivecore.MassiveException;
@@ -27,7 +27,7 @@ public class CmdBookSave extends MassiveBooksCommand
 	@Override
 	public void perform() throws MassiveException
 	{
-		ItemStack item = ARBookInHand.getEither().read(sender);		
+		ItemStack item = TypeBookInHand.getEither().read(sender);		
 		
 		String title = BookUtil.getTitle(item);
 		if (title == null)

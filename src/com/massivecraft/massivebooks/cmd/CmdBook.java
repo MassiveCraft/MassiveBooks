@@ -36,22 +36,22 @@ public class CmdBook extends MassiveBooksCommand
 	
 	public CmdBook()
 	{
-		// Add SubCommands
-		this.addSubCommand(this.cmdBookUnlock);
-		this.addSubCommand(this.cmdBookLock);
-		this.addSubCommand(this.cmdBookClear);
-		this.addSubCommand(this.cmdBookTitle);
-		this.addSubCommand(this.cmdBookAuthor);
-		this.addSubCommand(this.cmdBookCopy);
-		this.addSubCommand(this.cmdBookList);
-		this.addSubCommand(this.cmdBookLoad);
-		this.addSubCommand(this.cmdBookGive);
-		this.addSubCommand(this.cmdBookSave);
-		this.addSubCommand(this.cmdBookDelete);
-		this.addSubCommand(this.cmdBookAutoupdate);
-		this.addSubCommand(this.cmdBookPowertool);
-		this.addSubCommand(this.cmdBookCopyrighted);
-		this.addSubCommand(this.cmdBookVersion);
+		// Children
+		this.addChild(this.cmdBookUnlock);
+		this.addChild(this.cmdBookLock);
+		this.addChild(this.cmdBookClear);
+		this.addChild(this.cmdBookTitle);
+		this.addChild(this.cmdBookAuthor);
+		this.addChild(this.cmdBookCopy);
+		this.addChild(this.cmdBookList);
+		this.addChild(this.cmdBookLoad);
+		this.addChild(this.cmdBookGive);
+		this.addChild(this.cmdBookSave);
+		this.addChild(this.cmdBookDelete);
+		this.addChild(this.cmdBookAutoupdate);
+		this.addChild(this.cmdBookPowertool);
+		this.addChild(this.cmdBookCopyrighted);
+		this.addChild(this.cmdBookVersion);
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.BOOK.node));

@@ -6,16 +6,16 @@ import org.bukkit.command.CommandSender;
 
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
-import com.massivecraft.massivecore.cmd.arg.ARAbstractSelect;
+import com.massivecraft.massivecore.cmd.type.TypeAbstractSelect;
 
-public class ARMBook extends ARAbstractSelect<MBook>
+public class TypeMBook extends TypeAbstractSelect<MBook>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	private static ARMBook i = new ARMBook();
-	public static ARMBook get() { return i; }
+	private static TypeMBook i = new TypeMBook();
+	public static TypeMBook get() { return i; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE

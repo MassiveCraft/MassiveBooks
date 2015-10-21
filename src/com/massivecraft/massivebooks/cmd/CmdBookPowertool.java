@@ -6,11 +6,11 @@ import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
+import com.massivecraft.massivebooks.cmd.arg.TypeBookInHand;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.cmd.type.TypeBoolean;
 
 public class CmdBookPowertool extends MassiveBooksCommand
 {
@@ -19,8 +19,8 @@ public class CmdBookPowertool extends MassiveBooksCommand
 		// Aliases
 		this.addAliases("pt", "powertool");
 		
-		// Args
-		this.addArg(ARBoolean.get(), "true/false", "toggle");
+		// Parameters
+		this.addParameter(TypeBoolean.get(), "true/false", "toggle");
 		
 		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.POWERTOOL.node));
@@ -31,7 +31,7 @@ public class CmdBookPowertool extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Args
-		ItemStack item = ARBookInHand.getWritten().read(sender);
+		ItemStack item = TypeBookInHand.getWritten().read(sender);
 		
 		boolean currentState = BookUtil.containsFlag(item, Const.POWERTOOL);
 		boolean targetState = this.readArg(!currentState);

@@ -6,20 +6,23 @@ import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.ARBookInHand;
+import com.massivecraft.massivebooks.cmd.arg.TypeBookInHand;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.cmd.type.TypeBoolean;
 
 public class CmdBookCopyrighted extends MassiveBooksCommand
 {
 	public CmdBookCopyrighted()
 	{
+		// Aliases
 		this.addAliases("cr", "copyrighted");
 		
-		this.addArg(ARBoolean.get(), "true/false", "toggle");
+		// Parameters
+		this.addParameter(TypeBoolean.get(), "true/false", "toggle");
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.COPYRIGHTED.node));
 		this.addRequirements(ReqIsPlayer.get());
 	}
@@ -28,7 +31,7 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Args
-		ItemStack item = this.readArgFrom(ARBookInHand.getWritten());
+		ItemStack item = this.readArgFrom(TypeBookInHand.getWritten());
 		
 		boolean currentState = BookUtil.containsFlag(item, Const.COPYRIGHTED);
 		boolean targetState = this.readArg(!currentState);

@@ -4,9 +4,9 @@ import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARBoolean;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
 import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.cmd.type.TypeBoolean;
 
 public class CmdBookAutoupdate extends MassiveBooksCommand
 {
@@ -14,7 +14,7 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 	{
 		this.addAliases("autoupdate");
 		
-		this.addArg(ARBoolean.get(), "true/false", "toggle");
+		this.addParameter(TypeBoolean.get(), "true/false", "toggle");
 		
 		this.addRequirements(ReqHasPerm.get(Perm.AUTOUPDATE.node));
 		this.addRequirements(ReqIsPlayer.get());

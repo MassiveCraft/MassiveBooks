@@ -2,26 +2,20 @@ package com.massivecraft.massivebooks.cmd;
 
 import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.massivecore.cmd.MassiveCommand;
-import com.massivecraft.massivecore.cmd.VisibilityMode;
+import com.massivecraft.massivecore.cmd.Visibility;
 
 public abstract class MassiveBooksCommand extends MassiveCommand
 {
 	public MPlayer mme;
 	
 	@Override
-	public void fixSenderVars()
+	public void senderFields(boolean set)
 	{
-		this.mme = MPlayer.get(this.sender);
-	}
-	
-	@Override
-	public void unsetSenderVars()
-	{
-		this.mme = null;
+		this.mme = set ? MPlayer.get(this.sender) : null;
 	}
 	
 	public MassiveBooksCommand()
 	{
-		this.setVisibilityMode(VisibilityMode.SECRET);
+		this.setVisibility(Visibility.SECRET);
 	}
 }

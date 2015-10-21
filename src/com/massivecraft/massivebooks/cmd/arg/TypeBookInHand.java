@@ -9,25 +9,25 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARAbstract;
+import com.massivecraft.massivecore.cmd.type.TypeAbstract;
 import com.massivecraft.massivecore.util.IdUtil;
 
-public class ARBookInHand extends ARAbstract<ItemStack>
+public class TypeBookInHand extends TypeAbstract<ItemStack>
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	public static final ARBookInHand WRITTEN = new ARBookInHand(true, false);
-	public static ARBookInHand getWritten() { return WRITTEN; }
+	public static final TypeBookInHand WRITTEN = new TypeBookInHand(true, false);
+	public static TypeBookInHand getWritten() { return WRITTEN; }
 	
-	public static final ARBookInHand QUILL = new ARBookInHand(false, true);
-	public static ARBookInHand getQuill() { return QUILL; }
+	public static final TypeBookInHand QUILL = new TypeBookInHand(false, true);
+	public static TypeBookInHand getQuill() { return QUILL; }
 	
-	public static final ARBookInHand EITHER = new ARBookInHand(true, true);
-	public static ARBookInHand getEither() { return EITHER; }
+	public static final TypeBookInHand EITHER = new TypeBookInHand(true, true);
+	public static TypeBookInHand getEither() { return EITHER; }
 	
-	private ARBookInHand(boolean acceptingWrittenBook, boolean acceptingBookAndQuill)
+	private TypeBookInHand(boolean acceptingWrittenBook, boolean acceptingBookAndQuill)
 	{
 		this.acceptingWrittenBook = acceptingWrittenBook;
 		this.acceptingBookAndQuill = acceptingBookAndQuill;

@@ -10,12 +10,12 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.ARBookAmount;
-import com.massivecraft.massivebooks.cmd.arg.ARMBookItem;
+import com.massivecraft.massivebooks.cmd.arg.TypeBookAmount;
+import com.massivecraft.massivebooks.cmd.arg.TypeMBookItem;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.arg.ARAll;
-import com.massivecraft.massivecore.cmd.arg.ARPlayer;
 import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.cmd.type.TypeAll;
+import com.massivecraft.massivecore.cmd.type.TypePlayer;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
@@ -26,11 +26,12 @@ public class CmdBookGive extends MassiveBooksCommand
 		// Aliases
 		this.addAliases("give");
 		
-		// Args
-		this.addArg(ARPlayer.get(), true, "player", "you");
-		this.addArg(1, ARBookAmount.get(), "amount", "1");
-		this.addArg(ARAll.get(ARMBookItem.get()), "title", "*bookandquill*", true);
+		// Parameters
+		this.addParameter(TypePlayer.get(), true, "player", "you");
+		this.addParameter(1, TypeBookAmount.get(), "amount", "1");
+		this.addParameter(TypeAll.get(TypeMBookItem.get()), "title", "*bookandquill*", true);
 		
+		// Requirements
 		this.addRequirements(ReqHasPerm.get(Perm.GIVE.node));
 	}
 	
@@ -41,7 +42,7 @@ public class CmdBookGive extends MassiveBooksCommand
 		
 		// How many? or perhaps ensure the player has at least one?
 		Integer amount = this.readArg();
-		boolean ensure = amount == ARBookAmount.ENSURE;
+		boolean ensure = amount == TypeBookAmount.ENSURE;
 		if (ensure) amount = 1;
 		
 		// What items should we give?
