@@ -32,6 +32,9 @@ public class MassiveBooks extends MassivePlugin
 	{
 		if ( ! preEnable()) return;
 		
+		// Version Synchronized
+		this.setVersionSynchronized(true);
+		
 		// Initialize Collections
 		MConfColl.get().init();
 		MBookColl.get().init();
