@@ -4,10 +4,10 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.TypeMBook;
+import com.massivecraft.massivebooks.cmd.type.TypeMBook;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 
 public class CmdBookDelete extends MassiveBooksCommand
 {
@@ -17,7 +17,7 @@ public class CmdBookDelete extends MassiveBooksCommand
 		
 		this.addParameter(TypeMBook.get(), "title", true);
 		
-		this.addRequirements(ReqHasPerm.get(Perm.DELETE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.DELETE.node));
 	}
 	
 	@Override

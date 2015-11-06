@@ -23,6 +23,7 @@ import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
 import com.massivecraft.massivecore.EngineAbstract;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.Txt;
 
 public class EnginePowertool extends EngineAbstract
 {
@@ -341,7 +342,7 @@ public class EnginePowertool extends EngineAbstract
 		for (String page : pages)
 		{
 			if (page == null) continue;
-			for (String line : page.split("\\n"))
+			for (String line : Txt.PATTERN_NEWLINE.split("\\n"))
 			{
 				line = line.trim();
 				ret.add(line);

@@ -5,12 +5,12 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.TypeBookInHand;
+import com.massivecraft.massivebooks.cmd.type.TypeBookInHand;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 
 public class CmdBookSave extends MassiveBooksCommand
 {
@@ -20,8 +20,8 @@ public class CmdBookSave extends MassiveBooksCommand
 		this.addAliases("save");
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.SAVE.node));
-		this.addRequirements(ReqIsPlayer.get());
+		this.addRequirements(RequirementHasPerm.get(Perm.SAVE.node));
+		this.addRequirements(RequirementIsPlayer.get());
 	}
 	
 	@Override

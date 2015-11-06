@@ -1,7 +1,6 @@
 package com.massivecraft.massivebooks.cmd;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -10,12 +9,14 @@ import org.bukkit.inventory.PlayerInventory;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.TypeBookAmount;
-import com.massivecraft.massivebooks.cmd.arg.TypeMBookItem;
+import com.massivecraft.massivebooks.cmd.type.TypeBookAmount;
+import com.massivecraft.massivebooks.cmd.type.TypeMBook;
+import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.cmd.type.TypeAll;
-import com.massivecraft.massivecore.cmd.type.TypePlayer;
+import com.massivecraft.massivecore.collections.MassiveList;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.command.type.collection.TypeList;
+import com.massivecraft.massivecore.command.type.sender.TypePlayer;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
@@ -29,10 +30,10 @@ public class CmdBookGive extends MassiveBooksCommand
 		// Parameters
 		this.addParameter(TypePlayer.get(), true, "player", "you");
 		this.addParameter(1, TypeBookAmount.get(), "amount", "1");
-		this.addParameter(TypeAll.get(TypeMBookItem.get()), "title", "*bookandquill*", true);
+		this.addParameter(TypeList.get(TypeMBook.get()), "title", "*bookandquill*", true);
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.GIVE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.GIVE.node));
 	}
 	
 	@Override
@@ -46,7 +47,19 @@ public class CmdBookGive extends MassiveBooksCommand
 		if (ensure) amount = 1;
 		
 		// What items should we give?
-		Collection<ItemStack> items = this.readArg(Collections.singleton(new ItemStack(Material.BOOK_AND_QUILL)));
+		List<MBook> mbooks = this.readArg(new MassiveList<MBook>());
+		List<ItemStack> items = new MassiveList<ItemStack>();
+		if (mbooks.isEmpty())
+		{
+			items.add(new ItemStack(Material.BOOK_AND_QUILL));
+		}
+		else
+		{
+			for (MBook mbook : mbooks)
+			{
+				items.add(mbook.getItem());
+			}
+		}
 		
 		// Now for each item ...
 		for (ItemStack item : items)

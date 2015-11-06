@@ -5,10 +5,10 @@ import org.bukkit.inventory.ItemStack;
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
-import com.massivecraft.massivebooks.cmd.arg.TypeBookInHand;
+import com.massivecraft.massivebooks.cmd.type.TypeBookInHand;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
-import com.massivecraft.massivecore.cmd.req.ReqIsPlayer;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 
 public class CmdBookLock extends MassiveBooksCommand
 {
@@ -18,8 +18,8 @@ public class CmdBookLock extends MassiveBooksCommand
 		this.addAliases("lock");
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.LOCK.node));
-		this.addRequirements(ReqIsPlayer.get());
+		this.addRequirements(RequirementHasPerm.get(Perm.LOCK.node));
+		this.addRequirements(RequirementIsPlayer.get());
 	}
 	
 	@Override

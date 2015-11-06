@@ -5,8 +5,8 @@ import java.util.List;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.massivecore.cmd.VersionCommand;
-import com.massivecraft.massivecore.cmd.req.ReqHasPerm;
+import com.massivecraft.massivecore.command.VersionCommand;
+import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 
 public class CmdBook extends MassiveBooksCommand
 {
@@ -54,7 +54,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addChild(this.cmdBookVersion);
 		
 		// Requirements
-		this.addRequirements(ReqHasPerm.get(Perm.BOOK.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.BOOK.node));
 	}
 	
 	// -------------------------------------------- //

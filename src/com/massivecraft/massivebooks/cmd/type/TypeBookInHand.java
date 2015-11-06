@@ -1,4 +1,4 @@
-package com.massivecraft.massivebooks.cmd.arg;
+package com.massivecraft.massivebooks.cmd.type;
 
 import java.util.Collection;
 
@@ -9,8 +9,9 @@ import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.MassiveException;
-import com.massivecraft.massivecore.cmd.type.TypeAbstract;
+import com.massivecraft.massivecore.command.type.TypeAbstract;
 import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.Txt;
 
 public class TypeBookInHand extends TypeAbstract<ItemStack>
 {
@@ -47,6 +48,12 @@ public class TypeBookInHand extends TypeAbstract<ItemStack>
 	// OVERRIDE
 	// -------------------------------------------- //
 	
+	@Override
+	public String getVisualInner(ItemStack value, CommandSender sender)
+	{
+		return Txt.getItemName(value);
+	}
+
 	@Override
 	public ItemStack read(String arg, CommandSender sender) throws MassiveException
 	{
@@ -92,5 +99,7 @@ public class TypeBookInHand extends TypeAbstract<ItemStack>
 		
 		return null;
 	}
+
+	
 
 }
