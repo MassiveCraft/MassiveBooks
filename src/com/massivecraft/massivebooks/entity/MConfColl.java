@@ -7,7 +7,7 @@ import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivecore.MassiveCore;
 import com.massivecraft.massivecore.store.Coll;
 import com.massivecraft.massivecore.store.MStore;
-import com.massivecraft.massivecore.xlib.gson.JsonElement;
+import com.massivecraft.massivecore.xlib.gson.JsonObject;
 
 public class MConfColl extends Coll<MConf>
 {
@@ -35,7 +35,7 @@ public class MConfColl extends Coll<MConf>
 	}
 	
 	@Override
-	public synchronized void loadFromRemoteFixed(String id, Entry<JsonElement, Long> entry)
+	public synchronized void loadFromRemoteFixed(String id, Entry<JsonObject, Long> entry)
 	{
 		super.loadFromRemoteFixed(id, entry);
 		if ( ! this.inited()) return;
