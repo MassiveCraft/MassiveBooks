@@ -15,7 +15,7 @@ import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.collections.MassiveList;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
-import com.massivecraft.massivecore.command.type.collection.TypeList;
+import com.massivecraft.massivecore.command.type.container.TypeList;
 import com.massivecraft.massivecore.command.type.sender.TypePlayer;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.InventoryUtil;
