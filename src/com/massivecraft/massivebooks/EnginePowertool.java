@@ -15,17 +15,16 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLineEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
-import com.massivecraft.massivecore.EngineAbstract;
+import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.Txt;
 
-public class EnginePowertool extends EngineAbstract
+public class EnginePowertool extends Engine
 {
 	// -------------------------------------------- //
 	// CONSTANTS
@@ -45,17 +44,6 @@ public class EnginePowertool extends EngineAbstract
 	
 	private static EnginePowertool i = new EnginePowertool();
 	public static EnginePowertool get() { return i; }
-	public EnginePowertool() {}
-	
-	// -------------------------------------------- //
-	// OVERRIDE
-	// -------------------------------------------- //
-	
-	@Override
-	public Plugin getPlugin()
-	{
-		return MassiveBooks.get();
-	}
 	
 	// -------------------------------------------- //
 	// LISTENER: INTERACT EVENTS

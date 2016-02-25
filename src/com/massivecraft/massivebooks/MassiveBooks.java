@@ -13,41 +13,34 @@ public class MassiveBooks extends MassivePlugin
 	
 	private static MassiveBooks i;
 	public static MassiveBooks get() { return i; }
-	public MassiveBooks() { MassiveBooks.i = this; }
-	
-	// -------------------------------------------- //
-	// FIELDS
-	// -------------------------------------------- //
-	
-	// Commands
-	private CmdBook cmdBook;
-	public CmdBook getCmdBook() { return this.cmdBook; }
+	public MassiveBooks()
+	{
+		MassiveBooks.i = this;
+		
+		// Version Synchronized
+		this.setVersionSynchronized(true);
+	}
 	
 	// -------------------------------------------- //
 	// OVERRIDE
 	// -------------------------------------------- //
 	
 	@Override
-	public void onEnable()
+	public void onEnableInner()
 	{
-		if ( ! preEnable()) return;
+		// Activate
+		this.activate(
+			// Coll
+			MConfColl.get(),
+			MBookColl.get(),
 		
-		// Version Synchronized
-		this.setVersionSynchronized(true);
+			// Command
+			CmdBook.get(),
 		
-		// Initialize Collections
-		MConfColl.get().init();
-		MBookColl.get().init();
-		
-		// Commands
-		this.cmdBook = new CmdBook();
-		this.cmdBook.register(this);
-		
-		// Setup Listeners
-		EngineMain.get().activate();
-		EnginePowertool.get().activate();
-		
-		postEnable();
+			// Engine
+			EngineMain.get(),
+			EnginePowertool.get()
+		);
 	}
 	
 }

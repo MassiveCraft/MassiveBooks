@@ -11,6 +11,13 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 public class CmdBook extends MassiveBooksCommand
 {
 	// -------------------------------------------- //
+	// INSTANCE
+	// -------------------------------------------- //
+	
+	private static CmdBook i = new CmdBook();
+	public static CmdBook get() { return i; }
+	
+	// -------------------------------------------- //
 	// FIELDS
 	// -------------------------------------------- //
 	

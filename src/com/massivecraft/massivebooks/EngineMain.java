@@ -16,17 +16,16 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
-import com.massivecraft.massivecore.EngineAbstract;
+import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 
-public class EngineMain extends EngineAbstract
+public class EngineMain extends Engine
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -34,17 +33,6 @@ public class EngineMain extends EngineAbstract
 	
 	private static EngineMain i = new EngineMain();
 	public static EngineMain get() { return i; }
-	public EngineMain() {}
-	
-	// -------------------------------------------- //
-	// OVERRIDE
-	// -------------------------------------------- //
-	
-	@Override
-	public Plugin getPlugin()
-	{
-		return MassiveBooks.get();
-	}
 	
 	// -------------------------------------------- //
 	// NEW PLAYER COMMANDS

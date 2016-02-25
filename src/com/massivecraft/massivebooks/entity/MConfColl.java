@@ -27,9 +27,10 @@ public class MConfColl extends Coll<MConf>
 	// -------------------------------------------- //
 	
 	@Override
-	public void init()
+	public void setActive(boolean active)
 	{
-		super.init();
+		super.setActive(active);
+		if ( ! active) return;
 		MConf.i = this.get(MassiveCore.INSTANCE, true);
 		this.createUpdatePermissionNodes();
 	}
@@ -38,7 +39,7 @@ public class MConfColl extends Coll<MConf>
 	public synchronized void loadFromRemoteFixed(String id, Entry<JsonObject, Long> entry)
 	{
 		super.loadFromRemoteFixed(id, entry);
-		if ( ! this.inited()) return;
+		if ( ! this.isActive()) return;
 		this.createUpdatePermissionNodes();
 	}
 	
