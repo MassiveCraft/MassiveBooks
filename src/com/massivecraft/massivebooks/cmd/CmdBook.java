@@ -5,7 +5,7 @@ import java.util.List;
 import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.massivecore.command.VersionCommand;
+import com.massivecraft.massivecore.command.MassiveCommandVersion;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 
 public class CmdBook extends MassiveBooksCommand
@@ -35,7 +35,7 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookAutoupdate cmdBookAutoupdate = new CmdBookAutoupdate();
 	public CmdBookPowertool cmdBookPowertool = new CmdBookPowertool();
 	public CmdBookCopyrighted cmdBookCopyrighted = new CmdBookCopyrighted();
-	public VersionCommand cmdBookVersion = new VersionCommand(MassiveBooks.get(), Perm.VERSION.node, "v", "version");
+	public MassiveCommandVersion cmdBookVersion = new MassiveCommandVersion(MassiveBooks.get(), Perm.VERSION.node, "v", "version");
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
