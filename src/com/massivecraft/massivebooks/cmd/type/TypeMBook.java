@@ -22,7 +22,7 @@ public class TypeMBook extends TypeEntity<MBook>
 	// -------------------------------------------- //
 	
 	@Override
-	public String getTypeName()
+	public String getName()
 	{
 		return "saved book";
 	}
