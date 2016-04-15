@@ -56,7 +56,7 @@ public class Lang
 	
 	public static final String AMOUNT_MUST_BE_POSITIVE = Txt.parse("<b>amount must be positive");
 	public static final String X_ALREADY_HAVE_Y = Txt.parse("<i>%s <i>already have %s<i>.");
-	public static final String NOT_ENOUGH_ROOM_FOR_X_Y = Txt.parse("<b>Not enough room for <h>%d <b> %s<b>.");
+	public static final String NOT_ENOUGH_ROOM_FOR_X_Y = Txt.parse("<b>Not enough room for <h>%d<b> %s<b>.");
 	public static final String X_GAVE_Y_Z_L = Txt.parse("<g>%s <g>gave %s <h>%s <g>%s<g>.");
 	
 	public static final String AUTOUPDATE_CHANGED_TO_TRUE = Txt.parse("<lime>TRUE<i> Autoupdate is now true.");
