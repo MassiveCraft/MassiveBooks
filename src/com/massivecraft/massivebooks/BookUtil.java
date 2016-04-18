@@ -327,7 +327,7 @@ public class BookUtil
 	
 	public static boolean isCleared(ItemStack item)
 	{
-		return item.getDurability() == 0 && item.getType() == Material.BOOK_AND_QUILL && !item.hasItemMeta();
+		return item != null && item.getDurability() == 0 && item.getType() == Material.BOOK_AND_QUILL && !item.hasItemMeta();
 	}
 	
 	// -------------------------------------------- //

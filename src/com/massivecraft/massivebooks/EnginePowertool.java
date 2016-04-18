@@ -86,6 +86,7 @@ public class EnginePowertool extends Engine
 		
 		// If the player is holding a written book ...
 		final ItemStack item = InventoryUtil.getWeapon(player);
+		if (item == null) return;
 		final Material itemType = item.getType();
 		if (itemType != Material.WRITTEN_BOOK) return;
 		

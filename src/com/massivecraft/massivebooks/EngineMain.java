@@ -123,6 +123,7 @@ public class EngineMain extends Engine
 		
 		// ... now do different stuff depending on what item the player is holding ...
 		ItemStack itemInHand = InventoryUtil.getWeapon(player);
+		if (itemInHand == null) return true;
 	
 		// ... if the player is holding a similar item ...
 		if (itemInHand.isSimilar(itemInFrame))
