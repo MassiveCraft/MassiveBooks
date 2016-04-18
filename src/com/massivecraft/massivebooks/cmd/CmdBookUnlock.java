@@ -9,6 +9,7 @@ import com.massivecraft.massivebooks.cmd.type.TypeBookInHand;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
+import com.massivecraft.massivecore.util.InventoryUtil;
 
 public class CmdBookUnlock extends MassiveBooksCommand
 {
@@ -37,7 +38,7 @@ public class CmdBookUnlock extends MassiveBooksCommand
 		
 		ItemStack before = item.clone();
 		BookUtil.unlock(item);
-		me.setItemInHand(item);
+		InventoryUtil.setWeapon(me, item);
 		
 		message(Lang.getAlterUnlock(before));
 	}

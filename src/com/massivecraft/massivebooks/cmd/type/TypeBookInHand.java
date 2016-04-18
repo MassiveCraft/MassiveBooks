@@ -11,6 +11,7 @@ import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.type.TypeAbstract;
 import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.Txt;
 
 public class TypeBookInHand extends TypeAbstract<ItemStack>
@@ -90,7 +91,7 @@ public class TypeBookInHand extends TypeAbstract<ItemStack>
 		Player player = IdUtil.getAsPlayer(sender);
 		if (player == null) return null;
 		
-		ItemStack ret = player.getItemInHand();
+		ItemStack ret = InventoryUtil.getWeapon(player);
 		if (ret == null) return null;
 		
 		Material type = ret.getType();

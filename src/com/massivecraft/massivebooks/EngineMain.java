@@ -22,6 +22,7 @@ import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.Txt;
 
@@ -121,7 +122,7 @@ public class EngineMain extends Engine
 		event.setCancelled(true);
 		
 		// ... now do different stuff depending on what item the player is holding ...
-		ItemStack itemInHand = player.getItemInHand();
+		ItemStack itemInHand = InventoryUtil.getWeapon(player);
 	
 		// ... if the player is holding a similar item ...
 		if (itemInHand.isSimilar(itemInFrame))
@@ -129,7 +130,7 @@ public class EngineMain extends Engine
 			// ... do unload ...
 			ItemStack target = new ItemStack(itemInHand);
 			BookUtil.clear(target);
-			player.setItemInHand(target);
+			InventoryUtil.setWeapon(player, target);
 			
 			// ... and inform.
 			player.sendMessage(Lang.getFrameUnload(itemInHand));
@@ -143,7 +144,7 @@ public class EngineMain extends Engine
 			// ... do load ...
 			ItemStack target = new ItemStack(itemInFrame);
 			target.setAmount(itemInHand.getAmount());
-			player.setItemInHand(target);
+			InventoryUtil.setWeapon(player, target);
 			
 			// ... and inform.
 			player.sendMessage(Lang.getFrameLoad(target));

@@ -10,6 +10,7 @@ import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
+import com.massivecraft.massivecore.util.InventoryUtil;
 
 public class CmdBookLoad extends MassiveBooksCommand
 {
@@ -35,7 +36,7 @@ public class CmdBookLoad extends MassiveBooksCommand
 		ItemStack target = mbook.getItem();
 		target.setAmount(old.getAmount());
 		
-		me.setItemInHand(target);
+		InventoryUtil.setWeapon(me, target);
 		
 		message(Lang.getSuccessLoad(target));
 	}

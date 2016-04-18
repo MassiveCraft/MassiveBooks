@@ -11,6 +11,7 @@ import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.command.type.primitive.TypeString;
+import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.Txt;
 
 public class CmdBookTitle extends MassiveBooksCommand
@@ -54,7 +55,7 @@ public class CmdBookTitle extends MassiveBooksCommand
 		if (!BookUtil.isAuthorEquals(item, sender) && !Perm.TITLE_OTHER.has(sender, true)) return;
 		
 		BookUtil.setTitle(item, target);
-		me.setItemInHand(item);
+		InventoryUtil.setWeapon(me, item);
 		
 		message(Lang.getAlterTitle(old, target));
 	}

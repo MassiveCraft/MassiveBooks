@@ -22,6 +22,7 @@ import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.Mixin;
 import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.Txt;
 
 public class EnginePowertool extends Engine
@@ -84,7 +85,7 @@ public class EnginePowertool extends Engine
 		}
 		
 		// If the player is holding a written book ...
-		final ItemStack item = player.getItemInHand();
+		final ItemStack item = InventoryUtil.getWeapon(player);
 		final Material itemType = item.getType();
 		if (itemType != Material.WRITTEN_BOOK) return;
 		
