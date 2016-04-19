@@ -31,15 +31,15 @@ public class MassiveBooks extends MassivePlugin
 		// Activate
 		this.activate(
 			// Coll
-			MConfColl.get(),
-			MBookColl.get(),
+			MConfColl.class,
+			MBookColl.class,
 		
 			// Command
-			CmdBook.get(),
+			CmdBook.class,
 		
 			// Engine
-			EngineMain.get(),
-			EnginePowertool.get()
+			EngineMain.class,
+			EnginePowertool.class
 		);
 	}
 	
