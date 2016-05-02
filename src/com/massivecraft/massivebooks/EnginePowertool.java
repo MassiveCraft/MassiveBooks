@@ -332,7 +332,7 @@ public class EnginePowertool extends Engine
 		for (String page : pages)
 		{
 			if (page == null) continue;
-			for (String line : Txt.PATTERN_NEWLINE.split("\\n"))
+			for (String line : Txt.PATTERN_NEWLINE.split(page))
 			{
 				line = line.trim();
 				ret.add(line);
