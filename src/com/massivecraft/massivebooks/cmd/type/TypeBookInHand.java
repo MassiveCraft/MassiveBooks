@@ -31,6 +31,7 @@ public class TypeBookInHand extends TypeAbstract<ItemStack>
 	
 	private TypeBookInHand(boolean acceptingWrittenBook, boolean acceptingBookAndQuill)
 	{
+		super(ItemStack.class);
 		this.acceptingWrittenBook = acceptingWrittenBook;
 		this.acceptingBookAndQuill = acceptingBookAndQuill;
 	}
