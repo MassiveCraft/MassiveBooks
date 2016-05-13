@@ -17,7 +17,7 @@ import com.massivecraft.massivecore.collections.MassiveList;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.type.container.TypeList;
 import com.massivecraft.massivecore.command.type.sender.TypePlayer;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinDisplayName;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
 public class CmdBookGive extends MassiveBooksCommand
@@ -67,7 +67,7 @@ public class CmdBookGive extends MassiveBooksCommand
 			PlayerInventory inventory = player.getInventory();
 			if (ensure && inventory.containsAtLeast(item, 1))
 			{
-				sender.sendMessage(Lang.getAlreadyHave(Mixin.getDisplayName(player, sender), item));
+				sender.sendMessage(Lang.getAlreadyHave(MixinDisplayName.get().getDisplayName(player, sender), item));
 				player.sendMessage(Lang.getAlreadyHave("You", item));
 				continue;
 			}
@@ -81,8 +81,8 @@ public class CmdBookGive extends MassiveBooksCommand
 			
 			InventoryUtil.addItemTimes(inventory, item, amount);
 			
-			sender.sendMessage(Lang.getGave("You", Mixin.getDisplayName(player, sender), amount, item));
-			player.sendMessage(Lang.getGave(Mixin.getDisplayName(sender, player), "you", amount, item));
+			sender.sendMessage(Lang.getGave("You", MixinDisplayName.get().getDisplayName(player, sender), amount, item));
+			player.sendMessage(Lang.getGave(MixinDisplayName.get().getDisplayName(sender, player), "you", amount, item));
 		}
 	}
 

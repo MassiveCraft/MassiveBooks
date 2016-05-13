@@ -20,7 +20,7 @@ import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLineEvent
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
 import com.massivecraft.massivecore.Engine;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinDisplayName;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.Txt;
@@ -241,7 +241,7 @@ public class EnginePowertool extends Engine
 		else if (tag.equals("me.displayname"))
 		{
 			me = event.getPlayer();
-			event.setReplacement(Mixin.getDisplayName(me, me));
+			event.setReplacement(MixinDisplayName.get().getDisplayName(me, me));
 		}
 		else if (tag.equals("you.name"))
 		{
@@ -277,7 +277,7 @@ public class EnginePowertool extends Engine
 			}
 			else
 			{
-				event.setReplacement(Mixin.getDisplayName(you, me));
+				event.setReplacement(MixinDisplayName.get().getDisplayName(you, me));
 			}
 		}
 		else if (tag.equals("block.x"))

@@ -20,7 +20,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.massivecore.Engine;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinActual;
+import com.massivecraft.massivecore.mixin.MixinPlayed;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.MUtil;
@@ -45,7 +46,7 @@ public class EngineMain extends Engine
 		// If a player is joining the server for the first time ...
 		final Player player = event.getPlayer();
 		if (MUtil.isntPlayer(player)) return;
-		if (Mixin.hasPlayedBefore(player)) return;
+		if (MixinPlayed.get().hasPlayedBefore(player)) return;
 		
 		// ... and we are using new player commands ...
 		if (!MConf.get().usingNewPlayerCommands) return;
@@ -214,7 +215,7 @@ public class EngineMain extends Engine
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void autoupdateJoinWarnOrToggle(PlayerJoinEvent event)
 	{
-		if (!Mixin.isActualJoin(event)) return;
+		if ( ! MixinActual.get().isActualJoin(event)) return;
 		
 		final Player player = event.getPlayer();
 		if (MUtil.isntPlayer(player)) return;

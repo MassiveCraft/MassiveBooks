@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.massivecore.mixin.Mixin;
+import com.massivecraft.massivecore.mixin.MixinDisplayName;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.Txt;
 
@@ -108,7 +108,7 @@ public class Lang
 	
 	public static String getNewPlayerCommandsForX(Player player, Object watcherObject)
 	{
-		return String.format(NEW_PLAYER_COMMANDS_FOR_X, Mixin.getDisplayName(player, watcherObject));
+		return String.format(NEW_PLAYER_COMMANDS_FOR_X, MixinDisplayName.get().getDisplayName(player, watcherObject));
 	}
 	
 	public static String descTitle(String title)
@@ -122,7 +122,7 @@ public class Lang
 		if (author == null) return NO_AUTHOR_COLORED;
 		if (MConf.get().usingAuthorDisplayName)
 		{
-			return COLOR_SIGNATURE + Mixin.getDisplayName(author, null); // TODO: We must always view from the perspective of the universe unless we use protocollib or something.
+			return COLOR_SIGNATURE + MixinDisplayName.get().getDisplayName(author, null); // TODO: We must always view from the perspective of the universe unless we use protocollib or something.
 		}
 		else
 		{
