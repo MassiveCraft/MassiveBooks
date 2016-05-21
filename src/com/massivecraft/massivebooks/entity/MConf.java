@@ -88,7 +88,7 @@ public class MConf extends Entity<MConf>
 			final String name = entry.getKey();
 			final Double copyCost = entry.getValue();
 			String description = String.format(Lang.PERMISSION_DESCRIPTION_COPYCOST_TEMPLATE, copyCost);
-			PermissionUtil.get(true, true, name, description, PermissionDefault.FALSE);
+			PermissionUtil.getPermission(true, true, name, description, PermissionDefault.FALSE);
 		}
 	}
 
