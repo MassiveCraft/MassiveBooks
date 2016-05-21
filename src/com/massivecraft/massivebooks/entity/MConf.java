@@ -10,7 +10,7 @@ import org.bukkit.permissions.PermissionDefault;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.store.Entity;
 import com.massivecraft.massivecore.util.MUtil;
-import com.massivecraft.massivecore.util.PermUtil;
+import com.massivecraft.massivecore.util.PermissionUtil;
 
 public class MConf extends Entity<MConf>
 {
@@ -55,7 +55,7 @@ public class MConf extends Entity<MConf>
 	);
 	public double getCopyCost(Permissible permissible)
 	{
-		Double ret = PermUtil.pickFirstVal(permissible, this.permToCopyCost);
+		Double ret = PermissionUtil.pickFirstVal(permissible, this.permToCopyCost);
 		if (ret == null) ret = 0D;
 		return ret;
 	}
@@ -88,7 +88,7 @@ public class MConf extends Entity<MConf>
 			final String name = entry.getKey();
 			final Double copyCost = entry.getValue();
 			String description = String.format(Lang.PERMISSION_DESCRIPTION_COPYCOST_TEMPLATE, copyCost);
-			PermUtil.get(true, true, name, description, PermissionDefault.FALSE);
+			PermissionUtil.get(true, true, name, description, PermissionDefault.FALSE);
 		}
 	}
 
