@@ -23,7 +23,7 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 		this.addParameter(TypeBoolean.getTrue(), "true/false", "toggle");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.COPYRIGHTED.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.COPYRIGHTED));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

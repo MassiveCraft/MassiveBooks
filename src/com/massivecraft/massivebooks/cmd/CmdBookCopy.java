@@ -25,7 +25,7 @@ public class CmdBookCopy extends MassiveBooksCommand
 		
 		this.addParameter(1, TypeInteger.get(), "times", "1");
 		
-		this.addRequirements(RequirementHasPerm.get(Perm.COPY.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.COPY));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

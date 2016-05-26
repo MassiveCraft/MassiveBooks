@@ -19,7 +19,7 @@ public class CmdBookClear extends MassiveBooksCommand
 		this.addAliases("clear");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.CLEAR.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.CLEAR));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

@@ -19,7 +19,7 @@ public class CmdBookUnlock extends MassiveBooksCommand
 		this.addAliases("unlock");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.UNLOCK.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.UNLOCK));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

@@ -23,7 +23,7 @@ public class CmdBookLoad extends MassiveBooksCommand
 		this.addParameter(TypeMBook.get(), "title", true);
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.LOAD.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.LOAD));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

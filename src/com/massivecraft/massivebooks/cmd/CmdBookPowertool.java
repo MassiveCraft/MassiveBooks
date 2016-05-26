@@ -23,7 +23,7 @@ public class CmdBookPowertool extends MassiveBooksCommand
 		this.addParameter(TypeBoolean.getTrue(), "true/false", "toggle");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.POWERTOOL.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.POWERTOOL));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

@@ -20,7 +20,7 @@ public class CmdBookSave extends MassiveBooksCommand
 		this.addAliases("save");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.SAVE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.SAVE));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

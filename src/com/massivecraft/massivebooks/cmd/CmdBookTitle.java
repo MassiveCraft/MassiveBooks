@@ -25,7 +25,7 @@ public class CmdBookTitle extends MassiveBooksCommand
 		this.addParameter(TypeString.get(), "title", true);
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.TITLE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.TITLE));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

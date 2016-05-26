@@ -16,7 +16,7 @@ public class CmdBookAutoupdate extends MassiveBooksCommand
 		
 		this.addParameter(TypeBoolean.getTrue(), "true/false", "toggle");
 		
-		this.addRequirements(RequirementHasPerm.get(Perm.AUTOUPDATE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.AUTOUPDATE));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

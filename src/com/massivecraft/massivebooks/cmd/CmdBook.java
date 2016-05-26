@@ -35,7 +35,7 @@ public class CmdBook extends MassiveBooksCommand
 	public CmdBookAutoupdate cmdBookAutoupdate = new CmdBookAutoupdate();
 	public CmdBookPowertool cmdBookPowertool = new CmdBookPowertool();
 	public CmdBookCopyrighted cmdBookCopyrighted = new CmdBookCopyrighted();
-	public MassiveCommandVersion cmdBookVersion = new MassiveCommandVersion(MassiveBooks.get(), Perm.VERSION.node, "v", "version");
+	public MassiveCommandVersion cmdBookVersion = new MassiveCommandVersion(MassiveBooks.get()).setAliases("v", "version").addRequirements(RequirementHasPerm.get(Perm.VERSION));
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -61,7 +61,7 @@ public class CmdBook extends MassiveBooksCommand
 		this.addChild(this.cmdBookVersion);
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.BOOK.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.BOOK));
 	}
 	
 	// -------------------------------------------- //

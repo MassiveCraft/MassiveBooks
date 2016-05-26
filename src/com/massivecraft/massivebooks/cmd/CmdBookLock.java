@@ -19,7 +19,7 @@ public class CmdBookLock extends MassiveBooksCommand
 		this.addAliases("lock");
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.LOCK.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.LOCK));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	

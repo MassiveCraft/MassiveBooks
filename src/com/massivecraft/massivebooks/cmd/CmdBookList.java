@@ -20,7 +20,7 @@ public class CmdBookList extends MassiveBooksCommand
 		
 		this.addParameter(Parameter.getPage());
 		
-		this.addRequirements(RequirementHasPerm.get(Perm.LIST.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.LIST));
 	}
 	
 	@Override

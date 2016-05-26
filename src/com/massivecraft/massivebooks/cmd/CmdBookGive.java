@@ -33,7 +33,7 @@ public class CmdBookGive extends MassiveBooksCommand
 		this.addParameter(TypeList.get(TypeMBook.get()), "title", "*bookandquill*", true);
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.GIVE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.GIVE));
 	}
 	
 	@Override

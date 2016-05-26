@@ -2,51 +2,52 @@ package com.massivecraft.massivebooks;
 
 import org.bukkit.permissions.Permissible;
 
+import com.massivecraft.massivecore.Identified;
 import com.massivecraft.massivecore.util.PermissionUtil;
 
-public enum Perm
+public enum Perm implements Identified
 {
 	// -------------------------------------------- //
 	// ENUM
 	// -------------------------------------------- //
 	
-	BOOK("book"),
+	BOOK,
 
-	UNLOCK("unlock"),
-	UNLOCK_OTHER("unlock.other"),
+	UNLOCK,
+	UNLOCK_OTHER,
 	
-	LOCK("lock"),
-	LOCK_OTHER("lock.other"),
+	LOCK,
+	LOCK_OTHER,
 	
-	CLEAR("clear"),
-	CLEAR_OTHER("clear.other"),
+	CLEAR,
+	CLEAR_OTHER,
 	
-	TITLE("title"),
-	TITLE_OTHER("title.other"),
-	TITLE_COLOR("title.color"),
+	TITLE,
+	TITLE_OTHER,
+	TITLE_COLOR,
 	
-	AUTHOR("author"),
-	AUTHOR_OTHER("author.other"),
+	AUTHOR,
+	AUTHOR_OTHER,
 	
-	COPY("copy"),
-	COPY_OTHER("copy.other"),
-	COPY_COPYRIGHTED("copy.copyrighted"),
+	COPY,
+	COPY_OTHER,
+	COPY_COPYRIGHTED,
 	
-	LIST("list"),
-	LOAD("load"),
-	GIVE("give"),
-	SAVE("save"),
-	DELETE("delete"),
+	LIST,
+	LOAD,
+	GIVE,
+	SAVE,
+	DELETE,
 	
-	AUTOUPDATE("autoupdate"),
+	AUTOUPDATE,
 	
-	POWERTOOL("powertool"),
-	POWERTOOL_OTHER("powertool.other"),
+	POWERTOOL,
+	POWERTOOL_OTHER,
 	
-	COPYRIGHTED("copyrighted"),
-	COPYRIGHTED_OTHER("copyrighted.other"),
+	COPYRIGHTED,
+	COPYRIGHTED_OTHER,
 	
-	VERSION("version"),
+	VERSION,
 	
 	// END OF LIST
 	;
@@ -55,15 +56,16 @@ public enum Perm
 	// FIELDS
 	// -------------------------------------------- //
 	
-	public final String node;
+	private final String id;
+	@Override public String getId() { return this.id; }
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
-	Perm(final String permissionNode)
+	Perm()
 	{
-		this.node = "massivebooks."+permissionNode;
+		this.id = PermissionUtil.createPermissionId(MassiveBooks.get(), this);
 	}
 	
 	// -------------------------------------------- //
@@ -72,7 +74,7 @@ public enum Perm
 	
 	public boolean has(Permissible permissible, boolean informSenderIfNot)
 	{
-		return PermissionUtil.hasPermission(permissible, this.node, informSenderIfNot);
+		return PermissionUtil.hasPermission(permissible, this.id, informSenderIfNot);
 	}
 	
 	public boolean has(Permissible permissible)

@@ -17,7 +17,7 @@ public class CmdBookDelete extends MassiveBooksCommand
 		
 		this.addParameter(TypeMBook.get(), "title", true);
 		
-		this.addRequirements(RequirementHasPerm.get(Perm.DELETE.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.DELETE));
 	}
 	
 	@Override

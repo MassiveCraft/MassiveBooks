@@ -24,7 +24,7 @@ public class CmdBookAuthor extends MassiveBooksCommand
 		this.addParameter(TypeString.get(), "author", true);
 		
 		// Requirements
-		this.addRequirements(RequirementHasPerm.get(Perm.AUTHOR.node));
+		this.addRequirements(RequirementHasPerm.get(Perm.AUTHOR));
 		this.addRequirements(RequirementIsPlayer.get());
 	}
 	
