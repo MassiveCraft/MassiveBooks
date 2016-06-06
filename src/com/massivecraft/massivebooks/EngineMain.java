@@ -89,6 +89,9 @@ public class EngineMain extends Engine
 	@EventHandler(priority = EventPriority.LOW)
 	public void itemFrameLoadAndDisplayname(PlayerInteractEntityEvent event)
 	{
+		// Ignore Off Hand
+		if (isOffHand(event)) return;
+		
 		// If a player is interacting with an item frame ...
 		Entity entity = event.getRightClicked();
 		if (!(entity instanceof ItemFrame)) return;
@@ -186,6 +189,9 @@ public class EngineMain extends Engine
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void itemFrameRotate(PlayerInteractEntityEvent event)
 	{
+		// Ignore Off Hand
+		if (isOffHand(event)) return;
+		
 		// If a player is interacting with an item frame ...
 		Entity entity = event.getRightClicked();
 		if (!(entity instanceof ItemFrame)) return;
@@ -249,6 +255,9 @@ public class EngineMain extends Engine
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void updatePerform(PlayerInteractEntityEvent event)
 	{
+		// Ignore Off Hand
+		if (isOffHand(event)) return;
+		
 		Entity entity = event.getRightClicked();
 		if (!(entity instanceof ItemFrame)) return;
 		ItemFrame itemFrame = (ItemFrame)entity;

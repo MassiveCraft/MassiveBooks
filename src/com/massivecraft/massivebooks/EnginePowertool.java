@@ -60,6 +60,9 @@ public class EnginePowertool extends Engine
 	@EventHandler(priority = EventPriority.LOW)
 	public void handleInteractEvent(PlayerInteractEntityEvent interactEntityEvent)
 	{
+		// Ignore Off Hand
+		if (isOffHand(interactEntityEvent)) return;
+		
 		// TODO: Do we even want to use this? Perhaps a sniper-edit search implementation will be better? 
 		this.handleInteractEvent(null, interactEntityEvent);
 	}
