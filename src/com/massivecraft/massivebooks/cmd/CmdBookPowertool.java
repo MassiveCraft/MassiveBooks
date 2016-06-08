@@ -10,7 +10,7 @@ import com.massivecraft.massivebooks.cmd.type.TypeBookInHand;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
-import com.massivecraft.massivecore.command.type.primitive.TypeBoolean;
+import com.massivecraft.massivecore.command.type.primitive.TypeBooleanTrue;
 
 public class CmdBookPowertool extends MassiveBooksCommand
 {
@@ -20,7 +20,7 @@ public class CmdBookPowertool extends MassiveBooksCommand
 		this.addAliases("pt", "powertool");
 		
 		// Parameters
-		this.addParameter(TypeBoolean.getTrue(), "true/false", "toggle");
+		this.addParameter(TypeBooleanTrue.get(), "true/false", "toggle");
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.POWERTOOL));
