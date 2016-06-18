@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -20,6 +21,7 @@ import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLineEvent
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEvent;
 import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
 import com.massivecraft.massivecore.Engine;
+import com.massivecraft.massivecore.collections.MassiveList;
 import com.massivecraft.massivecore.mixin.MixinDisplayName;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.InventoryUtil;
@@ -327,7 +329,7 @@ public class EnginePowertool extends Engine
 	
 	public static List<String> getRawlines(ItemStack item)
 	{
-		List<String> ret = new ArrayList<String>();
+		List<String> ret = new MassiveList<>();
 		
 		List<String> pages = BookUtil.getPages(item);
 		if (pages == null) return ret;
@@ -338,6 +340,11 @@ public class EnginePowertool extends Engine
 			for (String line : Txt.PATTERN_NEWLINE.split(page))
 			{
 				line = line.trim();
+				// There seems to be a bug in Spigot 1.9
+				// This bug adds black colors around newlines.
+				// Since colors should not be part of chat window output
+				// We just strip all colors from each line.
+				line = ChatColor.stripColor(line);
 				ret.add(line);
 			}
 		}
