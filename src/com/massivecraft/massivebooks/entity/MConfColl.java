@@ -2,11 +2,8 @@ package com.massivecraft.massivebooks.entity;
 
 import java.util.Map.Entry;
 
-import com.massivecraft.massivebooks.Const;
-import com.massivecraft.massivebooks.MassiveBooks;
 import com.massivecraft.massivecore.MassiveCore;
 import com.massivecraft.massivecore.store.Coll;
-import com.massivecraft.massivecore.store.MStore;
 import com.massivecraft.massivecore.xlib.gson.JsonObject;
 
 public class MConfColl extends Coll<MConf>
@@ -17,10 +14,6 @@ public class MConfColl extends Coll<MConf>
 	
 	private static MConfColl i = new MConfColl();
 	public static MConfColl get() { return i; }
-	private MConfColl()
-	{
-		super(Const.COLLECTION_MCONF, MConf.class, MStore.getDb(), MassiveBooks.get());
-	}
 	
 	// -------------------------------------------- //
 	// OVERRIDE
