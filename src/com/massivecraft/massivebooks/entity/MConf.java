@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.massivecraft.massivecore.command.editor.annotation.EditorName;
 import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.PermissionDefault;
 
@@ -12,6 +13,7 @@ import com.massivecraft.massivecore.store.Entity;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.PermissionUtil;
 
+@EditorName("config")
 public class MConf extends Entity<MConf>
 {
 	// -------------------------------------------- //
@@ -27,9 +29,12 @@ public class MConf extends Entity<MConf>
 	
 	// Command Aliases
 	public List<String> aliasesBook = MUtil.list("book", "books");
+	public List<String> aliasesBookConfigInner = MUtil.list("config");
 	
 	// New Player Commands
 	public boolean usingNewPlayerCommands = true;
+	// NOTE: the string command type doesn't like the beginning /
+	// so this will need to be refactored some other time if we want to use TypeStringCommand
 	public List<String> newPlayerCommands = MUtil.list("/book give {p} ensure all");
 	public boolean usingNewPlayerCommandsDelayTicks = true;
 	public int newPlayerCommandsDelayTicks = 5;

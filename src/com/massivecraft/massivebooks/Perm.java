@@ -49,6 +49,8 @@ public enum Perm implements Identified
 	
 	VERSION,
 	
+	CONFIG,
+	
 	// END OF LIST
 	;
 	

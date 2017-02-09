@@ -35,6 +35,7 @@ permissions:
   massivebooks.copyrighted: {description: set copyrighted state for a book, default: false}
   massivebooks.copyrighted.other: {description: set copyrighted state for a book by another author, default: false}
   massivebooks.version: {description: see plugin version, default: false}
+  massivebooks.config: {description: edit plugin config, default: false}
 # -------------------------------------------- #
 # START NOTATION
 # -------------------------------------------- #
@@ -67,6 +68,7 @@ permissions:
       massivebooks.copyrighted: true
       massivebooks.copyrighted.other: true
       massivebooks.version: true
+      massivebooks.config: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
@@ -78,6 +80,7 @@ permissions:
     default: false
     children:
       massivebooks.kit.rank2: true
+      massivebooks.config: true
   massivebooks.kit.rank2:
     default: false
     children:
