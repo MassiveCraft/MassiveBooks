@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks.cmd;
 
+import com.massivecraft.massivebooks.entity.MConf;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.Lang;
@@ -12,19 +13,32 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
+import java.util.List;
+
 public class CmdBookLoad extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookLoad()
 	{
-		// Aliases
-		this.addAliases("load");
-		
 		// Parameters
 		this.addParameter(TypeMBook.get(), "title", true);
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.LOAD));
 		this.addRequirements(RequirementIsPlayer.get());
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookLoad;
 	}
 	
 	@Override

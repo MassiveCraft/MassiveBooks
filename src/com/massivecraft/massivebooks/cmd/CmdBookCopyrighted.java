@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks.cmd;
 
+import com.massivecraft.massivebooks.entity.MConf;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
@@ -12,19 +13,32 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.command.type.primitive.TypeBooleanTrue;
 
+import java.util.List;
+
 public class CmdBookCopyrighted extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookCopyrighted()
 	{
-		// Aliases
-		this.addAliases("cr", "copyrighted");
-		
 		// Parameters
 		this.addParameter(TypeBooleanTrue.get(), "true/false", "toggle");
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.COPYRIGHTED));
 		this.addRequirements(RequirementIsPlayer.get());
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookCopyrighted;
 	}
 	
 	@Override

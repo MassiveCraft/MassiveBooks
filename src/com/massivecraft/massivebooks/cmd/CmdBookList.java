@@ -1,11 +1,13 @@
 package com.massivecraft.massivebooks.cmd;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
 import com.massivecraft.massivebooks.entity.MBookColl;
+import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.Parameter;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
@@ -14,13 +16,27 @@ import com.massivecraft.massivecore.pager.Stringifier;
 
 public class CmdBookList extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookList()
 	{
-		this.addAliases("list");
-		
+		// Parameters
 		this.addParameter(Parameter.getPage());
 		
+		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.LIST));
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookList;
 	}
 	
 	@Override

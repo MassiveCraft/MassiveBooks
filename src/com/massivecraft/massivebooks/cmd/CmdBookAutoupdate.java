@@ -8,16 +8,32 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.command.type.primitive.TypeBooleanTrue;
 
+import java.util.List;
+
 public class CmdBookAutoupdate extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookAutoupdate()
 	{
-		this.addAliases("autoupdate");
-		
+		// Parameters
 		this.addParameter(TypeBooleanTrue.get(), "true/false", "toggle");
 		
+		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.AUTOUPDATE));
 		this.addRequirements(RequirementIsPlayer.get());
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookAutoupdate;
 	}
 	
 	@Override

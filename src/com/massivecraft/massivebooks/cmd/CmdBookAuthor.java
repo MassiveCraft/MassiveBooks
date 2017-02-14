@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks.cmd;
 
+import com.massivecraft.massivebooks.entity.MConf;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
@@ -13,19 +14,32 @@ import com.massivecraft.massivecore.command.type.primitive.TypeString;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
+import java.util.List;
+
 public class CmdBookAuthor extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookAuthor()
 	{
-		// Aliases
-		this.addAliases("author");
-		
 		// Parameters
 		this.addParameter(TypeString.get(), "author", true);
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.AUTHOR));
 		this.addRequirements(RequirementIsPlayer.get());
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookAuthor;
 	}
 	
 	@Override

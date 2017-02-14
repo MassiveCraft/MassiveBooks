@@ -86,7 +86,7 @@ public class EnginePowertool extends Engine
 		}
 		else
 		{
-			throw new NullPointerException("It's ok for either interactEvent or interactEntityEvent to be null, but now both at the same time!");
+			throw new NullPointerException("It's ok for either interactEvent or interactEntityEvent to be null, but not both at the same time!");
 		}
 		
 		// If the player is holding a written book ...

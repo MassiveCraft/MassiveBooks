@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.massivecraft.massivecore.command.editor.annotation.EditorName;
+import com.massivecraft.massivecore.command.editor.annotation.EditorType;
+import com.massivecraft.massivecore.command.type.TypeStringCommand;
 import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.PermissionDefault;
 
@@ -29,13 +31,27 @@ public class MConf extends Entity<MConf>
 	
 	// Command Aliases
 	public List<String> aliasesBook = MUtil.list("book", "books");
-	public List<String> aliasesBookConfigInner = MUtil.list("config");
+	public List<String> aliasesBookUnlock = MUtil.list("unlock");
+	public List<String> aliasesBookLock = MUtil.list("lock");
+	public List<String> aliasesBookClear = MUtil.list("clear");
+	public List<String> aliasesBookTitle = MUtil.list("title");
+	public List<String> aliasesBookAuthor = MUtil.list("author");
+	public List<String> aliasesBookCopy = MUtil.list("copy");
+	public List<String> aliasesBookList = MUtil.list("list");
+	public List<String> aliasesBookLoad = MUtil.list("load");
+	public List<String> aliasesBookGive = MUtil.list("give");
+	public List<String> aliasesBookSave = MUtil.list("save");
+	public List<String> aliasesBookDelete = MUtil.list("delete");
+	public List<String> aliasesBookAutoupdate = MUtil.list("autoupdate");
+	public List<String> aliasesBookPowertool = MUtil.list("pt", "powertool");
+	public List<String> aliasesBookCopyrighted = MUtil.list("cr", "copyrighted");
+	public List<String> aliasesBookConfig = MUtil.list("config");
+	public List<String> aliasesBookVersion = MUtil.list("v", "version");
 	
 	// New Player Commands
 	public boolean usingNewPlayerCommands = true;
-	// NOTE: the string command type doesn't like the beginning /
-	// so this will need to be refactored some other time if we want to use TypeStringCommand
-	public List<String> newPlayerCommands = MUtil.list("/book give {p} ensure all");
+	@EditorType(TypeStringCommand.class)
+	public List<String> newPlayerCommands = MUtil.list("book give {p} ensure all");
 	public boolean usingNewPlayerCommandsDelayTicks = true;
 	public int newPlayerCommandsDelayTicks = 5;
 	

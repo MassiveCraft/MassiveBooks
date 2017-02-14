@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks.cmd;
 
+import com.massivecraft.massivebooks.entity.MConf;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,19 +15,32 @@ import com.massivecraft.massivecore.command.type.primitive.TypeString;
 import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.Txt;
 
+import java.util.List;
+
 public class CmdBookTitle extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookTitle()
 	{
-		// Aliases
-		this.addAliases("title");
-		
 		// Parameters
 		this.addParameter(TypeString.get(), "title", true);
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.TITLE));
 		this.addRequirements(RequirementIsPlayer.get());
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookTitle;
 	}
 	
 	@Override
@@ -59,4 +73,5 @@ public class CmdBookTitle extends MassiveBooksCommand
 		
 		message(Lang.getAlterTitle(old, target));
 	}
+
 }

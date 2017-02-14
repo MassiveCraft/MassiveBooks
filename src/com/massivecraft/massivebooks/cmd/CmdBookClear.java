@@ -1,5 +1,6 @@
 package com.massivecraft.massivebooks.cmd;
 
+import com.massivecraft.massivebooks.entity.MConf;
 import org.bukkit.inventory.ItemStack;
 
 import com.massivecraft.massivebooks.BookUtil;
@@ -11,16 +12,29 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
+import java.util.List;
+
 public class CmdBookClear extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookClear()
 	{
-		// Aliases
-		this.addAliases("clear");
-		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.CLEAR));
 		this.addRequirements(RequirementIsPlayer.get());
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookClear;
 	}
 	
 	@Override
@@ -42,4 +56,5 @@ public class CmdBookClear extends MassiveBooksCommand
 		
 		message(Lang.getAlterClear(before));
 	}
+	
 }

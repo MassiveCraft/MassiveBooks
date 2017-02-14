@@ -2,6 +2,7 @@ package com.massivecraft.massivebooks.cmd;
 
 import java.util.List;
 
+import com.massivecraft.massivebooks.entity.MConf;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -22,11 +23,12 @@ import com.massivecraft.massivecore.util.InventoryUtil;
 
 public class CmdBookGive extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookGive()
 	{
-		// Aliases
-		this.addAliases("give");
-		
 		// Parameters
 		this.addParameter(TypePlayer.get(), true, "player", "you");
 		this.addParameter(1, TypeBookAmount.get(), "amount", "1");
@@ -34,6 +36,16 @@ public class CmdBookGive extends MassiveBooksCommand
 		
 		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.GIVE));
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookGive;
 	}
 	
 	@Override

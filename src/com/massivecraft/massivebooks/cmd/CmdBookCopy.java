@@ -17,16 +17,32 @@ import com.massivecraft.massivecore.command.type.primitive.TypeInteger;
 import com.massivecraft.massivecore.money.Money;
 import com.massivecraft.massivecore.util.InventoryUtil;
 
+import java.util.List;
+
 public class CmdBookCopy extends MassiveBooksCommand
 {
+	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
 	public CmdBookCopy()
 	{
-		this.addAliases("copy");
-		
+		// Parameters
 		this.addParameter(1, TypeInteger.get(), "times", "1");
 		
+		// Requirements
 		this.addRequirements(RequirementHasPerm.get(Perm.COPY));
 		this.addRequirements(RequirementIsPlayer.get());
+	}
+	
+	// -------------------------------------------- //
+	// OVERRIDE
+	// -------------------------------------------- //
+	
+	@Override
+	public List<String> getAliases()
+	{
+		return MConf.get().aliasesBookCopy;
 	}
 	
 	@Override
