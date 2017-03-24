@@ -1,17 +1,16 @@
 package com.massivecraft.massivebooks.cmd;
 
-import com.massivecraft.massivebooks.entity.MConf;
-import org.bukkit.inventory.ItemStack;
-
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivebooks.Const;
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.cmd.type.TypeBookInHand;
+import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.requirement.RequirementIsPlayer;
 import com.massivecraft.massivecore.command.type.primitive.TypeBooleanTrue;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 

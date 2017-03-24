@@ -1,9 +1,8 @@
 package com.massivecraft.massivebooks.entity;
 
-import org.bukkit.inventory.ItemStack;
-
 import com.massivecraft.massivebooks.BookUtil;
 import com.massivecraft.massivecore.store.Entity;
+import org.bukkit.inventory.ItemStack;
 
 public class MBook extends Entity<MBook>
 {	

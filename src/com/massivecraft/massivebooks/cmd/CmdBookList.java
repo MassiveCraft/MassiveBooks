@@ -1,8 +1,5 @@
 package com.massivecraft.massivebooks.cmd;
 
-import java.util.Collection;
-import java.util.List;
-
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MBook;
@@ -13,6 +10,9 @@ import com.massivecraft.massivecore.command.Parameter;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.pager.Pager;
 import com.massivecraft.massivecore.pager.Stringifier;
+
+import java.util.Collection;
+import java.util.List;
 
 public class CmdBookList extends MassiveBooksCommand
 {

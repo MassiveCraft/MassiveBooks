@@ -1,10 +1,14 @@
 package com.massivecraft.massivebooks;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLineEvent;
+import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEvent;
+import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
+import com.massivecraft.massivecore.Engine;
+import com.massivecraft.massivecore.collections.MassiveList;
+import com.massivecraft.massivecore.mixin.MixinDisplayName;
+import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.InventoryUtil;
+import com.massivecraft.massivecore.util.Txt;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -17,15 +21,10 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLineEvent;
-import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceLinesEvent;
-import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
-import com.massivecraft.massivecore.Engine;
-import com.massivecraft.massivecore.collections.MassiveList;
-import com.massivecraft.massivecore.mixin.MixinDisplayName;
-import com.massivecraft.massivecore.util.IdUtil;
-import com.massivecraft.massivecore.util.InventoryUtil;
-import com.massivecraft.massivecore.util.Txt;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EnginePowertool extends Engine
 {

@@ -1,5 +1,14 @@
 package com.massivecraft.massivebooks;
 
+import com.massivecraft.massivebooks.entity.MConf;
+import com.massivecraft.massivebooks.entity.MPlayer;
+import com.massivecraft.massivecore.Engine;
+import com.massivecraft.massivecore.mixin.MixinActual;
+import com.massivecraft.massivecore.mixin.MixinPlayed;
+import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.InventoryUtil;
+import com.massivecraft.massivecore.util.MUtil;
+import com.massivecraft.massivecore.util.Txt;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.ConsoleCommandSender;
@@ -16,16 +25,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.massivebooks.entity.MPlayer;
-import com.massivecraft.massivecore.Engine;
-import com.massivecraft.massivecore.mixin.MixinActual;
-import com.massivecraft.massivecore.mixin.MixinPlayed;
-import com.massivecraft.massivecore.util.IdUtil;
-import com.massivecraft.massivecore.util.InventoryUtil;
-import com.massivecraft.massivecore.util.MUtil;
-import com.massivecraft.massivecore.util.Txt;
 
 public class EngineMain extends Engine
 {

@@ -1,10 +1,10 @@
 package com.massivecraft.massivebooks.event;
 
-import java.util.List;
-
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+
+import java.util.List;
 
 public class MassiveBooksPowertoolReplaceLinesEvent extends MassiveBooksPowertoolReplaceEventAbstract<List<String>>
 {

@@ -1,19 +1,18 @@
 package com.massivecraft.massivebooks.entity;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.command.editor.annotation.EditorName;
 import com.massivecraft.massivecore.command.editor.annotation.EditorType;
 import com.massivecraft.massivecore.command.type.TypeStringCommand;
-import org.bukkit.permissions.Permissible;
-import org.bukkit.permissions.PermissionDefault;
-
-import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.store.Entity;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.util.PermissionUtil;
+import org.bukkit.permissions.Permissible;
+import org.bukkit.permissions.PermissionDefault;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 @EditorName("config")
 public class MConf extends Entity<MConf>

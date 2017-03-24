@@ -1,8 +1,7 @@
 package com.massivecraft.massivebooks.entity;
 
-import org.bukkit.ChatColor;
-
 import com.massivecraft.massivecore.store.Coll;
+import org.bukkit.ChatColor;
 
 public class MBookColl extends Coll<MBook>
 {

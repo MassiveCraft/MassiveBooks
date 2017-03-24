@@ -1,10 +1,10 @@
 package com.massivecraft.massivebooks.entity;
 
-import java.util.Map.Entry;
-
 import com.massivecraft.massivecore.MassiveCore;
 import com.massivecraft.massivecore.store.Coll;
 import com.massivecraft.massivecore.xlib.gson.JsonObject;
+
+import java.util.Map.Entry;
 
 public class MConfColl extends Coll<MConf>
 {

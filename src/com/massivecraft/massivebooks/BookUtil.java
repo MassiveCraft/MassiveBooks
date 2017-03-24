@@ -1,9 +1,10 @@
 package com.massivecraft.massivebooks;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.massivecraft.massivebooks.entity.MBook;
+import com.massivecraft.massivebooks.entity.MConf;
+import com.massivecraft.massivecore.util.IdUtil;
+import com.massivecraft.massivecore.util.InventoryUtil;
+import com.massivecraft.massivecore.util.MUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -16,11 +17,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.massivecraft.massivebooks.entity.MBook;
-import com.massivecraft.massivebooks.entity.MConf;
-import com.massivecraft.massivecore.util.IdUtil;
-import com.massivecraft.massivecore.util.InventoryUtil;
-import com.massivecraft.massivecore.util.MUtil;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class BookUtil
 {	

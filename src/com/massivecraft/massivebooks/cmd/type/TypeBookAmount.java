@@ -1,11 +1,10 @@
 package com.massivecraft.massivebooks.cmd.type;
 
-import org.apache.commons.lang.StringUtils;
-import org.bukkit.command.CommandSender;
-
 import com.massivecraft.massivebooks.Lang;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.type.primitive.TypeInteger;
+import org.apache.commons.lang.StringUtils;
+import org.bukkit.command.CommandSender;
 
 public class TypeBookAmount extends TypeInteger
 {

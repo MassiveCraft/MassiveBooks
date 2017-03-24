@@ -1,10 +1,10 @@
 package com.massivecraft.massivebooks.cmd;
 
-import java.util.List;
-
 import com.massivecraft.massivebooks.Perm;
 import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
+
+import java.util.List;
 
 public class CmdBook extends MassiveBooksCommand
 {
