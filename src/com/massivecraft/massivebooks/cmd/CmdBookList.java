@@ -48,7 +48,7 @@ public class CmdBookList extends MassiveBooksCommand
 		// Pager Create
 		Collection<MBook> mbooks = MBookColl.get().getAll();
 		String title = String.valueOf(mbooks.size())+" Saved Books";
-		Pager<MBook> pager = new Pager<MBook>(this, title, page, mbooks, new Stringifier<MBook>()
+		Pager<MBook> pager = new Pager<>(this, title, page, mbooks, new Stringifier<MBook>()
 		{
 			@Override
 			public String toString(MBook mbook, int index)

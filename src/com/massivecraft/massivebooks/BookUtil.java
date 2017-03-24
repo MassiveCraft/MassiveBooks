@@ -165,7 +165,7 @@ public class BookUtil
 	
 	public static void sendInventoryContentToViewersSoon(Inventory inventory)
 	{
-		final Set<Player> players = new HashSet<Player>();
+		final Set<Player> players = new HashSet<>();
 		for (HumanEntity viewer : inventory.getViewers())
 		{
 			if (viewer instanceof Player)
