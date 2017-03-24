@@ -13,13 +13,7 @@ public class MassiveBooks extends MassivePlugin
 	
 	private static MassiveBooks i;
 	public static MassiveBooks get() { return i; }
-	public MassiveBooks()
-	{
-		MassiveBooks.i = this;
-		
-		// Version Synchronized
-		this.setVersionSynchronized(true);
-	}
+	public MassiveBooks() { MassiveBooks.i = this; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE
