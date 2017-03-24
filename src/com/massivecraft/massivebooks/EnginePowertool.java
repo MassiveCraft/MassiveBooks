@@ -141,7 +141,7 @@ public class EnginePowertool extends Engine
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onReplaceLinesEventNormal(MassiveBooksPowertoolReplaceLinesEvent event)
 	{
-		List<String> replacement = new ArrayList<String>();
+		List<String> replacement = new ArrayList<>();
 		int lineIndex = 0;
 		for (String line : event.getLines())
 		{

@@ -19,6 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CmdBookGive extends MassiveBooksCommand
 {
@@ -54,12 +55,12 @@ public class CmdBookGive extends MassiveBooksCommand
 		
 		// How many? or perhaps ensure the player has at least one?
 		Integer amount = this.readArg();
-		boolean ensure = amount == TypeBookAmount.ENSURE;
+		boolean ensure = Objects.equals(amount, TypeBookAmount.ENSURE);
 		if (ensure) amount = 1;
 		
 		// What items should we give?
 		List<MBook> mbooks = this.readArg(new MassiveList<MBook>());
-		List<ItemStack> items = new MassiveList<ItemStack>();
+		List<ItemStack> items = new MassiveList<>();
 		if (mbooks.isEmpty())
 		{
 			items.add(new ItemStack(Material.BOOK_AND_QUILL));

@@ -255,7 +255,7 @@ public class Lang
 	
 	public static String getSuccessCopyResources(double moneyRequired, int booksRequired, int inksacsRequired, int feathersRequired)
 	{
-		List<String> entries = new ArrayList<String>();
+		List<String> entries = new ArrayList<>();
 		
 		if (moneyRequired > 0)
 		{
