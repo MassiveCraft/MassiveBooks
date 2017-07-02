@@ -12,6 +12,7 @@ import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.type.container.TypeList;
 import com.massivecraft.massivecore.command.type.sender.TypePlayer;
 import com.massivecraft.massivecore.mixin.MixinDisplayName;
+import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.util.InventoryUtil;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -79,22 +80,22 @@ public class CmdBookGive extends MassiveBooksCommand
 			PlayerInventory inventory = player.getInventory();
 			if (ensure && inventory.containsAtLeast(item, 1))
 			{
-				sender.sendMessage(Lang.getAlreadyHave(MixinDisplayName.get().getDisplayName(player, sender), item));
-				player.sendMessage(Lang.getAlreadyHave("You", item));
+				MixinMessage.get().messageOne(sender, Lang.getAlreadyHave(MixinDisplayName.get().getDisplayName(player, sender), item));
+				MixinMessage.get().messageOne(player, Lang.getAlreadyHave("You", item));
 				continue;
 			}
 			
 			if (InventoryUtil.roomLeft(inventory, item, amount) < amount)
 			{
-				sender.sendMessage(Lang.getNotEnoughRoomFor(amount, item));
-				player.sendMessage(Lang.getNotEnoughRoomFor(amount, item));
+				MixinMessage.get().messageOne(sender, Lang.getNotEnoughRoomFor(amount, item));
+				MixinMessage.get().messageOne(player, Lang.getNotEnoughRoomFor(amount, item));
 				continue;
 			}
 			
 			InventoryUtil.addItemTimes(inventory, item, amount);
 			
-			sender.sendMessage(Lang.getGave("You", MixinDisplayName.get().getDisplayName(player, sender), amount, item));
-			player.sendMessage(Lang.getGave(MixinDisplayName.get().getDisplayName(sender, player), "you", amount, item));
+			MixinMessage.get().messageOne(sender, Lang.getGave("You", MixinDisplayName.get().getDisplayName(player, sender), amount, item));
+			MixinMessage.get().messageOne(player, Lang.getGave(MixinDisplayName.get().getDisplayName(sender, player), "you", amount, item));
 		}
 	}
 

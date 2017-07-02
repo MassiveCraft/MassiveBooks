@@ -4,6 +4,7 @@ import com.massivecraft.massivebooks.entity.MConf;
 import com.massivecraft.massivebooks.entity.MPlayer;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.mixin.MixinActual;
+import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.mixin.MixinPlayed;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.InventoryUtil;
@@ -137,7 +138,7 @@ public class EngineMain extends Engine
 			InventoryUtil.setWeapon(player, target);
 			
 			// ... and inform.
-			player.sendMessage(Lang.getFrameUnload(itemInHand));
+			MixinMessage.get().messageOne(player, Lang.getFrameUnload(itemInHand));
 		}
 		// ... else if the player is holding a clear book and quill ...
 		else if (BookUtil.isCleared(itemInHand))
@@ -151,13 +152,13 @@ public class EngineMain extends Engine
 			InventoryUtil.setWeapon(player, target);
 			
 			// ... and inform.
-			player.sendMessage(Lang.getFrameLoad(target));
+			MixinMessage.get().messageOne(player, Lang.getFrameLoad(target));
 		}
 		// ... else if the player is holding an educated but invalid guess ...
 		else if (itemInHand.getType() == Material.WRITTEN_BOOK || itemInHand.getType() == Material.BOOK_AND_QUILL || itemInHand.getType() == Material.BOOK)
 		{
 			// ... do help.
-			player.sendMessage(Lang.getFrameHelp());
+			MixinMessage.get().messageOne(player, Lang.getFrameHelp());
 		}
 		
 		// ... and return true which means that no displayname info should be sent.
@@ -177,7 +178,7 @@ public class EngineMain extends Engine
 		String displayname = meta.getDisplayName();
 		
 		// ... and inform on what the frame contains.
-		player.sendMessage(Lang.getFrameContains(displayname));
+		MixinMessage.get().messageOne(player, Lang.getFrameContains(displayname));
 		return true;
 	}
 	
@@ -230,7 +231,7 @@ public class EngineMain extends Engine
 		if (Perm.AUTOUPDATE.has(player, false))
 		{
 			// Warn
-			player.sendMessage(Lang.AUTOUPDATE_JOINWARN);
+			MixinMessage.get().messageOne(player, Lang.AUTOUPDATE_JOINWARN);
 		}
 		else
 		{

@@ -6,6 +6,7 @@ import com.massivecraft.massivebooks.event.MassiveBooksPowertoolReplaceTagEvent;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.collections.MassiveList;
 import com.massivecraft.massivecore.mixin.MixinDisplayName;
+import com.massivecraft.massivecore.mixin.MixinMessage;
 import com.massivecraft.massivecore.util.IdUtil;
 import com.massivecraft.massivecore.util.InventoryUtil;
 import com.massivecraft.massivecore.util.Txt;
@@ -110,7 +111,7 @@ public class EnginePowertool extends Engine
 		// ... did we have an error? ...
 		if (event.getError() != null)
 		{
-			player.sendMessage(event.getError());
+			MixinMessage.get().messageOne(player, event.getError());
 			return;
 		}
 		
@@ -124,11 +125,11 @@ public class EnginePowertool extends Engine
 			try
 			{
 				player.chat(line);
-				player.sendMessage(Lang.getPowertoolRan(lineIndex, line));
+				MixinMessage.get().messageOne(player, Lang.getPowertoolRan(lineIndex, line));
 			}
 			catch (Exception e)
 			{
-				player.sendMessage(Lang.getPowertoolRan(lineIndex, line, e.getMessage()));
+				MixinMessage.get().messageOne(player, Lang.getPowertoolRan(lineIndex, line, e.getMessage()));
 				break;
 			}
 		}
