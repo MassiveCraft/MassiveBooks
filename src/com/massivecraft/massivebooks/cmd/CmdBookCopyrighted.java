@@ -44,7 +44,7 @@ public class CmdBookCopyrighted extends MassiveBooksCommand
 	public void perform() throws MassiveException
 	{
 		// Args
-		ItemStack item = this.readArgFrom(TypeBookInHand.getWritten());
+		ItemStack item = TypeBookInHand.getWritten().read(sender);
 		
 		boolean currentState = BookUtil.containsFlag(item, Const.COPYRIGHTED);
 		boolean targetState = this.readArg(!currentState);
