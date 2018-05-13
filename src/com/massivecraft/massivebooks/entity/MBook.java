@@ -39,8 +39,8 @@ public class MBook extends Entity<MBook>
 	public void setItem(ItemStack item)
 	{
 		item = fixItem(item);
+		this.changed(this.item, item);
 		this.item = item;
-		this.changed();
 	}
 	
 	// -------------------------------------------- //
